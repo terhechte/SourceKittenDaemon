@@ -1,0 +1,10 @@
+framework module Taylor {
+  umbrella header "Taylor.h"
+
+  export *
+  module * { export * }
+}
+
+module Taylor.Swift {
+    header "Taylor-Swift.h"
+}

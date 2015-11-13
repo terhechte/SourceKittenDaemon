@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>317992FE-45B4-4184-B5B8-CF8A3B0F5536</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SwiftSockets</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>45F06DA75D0F02B3093B29F565440E4C3B5D4FE4</key>
+		<string>github.com:AlwaysRightInstitute/SwiftSockets.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SwiftSockets.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>45F06DA75D0F02B3093B29F565440E4C3B5D4FE4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:AlwaysRightInstitute/SwiftSockets.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>45F06DA75D0F02B3093B29F565440E4C3B5D4FE4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>45F06DA75D0F02B3093B29F565440E4C3B5D4FE4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftSockets</string>
+		</dict>
+	</array>
+</dict>
+</plist>

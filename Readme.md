@@ -6,6 +6,8 @@ I decided to use simple REST services as other IPC mechanism were either lacking
 # Status
 This currently doesn't work yet. It compiles, but it is not yet connecting the different modules properly to actually generate docs.
 
+This project, currently, also contains a lot of binaries (frameworks) and verbatim copied code from github.com/tomlokhorst/Xcode.swift. This is temporary.
+
 # Components
 - A WebServer (Taylor.Swift) that communicates with Emacs
 - A Commandline Parser to start the server

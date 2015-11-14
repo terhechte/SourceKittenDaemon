@@ -12,6 +12,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4DBB814E1BF7FE850007C32A"
+               BuildableName = "SourceKittenDaemonTests.xctest"
+               BlueprintName = "SourceKittenDaemonTests"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

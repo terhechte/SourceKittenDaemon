@@ -34,27 +34,43 @@ public class CompletionServer {
         // FIXME: Add parsing to get the requried properties either from 
         // the query string, or from the post args or headers
         self.server = Taylor.Server()
-        self.server.get("/") { req, res, callback in
+        self.server.get("/complete") { req, res, callback in
             
             res.headers["Content-Type"] = "text/json"
             
-            // FIXME: We need to get in:
-            let offset = 45
-            let file = ""
+            // I'm not sure what's the best place to store the offset, file and original file.
+            // Per Rest convention it would probably be a mix of query string and headers,
+            // but for simplicities sake, I'll use the headers for now.
             
-            self.completer.complete(file, offset: offset, completion: { (result) -> () in
+            guard let offset = req.headers["X-Offset"].flatMap({ Int($0)})
+                else {
+                    callback(self.jsonError(req, res: res, message: "Need X-Offset as completion offset for completion"))
+                    return
+            }
+            
+            guard let path = req.headers["X-Path"]
+                else {
+                    callback(self.jsonError(req, res: res, message: "Need X-Path as path to the temporary buffer"))
+                    return
+            }
+            
+            guard let file = req.headers["X-File"]
+                else {
+                    callback(self.jsonError(req, res: res, message: "Need X-File as name of the file in the project"))
+                    return
+            }
+            
+            self.completer.complete(path, fileInProject: file, offset: offset, completion: { (result) -> () in
                 // FIXME: Taylor changed to a synchronous style. This is still
                 // using the old, asynchronous style. Changing this is easy though.
                 switch result {
                 case .Success(result: _):
                     res.bodyString = result.asJSONString()
+                    callback(.Send(req, res))
                 case .Failure(message: let msg):
-                    res.bodyString = "{\"error\": \"\(msg)\""
+                    self.jsonError(req, res: res, message: msg)
                 }
-                callback(.Send(req, res))
             })
-            
-            callback(.Send(req, res))
         }
         
         do {
@@ -64,4 +80,13 @@ public class CompletionServer {
             print("Server start failed \(error)")
         }
     }
+    
+    /**
+    Awful way of returning an error
+    */
+    private func jsonError(req: Taylor.Request, res: Taylor.Response, message: String) -> Taylor.Callback {
+        res.bodyString = "{\"error\": \"\(message)\"}"
+        return Callback.Send(req, res)
+    }
+    
 }

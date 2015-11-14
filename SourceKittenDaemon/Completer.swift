@@ -19,7 +19,7 @@ Simple wrapper around an Xcode project. Can be a
 Where a folder has to have some sort of other compile infrastructure. I've
 just included it for completeness' sake
 */
-enum ProjectType {
+internal enum ProjectType {
     case Project(project: String)
     case Workspace(workspace: String)
     case Folder(path: String)
@@ -49,7 +49,7 @@ enum ProjectType {
     }
 }
 
-enum CompletionResult {
+internal enum CompletionResult {
     case Success(result: [CodeCompletionItem])
     case Failure(message: String)
     
@@ -69,13 +69,13 @@ enum CompletionResult {
 /**
 This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
-class Completer {
+internal class Completer {
     
     // The Arguments for XPC, i.e. SDK, Frameworks
-    let compilerArgs: [String]
+    private let compilerArgs: [String]
     
     // The Base path to the .xcodeproj / workspace
-    let baseProject: ProjectType
+    private let baseProject: ProjectType
     
     init(project: ProjectType, parser: XcodeParser) {
         self.baseProject = project
@@ -83,14 +83,7 @@ class Completer {
         // FIXME: Parse the project, and get more info
     }
     
-    /**
-    FIXME: We're probably giving all projects files via compilerArgs to 
-    sourcekitd. `filePath` will contain a temporary buffer copy of one of
-     the files we're already givin in via the compilerArgs. So, here we also
-     need the original filename of the file being completed, so we can remove
-     it from the compiler args, so we don't get duplicate symbols
-    */
-    func complete(filePath: String, offset: Int, completion: (result: CompletionResult) -> ()) {
+    internal func complete(filePath: String, fileInProject: String, offset: Int, completion: (result: CompletionResult) -> ()) {
         
         let path = filePath.absolutePathRepresentation()
         let contents: String

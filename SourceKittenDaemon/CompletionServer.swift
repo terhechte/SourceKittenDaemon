@@ -27,7 +27,7 @@ public class CompletionServer {
     
     let completer: Completer
     
-    private init(completer: Completer, port: Int) {
+    internal init(completer: Completer, port: Int) {
         self.port = port
         self.completer = completer
         
@@ -60,17 +60,14 @@ public class CompletionServer {
                     return
             }
             
-            self.completer.complete(path, fileInProject: file, offset: offset, completion: { (result) -> () in
-                // FIXME: Taylor changed to a synchronous style. This is still
-                // using the old, asynchronous style. Changing this is easy though.
-                switch result {
-                case .Success(result: _):
-                    res.bodyString = result.asJSONString()
-                    callback(.Send(req, res))
-                case .Failure(message: let msg):
-                    self.jsonError(req, res: res, message: msg)
-                }
-            })
+            let result = self.completer.complete(path, fileInProject: file, offset: offset)
+            switch result {
+            case .Success(result: _):
+                res.bodyString = result.asJSONString()
+                callback(.Send(req, res))
+            case .Failure(message: let msg):
+                self.jsonError(req, res: res, message: msg)
+            }
         }
         
         do {

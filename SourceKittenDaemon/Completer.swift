@@ -83,15 +83,14 @@ internal class Completer {
         // FIXME: Parse the project, and get more info
     }
     
-    internal func complete(filePath: String, fileInProject: String, offset: Int, completion: (result: CompletionResult) -> ()) {
+    internal func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {
         
         let path = filePath.absolutePathRepresentation()
         let contents: String
         if let file = File(path: path) {
             contents = file.contents
         } else {
-            completion(result: .Failure(message: "Could not read file"))
-            return
+            return .Failure(message: "Could not read file")
         }
         
         let request = Request.CodeCompletionRequest(file: path, contents: contents,
@@ -100,7 +99,7 @@ internal class Completer {
         
         let response = CodeCompletionItem.parseResponse(request.send())
         
-        completion(result: .Success(result: response))
+        return .Success(result: response)
     }
     
 }

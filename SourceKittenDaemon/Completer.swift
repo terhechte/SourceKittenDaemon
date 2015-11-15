@@ -77,10 +77,18 @@ internal class Completer {
     // The Base path to the .xcodeproj / workspace
     private let baseProject: ProjectType
     
-    init(project: ProjectType, parser: XcodeParser) {
+    internal init(project: ProjectType, parser: XcodeParser) {
         self.baseProject = project
         self.compilerArgs = ["-c", project.folderPath(), "-sdk", sdkPath()]
         // FIXME: Parse the project, and get more info
+    }
+    
+    /**
+    For a folder-based project, there is no xcode parser required
+    */
+    internal init(project: ProjectType) {
+        self.compilerArgs = []
+        self.baseProject = project
     }
     
     internal func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {

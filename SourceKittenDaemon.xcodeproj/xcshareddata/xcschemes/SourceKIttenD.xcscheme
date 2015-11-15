@@ -16,7 +16,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DBB814E1BF7FE850007C32A"
+               BlueprintIdentifier = "4D94B14B1BF807C3003B5C17"
                BuildableName = "SourceKittenDaemonTests.xctest"
                BlueprintName = "SourceKittenDaemonTests"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">

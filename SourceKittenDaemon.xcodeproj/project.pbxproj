@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D7716D31BF4973B0093A406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7716D21BF4973B0093A406 /* Assets.xcassets */; };
-		4D7716D61BF4973B0093A406 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7716D41BF4973B0093A406 /* MainMenu.xib */; };
 		4D7716E11BF4998D0093A406 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7716E01BF4998D0093A406 /* main.swift */; };
 		4D7716E31BF499C50093A406 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */; };
 		4D7716E41BF499C50093A406 /* SourceKittenFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,10 +30,11 @@
 		4D77170F1BF4C1C70093A406 /* PBXObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170B1BF4C1C70093A406 /* PBXObject.swift */; };
 		4D7717101BF4C1C70093A406 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170C1BF4C1C70093A406 /* Serialization.swift */; };
 		4D7717111BF4C1C70093A406 /* XCProjectFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170D1BF4C1C70093A406 /* XCProjectFile.swift */; };
+		4D94B14F1BF807C3003B5C17 /* SourceKittenDaemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94B14E1BF807C3003B5C17 /* SourceKittenDaemonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4D94B1431BF806BA003B5C17 /* PBXContainerItemProxy */ = {
+		4D94B1511BF807C3003B5C17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4D7716C51BF4973A0093A406 /* Project object */;
 			proxyType = 1;
@@ -66,8 +65,6 @@
 
 /* Begin PBXFileReference section */
 		4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourceKittenDaemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D7716D21BF4973B0093A406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4D7716D51BF4973B0093A406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4D7716D71BF4973B0093A406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D7716E01BF4998D0093A406 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SourceKittenFramework.framework; path = frameworks/SourceKittenFramework.framework; sourceTree = "<group>"; };
@@ -85,7 +82,9 @@
 		4D77170B1BF4C1C70093A406 /* PBXObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PBXObject.swift; path = xcode/PBXObject.swift; sourceTree = "<group>"; };
 		4D77170C1BF4C1C70093A406 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serialization.swift; path = xcode/Serialization.swift; sourceTree = "<group>"; };
 		4D77170D1BF4C1C70093A406 /* XCProjectFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCProjectFile.swift; path = xcode/XCProjectFile.swift; sourceTree = "<group>"; };
-		4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourceKittenDaemonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D94B14C1BF807C3003B5C17 /* SourceKittenDaemonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourceKittenDaemonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D94B14E1BF807C3003B5C17 /* SourceKittenDaemonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceKittenDaemonTests.swift; sourceTree = "<group>"; };
+		4D94B1501BF807C3003B5C17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +102,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D94B13B1BF806BA003B5C17 /* Frameworks */ = {
+		4D94B1491BF807C3003B5C17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,6 +117,7 @@
 			children = (
 				4D7716CF1BF4973B0093A406 /* SourceKittenDaemon */,
 				4D7717081BF4C1AC0093A406 /* Thirdparty */,
+				4D94B14D1BF807C3003B5C17 /* SourceKittenDaemonTests */,
 				4D7716DD1BF498070093A406 /* Frameworks */,
 				4D7716CE1BF4973B0093A406 /* Products */,
 			);
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */,
-				4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */,
+				4D94B14C1BF807C3003B5C17 /* SourceKittenDaemonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,8 +135,6 @@
 		4D7716CF1BF4973B0093A406 /* SourceKittenDaemon */ = {
 			isa = PBXGroup;
 			children = (
-				4D7716D21BF4973B0093A406 /* Assets.xcassets */,
-				4D7716D41BF4973B0093A406 /* MainMenu.xib */,
 				4D7716D71BF4973B0093A406 /* Info.plist */,
 				4D7716E01BF4998D0093A406 /* main.swift */,
 				4D7716F21BF49ABB0093A406 /* ServerCommand.swift */,
@@ -180,6 +178,15 @@
 			name = xcode;
 			sourceTree = "<group>";
 		};
+		4D94B14D1BF807C3003B5C17 /* SourceKittenDaemonTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D94B14E1BF807C3003B5C17 /* SourceKittenDaemonTests.swift */,
+				4D94B1501BF807C3003B5C17 /* Info.plist */,
+			);
+			path = SourceKittenDaemonTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,22 +208,22 @@
 			productReference = 4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4D94B13D1BF806BA003B5C17 /* SourceKittenDaemonTests */ = {
+		4D94B14B1BF807C3003B5C17 /* SourceKittenDaemonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D94B1451BF806BA003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */;
+			buildConfigurationList = 4D94B1531BF807C3003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */;
 			buildPhases = (
-				4D94B13A1BF806BA003B5C17 /* Sources */,
-				4D94B13B1BF806BA003B5C17 /* Frameworks */,
-				4D94B13C1BF806BA003B5C17 /* Resources */,
+				4D94B1481BF807C3003B5C17 /* Sources */,
+				4D94B1491BF807C3003B5C17 /* Frameworks */,
+				4D94B14A1BF807C3003B5C17 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4D94B1441BF806BA003B5C17 /* PBXTargetDependency */,
+				4D94B1521BF807C3003B5C17 /* PBXTargetDependency */,
 			);
 			name = SourceKittenDaemonTests;
 			productName = SourceKittenDaemonTests;
-			productReference = 4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */;
+			productReference = 4D94B14C1BF807C3003B5C17 /* SourceKittenDaemonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -232,7 +239,7 @@
 					4D7716CC1BF4973B0093A406 = {
 						CreatedOnToolsVersion = 7.1;
 					};
-					4D94B13D1BF806BA003B5C17 = {
+					4D94B14B1BF807C3003B5C17 = {
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = 4D7716CC1BF4973B0093A406;
 					};
@@ -252,7 +259,7 @@
 			projectRoot = "";
 			targets = (
 				4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */,
-				4D94B13D1BF806BA003B5C17 /* SourceKittenDaemonTests */,
+				4D94B14B1BF807C3003B5C17 /* SourceKittenDaemonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -262,12 +269,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D7716D31BF4973B0093A406 /* Assets.xcassets in Resources */,
-				4D7716D61BF4973B0093A406 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D94B13C1BF806BA003B5C17 /* Resources */ = {
+		4D94B14A1BF807C3003B5C17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -293,33 +298,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4D94B13A1BF806BA003B5C17 /* Sources */ = {
+		4D94B1481BF807C3003B5C17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D94B14F1BF807C3003B5C17 /* SourceKittenDaemonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4D94B1441BF806BA003B5C17 /* PBXTargetDependency */ = {
+		4D94B1521BF807C3003B5C17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */;
-			targetProxy = 4D94B1431BF806BA003B5C17 /* PBXContainerItemProxy */;
+			targetProxy = 4D94B1511BF807C3003B5C17 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4D7716D41BF4973B0093A406 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D7716D51BF4973B0093A406 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4D7716D81BF4973B0093A406 /* Debug */ = {
@@ -436,7 +431,7 @@
 			};
 			name = Release;
 		};
-		4D94B1461BF806BA003B5C17 /* Debug */ = {
+		4D94B1541BF807C3003B5C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -450,7 +445,7 @@
 			};
 			name = Debug;
 		};
-		4D94B1471BF806BA003B5C17 /* Release */ = {
+		4D94B1551BF807C3003B5C17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,11 +480,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D94B1451BF806BA003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */ = {
+		4D94B1531BF807C3003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4D94B1461BF806BA003B5C17 /* Debug */,
-				4D94B1471BF806BA003B5C17 /* Release */,
+				4D94B1541BF807C3003B5C17 /* Debug */,
+				4D94B1551BF807C3003B5C17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

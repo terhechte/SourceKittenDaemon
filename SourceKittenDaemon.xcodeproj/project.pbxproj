@@ -32,11 +32,10 @@
 		4D77170F1BF4C1C70093A406 /* PBXObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170B1BF4C1C70093A406 /* PBXObject.swift */; };
 		4D7717101BF4C1C70093A406 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170C1BF4C1C70093A406 /* Serialization.swift */; };
 		4D7717111BF4C1C70093A406 /* XCProjectFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D77170D1BF4C1C70093A406 /* XCProjectFile.swift */; };
-		4DBB81521BF7FE850007C32A /* SourceKittenDaemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB81511BF7FE850007C32A /* SourceKittenDaemonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DBB81541BF7FE850007C32A /* PBXContainerItemProxy */ = {
+		4D94B1431BF806BA003B5C17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4D7716C51BF4973A0093A406 /* Project object */;
 			proxyType = 1;
@@ -86,9 +85,7 @@
 		4D77170B1BF4C1C70093A406 /* PBXObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PBXObject.swift; path = xcode/PBXObject.swift; sourceTree = "<group>"; };
 		4D77170C1BF4C1C70093A406 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serialization.swift; path = xcode/Serialization.swift; sourceTree = "<group>"; };
 		4D77170D1BF4C1C70093A406 /* XCProjectFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCProjectFile.swift; path = xcode/XCProjectFile.swift; sourceTree = "<group>"; };
-		4DBB814F1BF7FE850007C32A /* SourceKittenDaemonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourceKittenDaemonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DBB81511BF7FE850007C32A /* SourceKittenDaemonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceKittenDaemonTests.swift; sourceTree = "<group>"; };
-		4DBB81531BF7FE850007C32A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourceKittenDaemonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +103,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DBB814C1BF7FE850007C32A /* Frameworks */ = {
+		4D94B13B1BF806BA003B5C17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -121,7 +118,6 @@
 			children = (
 				4D7716CF1BF4973B0093A406 /* SourceKittenDaemon */,
 				4D7717081BF4C1AC0093A406 /* Thirdparty */,
-				4DBB81501BF7FE850007C32A /* SourceKittenDaemonTests */,
 				4D7716DD1BF498070093A406 /* Frameworks */,
 				4D7716CE1BF4973B0093A406 /* Products */,
 			);
@@ -131,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */,
-				4DBB814F1BF7FE850007C32A /* SourceKittenDaemonTests.xctest */,
+				4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,15 +180,6 @@
 			name = xcode;
 			sourceTree = "<group>";
 		};
-		4DBB81501BF7FE850007C32A /* SourceKittenDaemonTests */ = {
-			isa = PBXGroup;
-			children = (
-				4DBB81511BF7FE850007C32A /* SourceKittenDaemonTests.swift */,
-				4DBB81531BF7FE850007C32A /* Info.plist */,
-			);
-			path = SourceKittenDaemonTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,22 +201,22 @@
 			productReference = 4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4DBB814E1BF7FE850007C32A /* SourceKittenDaemonTests */ = {
+		4D94B13D1BF806BA003B5C17 /* SourceKittenDaemonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DBB81581BF7FE850007C32A /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */;
+			buildConfigurationList = 4D94B1451BF806BA003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */;
 			buildPhases = (
-				4DBB814B1BF7FE850007C32A /* Sources */,
-				4DBB814C1BF7FE850007C32A /* Frameworks */,
-				4DBB814D1BF7FE850007C32A /* Resources */,
+				4D94B13A1BF806BA003B5C17 /* Sources */,
+				4D94B13B1BF806BA003B5C17 /* Frameworks */,
+				4D94B13C1BF806BA003B5C17 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4DBB81551BF7FE850007C32A /* PBXTargetDependency */,
+				4D94B1441BF806BA003B5C17 /* PBXTargetDependency */,
 			);
 			name = SourceKittenDaemonTests;
 			productName = SourceKittenDaemonTests;
-			productReference = 4DBB814F1BF7FE850007C32A /* SourceKittenDaemonTests.xctest */;
+			productReference = 4D94B13E1BF806BA003B5C17 /* SourceKittenDaemonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -245,7 +232,7 @@
 					4D7716CC1BF4973B0093A406 = {
 						CreatedOnToolsVersion = 7.1;
 					};
-					4DBB814E1BF7FE850007C32A = {
+					4D94B13D1BF806BA003B5C17 = {
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = 4D7716CC1BF4973B0093A406;
 					};
@@ -265,7 +252,7 @@
 			projectRoot = "";
 			targets = (
 				4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */,
-				4DBB814E1BF7FE850007C32A /* SourceKittenDaemonTests */,
+				4D94B13D1BF806BA003B5C17 /* SourceKittenDaemonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -280,7 +267,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DBB814D1BF7FE850007C32A /* Resources */ = {
+		4D94B13C1BF806BA003B5C17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,21 +293,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DBB814B1BF7FE850007C32A /* Sources */ = {
+		4D94B13A1BF806BA003B5C17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBB81521BF7FE850007C32A /* SourceKittenDaemonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4DBB81551BF7FE850007C32A /* PBXTargetDependency */ = {
+		4D94B1441BF806BA003B5C17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */;
-			targetProxy = 4DBB81541BF7FE850007C32A /* PBXContainerItemProxy */;
+			targetProxy = 4D94B1431BF806BA003B5C17 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,7 +436,7 @@
 			};
 			name = Release;
 		};
-		4DBB81561BF7FE850007C32A /* Debug */ = {
+		4D94B1461BF806BA003B5C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -464,7 +450,7 @@
 			};
 			name = Debug;
 		};
-		4DBB81571BF7FE850007C32A /* Release */ = {
+		4D94B1471BF806BA003B5C17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -499,11 +485,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DBB81581BF7FE850007C32A /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */ = {
+		4D94B1451BF806BA003B5C17 /* Build configuration list for PBXNativeTarget "SourceKittenDaemonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DBB81561BF7FE850007C32A /* Debug */,
-				4DBB81571BF7FE850007C32A /* Release */,
+				4D94B1461BF806BA003B5C17 /* Debug */,
+				4D94B1471BF806BA003B5C17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

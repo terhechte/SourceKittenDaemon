@@ -39,14 +39,17 @@ internal enum ProjectType {
             return s
         }
     }
-    
-    func pbxProject() -> String? {
-        let fileManager = NSFileManager.defaultManager()
-        let pbxFile = (self.path() as NSString).stringByAppendingPathComponent("project.pbxproj")
-        if !fileManager.fileExistsAtPath(pbxFile) { return nil }
-        
-        return pbxFile
+
+    func xcodeprojURL() -> NSURL? {
+        switch self {
+        case .Project: return NSURL(fileURLWithPath: path(), isDirectory: true)
+        // @TODO : implement folder and workspace support. This involves looking for
+        // nested .xcodeproj's but workspaces will have to somehow support multiple .xcodeproj's
+        case .Folder: fatalError("Folder projects not supported yet")
+        case .Workspace: fatalError("Workspace projects not supported yet")
+        }
     }
+    
 }
 
 internal enum CompletionResult {

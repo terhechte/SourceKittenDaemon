@@ -39,12 +39,7 @@ struct ServerStartCommand: CommandType {
                 return .Failure(.CommandError(.InvalidArgument(description: "Need either project, workspace, or folder")))
             }
             
-            guard let pbxProject = project.pbxProject()
-                else {
-                return .Failure(.CommandError(.InvalidArgument(description: "Could not find pbx project in \(project.path())")))
-            }
-            
-            guard let parser = XcodeParser(path: pbxProject,
+            guard let parser = XcodeParser(project: project,
                 targetName: options.target.isEmpty ? nil : options.target)
                 else {
                 return .Failure(.CommandError(.InvalidArgument(description: "Could not create project parser for \(project.path())")))

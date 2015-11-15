@@ -22,8 +22,6 @@ struct ProjectObject {
 
 struct XcodeParser {
     
-    let path: String
-    
     let proj: XCProjectFile
     
     var frameworks: [ProjectObject]
@@ -32,23 +30,19 @@ struct XcodeParser {
     
     let target: PBXNativeTarget
     
-    init?(path: String, targetName: String?) {
+    init?(project: ProjectType, targetName: String?) {
         
-        let xcodeproj = NSURL(fileURLWithPath: path)
-        print(xcodeproj.path)
-
         let aProject: XCProjectFile
         do {
-            aProject = try XCProjectFile(xcodeprojURL: xcodeproj)
+            aProject = try XCProjectFile(xcodeprojURL: project.xcodeprojURL()!)
         } catch (let err as ProjectFileError) {
             print(err.description)
             return nil
         } catch (_ as NSError) {
-            print("Could not read xcode project: \(path)")
+            print("Could not read xcode project: \(project.path())")
             return nil
         }
         
-        self.path = path
         self.proj = aProject
         self.frameworks = []
         self.projectFiles = []

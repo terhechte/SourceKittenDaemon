@@ -35,10 +35,17 @@ struct XcodeParser {
     init?(path: String, targetName: String?) {
         
         let xcodeproj = NSURL(fileURLWithPath: path)
-        guard let aProject = try? XCProjectFile(xcodeprojURL: xcodeproj)
-            else {
-                print("Could not read xcode project: \(path)")
-                return nil
+        print(xcodeproj.path)
+
+        let aProject: XCProjectFile
+        do {
+            aProject = try XCProjectFile(xcodeprojURL: xcodeproj)
+        } catch (let err as ProjectFileError) {
+            print(err.description)
+            return nil
+        } catch (_ as NSError) {
+            print("Could not read xcode project: \(path)")
+            return nil
         }
         
         self.path = path

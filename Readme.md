@@ -8,6 +8,10 @@ This currently doesn't work yet. It compiles, but it is not yet connecting the d
 
 This project, currently, also contains a lot of binaries (frameworks) and verbatim copied code from github.com/tomlokhorst/Xcode.swift. This is temporary.
 
+# Docs
+
+There's sparse documentation regarding the communication with Emacs in the Protocol.org file in the root dir
+
 # Components
 - A WebServer (Taylor.Swift) that communicates with Emacs
 - A Commandline Parser to start the server

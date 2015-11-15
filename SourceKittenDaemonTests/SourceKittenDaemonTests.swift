@@ -9,13 +9,8 @@
 import XCTest
 @testable import SourceKittenDaemon
 
-extension Completer {
-    func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {
-        return CompletionResult.Failure(message: "Done")
-    }
-}
-
-class SourceKittenDaemonServerTests: XCTestCase {
+// Tests still need fixtures.
+class SourceKittenDaemonTests: XCTestCase {
     
     var server: CompletionServer? = nil
     let port = 9981

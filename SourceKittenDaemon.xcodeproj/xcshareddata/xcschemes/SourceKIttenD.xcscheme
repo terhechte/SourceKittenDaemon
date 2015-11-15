@@ -23,18 +23,9 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4D7716CC1BF4973B0093A406"
-            BuildableName = "SourceKittenDaemon.app"
-            BlueprintName = "SourceKittenDaemon"
-            ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "start --project &quot;$(PROJECT_DIR)/SourceKittenDaemonTests/Fixtures/AVCamManual/AVCamManual.xcodeproj&quot; --port 8081"
+            argument = "test"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

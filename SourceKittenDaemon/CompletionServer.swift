@@ -31,9 +31,11 @@ public class CompletionServer {
         self.port = port
         self.completer = completer
         
-        // FIXME: Add parsing to get the requried properties either from 
-        // the query string, or from the post args or headers
         self.server = Taylor.Server()
+        self.server.get("/stop") { req, res, callback in
+            self.stop()
+        }
+        
         self.server.get("/complete") { req, res, callback in
             
             res.headers["Content-Type"] = "text/json"
@@ -84,6 +86,13 @@ public class CompletionServer {
     private func jsonError(req: Taylor.Request, res: Taylor.Response, message: String) -> Taylor.Callback {
         res.bodyString = "{\"error\": \"\(message)\"}"
         return Callback.Send(req, res)
+    }
+    
+    /**
+    Stop and end the server
+    */
+    internal func stop() {
+        self.server.stopListening()
     }
     
 }

@@ -34,9 +34,11 @@ class SourceKittenDaemonTests: XCTestCase {
         super.tearDown()
     }
     
-    func serverURLWithCommand(command: String) -> NSURLRequest {
+    func serverURLWithCommand(command: String, timeout: NSTimeInterval = 5.0) -> NSURLRequest {
         let request = NSURLRequest(URL: NSURL(string: "http://localhost:\(self.port)/\(command)")!)
-        return request
+        let mutableRequest = (request.mutableCopy() as? NSMutableURLRequest)!
+        mutableRequest.timeoutInterval = timeout
+        return mutableRequest
     }
     
     func testResponse() {
@@ -53,15 +55,22 @@ class SourceKittenDaemonTests: XCTestCase {
     func testStopServer() {
         self.server?.stop()
         self.server = nil
-        let request = self.serverURLWithCommand("complete")
+        let request = self.serverURLWithCommand("stop", timeout: 1.0)
         let expectation = expectationWithDescription("Expect the server to be offline")
         
-        waitForExpectationsWithTimeout(5) { error in
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            sleep(1)
+            
             let result = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            print("result", result)
             if result == nil {
-                expectation.fulfill()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    expectation.fulfill()
+                })
             }
         }
+        
+        waitForExpectationsWithTimeout(4, handler: nil)
     }
 }
 class SourceKittenDaemonCompletionTests: XCTestCase {

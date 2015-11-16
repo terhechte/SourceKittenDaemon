@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SourceKittenFramework
 @testable import SourceKittenDaemon
 
 
@@ -60,6 +61,65 @@ class SourceKittenDaemonTests: XCTestCase {
             if result == nil {
                 expectation.fulfill()
             }
+        }
+    }
+}
+class SourceKittenDaemonCompletionTests: XCTestCase {
+    
+    var contents: String!
+    var folder: String!
+    var completer: Completer!
+    var fileInProject = "CompletionTarget.swift"
+    
+    override func setUp() {
+        super.setUp()
+        
+        let environment = NSProcessInfo.processInfo().environment
+        guard let projectDir = environment["project-dir"]
+            else { fatalError("Needs current project dir via project-dir environment variable for test") }
+        
+        self.folder = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests.xcodeproj"
+        
+        let originalFile = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests/\(self.fileInProject)"
+        guard let contents = try? String(contentsOfFile: originalFile)
+            else { fatalError("Could not read \(originalFile) for unit tests") }
+        self.contents = contents
+        
+        let project = ProjectType.Project(project: folder)
+        guard let parser = XcodeParser(project: project, targetName: nil)
+            else { fatalError("Could not create parser for \(folder)") }
+                
+        self.completer = Completer(project: project, parser: parser)
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+    
+    func temporaryFileForTestingWith(code: String) throws -> (path: String, offset: Int) {
+        let newContent = self.contents + code
+        let offset = (newContent.characters.count - 1)
+        let uid = NSProcessInfo.processInfo().globallyUniqueString
+        let path = NSTemporaryDirectory()
+        try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+        let filePath = path.stringByAppendingString("\(uid).swift")
+        try newContent.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
+        return (path: filePath, offset: offset)
+    }
+    
+    func testCompanyOne() {
+        do {
+            let (path, offset) = try self.temporaryFileForTestingWith("company1.")
+            let result = self.completer.complete(path, fileInProject: self.fileInProject, offset: offset)
+            
+            guard case .Success(let items) = result
+                else { XCTAssertTrue(false, "Needs items in the success case") ; fatalError() }
+            
+            XCTAssertTrue(items.count == 4, "Needs 4 results")
+            
+        } catch let error {
+            XCTAssertTrue(false, "Could not create a temporary file: \(error)")
         }
     }
 }

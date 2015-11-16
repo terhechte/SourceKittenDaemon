@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D359BAE1BFA1956005A8AB8 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E71BF49A0B0093A406 /* SwiftXPC.framework */; };
+		4D359BAF1BFA1956005A8AB8 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */; };
 		4D7716E11BF4998D0093A406 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7716E01BF4998D0093A406 /* main.swift */; };
 		4D7716E31BF499C50093A406 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */; };
 		4D7716E41BF499C50093A406 /* SourceKittenFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7716E21BF499C50093A406 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -106,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D359BAE1BFA1956005A8AB8 /* SwiftXPC.framework in Frameworks */,
+				4D359BAF1BFA1956005A8AB8 /* SourceKittenFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +441,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frameworks",
+				);
 				INFOPLIST_FILE = SourceKittenDaemonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemonTests;
@@ -451,6 +459,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frameworks",
+				);
 				INFOPLIST_FILE = SourceKittenDaemonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemonTests;
@@ -487,6 +499,7 @@
 				4D94B1551BF807C3003B5C17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

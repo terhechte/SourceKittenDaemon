@@ -23,12 +23,28 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4D94B14B1BF807C3003B5C17"
+            BuildableName = "SourceKittenDaemonTests.xctest"
+            BlueprintName = "SourceKittenDaemonTests"
+            ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "test"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "project-dir"
+            value = "$(PROJECT_DIR)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -54,7 +70,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "start --project &quot;Test&quot; --port 8081"
+            argument = "start --project &quot;$(PROJECT_DIR)/SourceKittenDaemonTests/Fixtures/AVCamManual/AVCamManual.xcodeproj&quot; --port 8081"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -82,7 +82,7 @@ internal class Completer {
     
     internal init(project: ProjectType, parser: XcodeParser) {
         self.baseProject = project
-        self.compilerArgs = ["-c", project.folderPath(), "-sdk", sdkPath()]
+        self.compilerArgs = ["-c", project.folderPath(), "-sdk", sdkPath()] + parser.projectFilePaths
         // FIXME: Parse the project, and get more info
     }
     
@@ -102,6 +102,12 @@ internal class Completer {
             contents = file.contents
         } else {
             return .Failure(message: "Could not read file")
+        }
+        
+        // remove the current fileInProject:
+        var args = self.compilerArgs
+        if let index = args.indexOf(self.baseProject.folderPath() + "/" + fileInProject) {
+            args.removeAtIndex(index)
         }
         
         let request = Request.CodeCompletionRequest(file: path, contents: contents,

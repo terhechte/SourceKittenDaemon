@@ -22,11 +22,20 @@ struct ProjectObject {
 
 struct XcodeParser {
     
+    let basePath: String
+    
     let proj: XCProjectFile
     
-    var frameworks: [ProjectObject]
+    private var frameworks: [ProjectObject]
     
-    var projectFiles: [ProjectObject]
+    private var projectFiles: [ProjectObject]
+    
+    var projectFilePaths: [String] {
+        return self.projectFiles.map({ (p: ProjectObject) -> String in
+            let path = p.path
+            return "\(self.basePath)/\(path)"
+        })
+    }
     
     let target: PBXNativeTarget
     
@@ -43,6 +52,7 @@ struct XcodeParser {
             return nil
         }
         
+        self.basePath = project.folderPath()
         self.proj = aProject
         self.frameworks = []
         self.projectFiles = []

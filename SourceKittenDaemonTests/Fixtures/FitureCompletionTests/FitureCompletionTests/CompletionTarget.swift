@@ -25,5 +25,3 @@ public func costs(c: Accountable) -> Int {
     return c.costs
 }
 
-
-company1.

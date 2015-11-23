@@ -9,15 +9,15 @@
 import Foundation
 
 public struct Person: Identifiable {
-    let firstName: String
-    let lastName: String
-    let age: Int
+    public let firstName: String
+    public let lastName: String
+    public let age: Int
     
-    var name: String {
+    public var name: String {
         return"\(firstName) \(lastName)"
     }
     
-    func birthYear() -> Int {
+    public func birthYear() -> Int {
         return NSCalendar.currentCalendar().component(.Year, fromDate: NSDate()) - self.age
     }
     
@@ -25,19 +25,19 @@ public struct Person: Identifiable {
 }
 
 public struct Company: Identifiable {
-    let workers: [Person]
-    let name: String
+    public let workers: [Person]
+    public let name: String
     
-    let products: [Product]
+    public let products: [Product]
     
-    let mainBuilding: Building?
+    public let mainBuilding: Building?
 }
 
 public struct Product: Identifiable, Accountable {
-    let name: String
-    var costs: Int
+    public let name: String
+    public var costs: Int
 }
 
 public struct Building: Accountable {
-    var costs: Int
+    public var costs: Int
 }

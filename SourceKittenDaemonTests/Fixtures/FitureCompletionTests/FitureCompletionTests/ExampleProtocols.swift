@@ -10,7 +10,13 @@ import Foundation
 
 public protocol Identifiable {
     var name: String { get }
+    func test() -> String
 }
+
+extension Identifiable {
+    public func test() -> String { return "" }
+}
+
 
 public protocol Accountable {
     var costs: Int { get set }

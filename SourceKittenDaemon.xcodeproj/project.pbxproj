@@ -17,6 +17,20 @@
 		D86B8F111C02AE0300985CA8 /* PBXObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8F001C02AE0300985CA8 /* PBXObject.swift */; };
 		D86B8F121C02AE0300985CA8 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8F011C02AE0300985CA8 /* Serialization.swift */; };
 		D86B8F131C02AE0300985CA8 /* XCProjectFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8F031C02AE0300985CA8 /* XCProjectFile.swift */; };
+		D8D624E81C05A3EF00EC3647 /* Taylor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E11C05A3EF00EC3647 /* Taylor.framework */; };
+		D8D624E91C05A3EF00EC3647 /* Taylor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E11C05A3EF00EC3647 /* Taylor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624EA1C05A3EF00EC3647 /* Commandant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E21C05A3EF00EC3647 /* Commandant.framework */; };
+		D8D624EB1C05A3EF00EC3647 /* Commandant.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E21C05A3EF00EC3647 /* Commandant.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624EC1C05A3EF00EC3647 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */; };
+		D8D624ED1C05A3EF00EC3647 /* SwiftXPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624EE1C05A3EF00EC3647 /* SwiftSockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */; };
+		D8D624EF1C05A3EF00EC3647 /* SwiftSockets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624F01C05A3EF00EC3647 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */; };
+		D8D624F11C05A3EF00EC3647 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624F21C05A3EF00EC3647 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E61C05A3EF00EC3647 /* Result.framework */; };
+		D8D624F31C05A3EF00EC3647 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E61C05A3EF00EC3647 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624F41C05A3EF00EC3647 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */; };
+		D8D624F51C05A3EF00EC3647 /* SourceKittenFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4D7716E51BF499C50093A406 /* Embed Frameworks */ = {
+		D8D624F61C05A3EF00EC3647 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D8D624ED1C05A3EF00EC3647 /* SwiftXPC.framework in Embed Frameworks */,
+				D8D624EB1C05A3EF00EC3647 /* Commandant.framework in Embed Frameworks */,
+				D8D624E91C05A3EF00EC3647 /* Taylor.framework in Embed Frameworks */,
+				D8D624F51C05A3EF00EC3647 /* SourceKittenFramework.framework in Embed Frameworks */,
+				D8D624F31C05A3EF00EC3647 /* Result.framework in Embed Frameworks */,
+				D8D624EF1C05A3EF00EC3647 /* SwiftSockets.framework in Embed Frameworks */,
+				D8D624F11C05A3EF00EC3647 /* SWXMLHash.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +79,13 @@
 		D86B8F011C02AE0300985CA8 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 		D86B8F021C02AE0300985CA8 /* Xcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xcode.h; sourceTree = "<group>"; };
 		D86B8F031C02AE0300985CA8 /* XCProjectFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProjectFile.swift; sourceTree = "<group>"; };
+		D8D624E11C05A3EF00EC3647 /* Taylor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Taylor.framework; path = Carthage/Build/Mac/Taylor.framework; sourceTree = "<group>"; };
+		D8D624E21C05A3EF00EC3647 /* Commandant.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Commandant.framework; path = Carthage/Build/Mac/Commandant.framework; sourceTree = "<group>"; };
+		D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftXPC.framework; path = Carthage/Build/Mac/SwiftXPC.framework; sourceTree = "<group>"; };
+		D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSockets.framework; path = Carthage/Build/Mac/SwiftSockets.framework; sourceTree = "<group>"; };
+		D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/Mac/SWXMLHash.framework; sourceTree = "<group>"; };
+		D8D624E61C05A3EF00EC3647 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SourceKittenFramework.framework; path = Carthage/Build/Mac/SourceKittenFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +93,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D624EC1C05A3EF00EC3647 /* SwiftXPC.framework in Frameworks */,
+				D8D624EA1C05A3EF00EC3647 /* Commandant.framework in Frameworks */,
+				D8D624E81C05A3EF00EC3647 /* Taylor.framework in Frameworks */,
+				D8D624F41C05A3EF00EC3647 /* SourceKittenFramework.framework in Frameworks */,
+				D8D624F21C05A3EF00EC3647 /* Result.framework in Frameworks */,
+				D8D624EE1C05A3EF00EC3647 /* SwiftSockets.framework in Frameworks */,
+				D8D624F01C05A3EF00EC3647 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +116,13 @@
 		4D7716C41BF4973A0093A406 = {
 			isa = PBXGroup;
 			children = (
+				D8D624E11C05A3EF00EC3647 /* Taylor.framework */,
+				D8D624E21C05A3EF00EC3647 /* Commandant.framework */,
+				D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */,
+				D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */,
+				D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */,
+				D8D624E61C05A3EF00EC3647 /* Result.framework */,
+				D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */,
 				4D7716CE1BF4973B0093A406 /* Products */,
 				4D7716CF1BF4973B0093A406 /* SourceKittenDaemon */,
 				4D94B14D1BF807C3003B5C17 /* SourceKittenDaemonTests */,
@@ -165,7 +207,7 @@
 				4D7716C91BF4973B0093A406 /* Sources */,
 				4D7716CA1BF4973B0093A406 /* Frameworks */,
 				4D7716CB1BF4973B0093A406 /* Resources */,
-				4D7716E51BF499C50093A406 /* Embed Frameworks */,
+				D8D624F61C05A3EF00EC3647 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -372,11 +414,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemon/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -389,11 +430,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemon/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

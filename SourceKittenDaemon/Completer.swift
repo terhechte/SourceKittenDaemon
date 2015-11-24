@@ -74,24 +74,15 @@ This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
 internal class Completer {
     
-    // The Arguments for XPC, i.e. SDK, Frameworks
-    private let compilerArgs: [String]
-    
     // The Base path to the .xcodeproj / workspace
     private let baseProject: ProjectType
     
+    // The project parser
+    private let parser: XcodeParser
+    
     internal init(project: ProjectType, parser: XcodeParser) {
         self.baseProject = project
-        self.compilerArgs = ["-c", project.folderPath(), "-sdk", sdkPath()] + parser.projectFilePaths
-        // FIXME: Parse the project, and get more info
-    }
-    
-    /**
-    For a folder-based project, there is no xcode parser required
-    */
-    internal init(project: ProjectType) {
-        self.compilerArgs = []
-        self.baseProject = project
+        self.parser = parser
     }
     
     internal func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {
@@ -104,15 +95,16 @@ internal class Completer {
             return .Failure(message: "Could not read file")
         }
         
-        // remove the current fileInProject:
-        var args = self.compilerArgs
-        if let index = args.indexOf(self.baseProject.folderPath() + "/" + fileInProject) {
-            args.removeAtIndex(index)
-        }
+        // create compiler args, remove the current file
+        let compilerArgs = ["-sdk", sdkPath()] + parser.projectPaths {$0 == fileInProject}
+        
+        print(path)
+        print(offset)
+        print(compilerArgs.forEach({ print($0) }))
         
         let request = Request.CodeCompletionRequest(file: path, contents: contents,
             offset: Int64(offset),
-            arguments: self.compilerArgs)
+            arguments: compilerArgs)
         
         let response = CodeCompletionItem.parseResponse(request.send())
         

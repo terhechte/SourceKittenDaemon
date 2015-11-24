@@ -16,8 +16,8 @@ enum ProjectSourceType: String {
 
 struct ProjectObject {
     let type: ProjectSourceType
-    let path: String
-    let sourceTree: String
+    let fileName: String
+    let pathInProject: Path
 }
 
 struct XcodeParser {
@@ -30,11 +30,17 @@ struct XcodeParser {
     
     private var projectFiles: [ProjectObject]
     
-    var projectFilePaths: [String] {
-        return self.projectFiles.map({ (p: ProjectObject) -> String in
-            let path = p.path
-            return "\(self.basePath)/\(path)"
-        })
+    func projectPaths(exceptions: (filename: String) -> Bool) -> [String] {
+        return self.projectFiles.reduce([String]())
+             { (cache: [String], object: ProjectObject) -> [String] in
+                guard !exceptions(filename: object.fileName) else { return cache }
+                switch object.pathInProject {
+                case .Absolute(let path): return cache + [path]
+                case .RelativeTo(let root, let path)
+                    where root == .SourceRoot: return cache + ["\(self.basePath)/\(path)"]
+                case .RelativeTo(_, let path): return cache + ["\(self.basePath)\(path)"]
+                }
+        }
     }
     
     let target: PBXNativeTarget
@@ -113,7 +119,8 @@ struct XcodeParser {
             let fileRefCon = project.allObjects.object(fileRef)
             
             guard let filePath = fileRefCon.dict["path"] as? String,
-                let sourceTree = fileRefCon.dict["sourceTree"] as? String
+                fileName = filePath.componentsSeparatedByString("/").last,
+                fullPath = project.allObjects.fullFilePaths[fileRef]
                 else { continue }
             
             let type = fileRefCon.dict["lastKnownFileType"]
@@ -121,14 +128,18 @@ struct XcodeParser {
             
             if let type = type as? String,
                 stype = ProjectSourceType.init(rawValue: type) {
-                    files.append(ProjectObject(type: stype, path: filePath, sourceTree: sourceTree))
+                    files.append(ProjectObject(type: stype, fileName: fileName, pathInProject: fullPath))
             } else if let _ = ftype as? String {
-                files.append(ProjectObject(type: ProjectSourceType.Framework, path: filePath, sourceTree: sourceTree))
+                files.append(ProjectObject(type: ProjectSourceType.Framework, fileName: fileName, pathInProject: fullPath))
             } else {
                 print("unknown filetype \(type) \(ftype)")
             }
         }
         
         return files
+    }
+    
+    func pathForGroup(group: PBXGroup) -> String {
+        return ""
     }
 }

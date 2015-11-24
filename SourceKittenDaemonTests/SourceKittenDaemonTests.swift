@@ -10,6 +10,21 @@ import XCTest
 import SourceKittenFramework
 @testable import SourceKittenDaemon
 
+func setupEntities() -> (folder: String, project: ProjectType, parser: XcodeParser, completer: Completer, projectDir: String) {
+    
+    let environment = NSProcessInfo.processInfo().environment
+    guard let projectDir = environment["project-dir"]
+        else { fatalError("Needs current project dir via project-dir environment variable for test") }
+    
+    let folder = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests.xcodeproj"
+    
+    let project = ProjectType.Project(project: folder)
+    guard let parser = XcodeParser(project: project, targetName: nil)
+        else { fatalError("Could not create parser for \(folder)") }
+    let completer = Completer(project: project, parser: parser)
+    
+    return (folder, project, parser, completer, projectDir)
+}
 
 
 // Tests still need fixtures.
@@ -20,8 +35,7 @@ class SourceKittenDaemonTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let project = ProjectType.Folder(path: "")
-        let completer = Completer(project: project)
+        let (_, _, _, completer, _) = setupEntities()
         
         // FIXME: What happens if the port is blocked? Continue until we find a working port?
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) { () -> Void in
@@ -83,22 +97,14 @@ class SourceKittenDaemonCompletionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let environment = NSProcessInfo.processInfo().environment
-        guard let projectDir = environment["project-dir"]
-            else { fatalError("Needs current project dir via project-dir environment variable for test") }
-        
-        self.folder = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests.xcodeproj"
+        let (folder, _, _, completer, projectDir) = setupEntities()
+        self.folder = folder
+        self.completer = completer
         
         let originalFile = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests/\(self.fileInProject)"
         guard let contents = try? String(contentsOfFile: originalFile)
             else { fatalError("Could not read \(originalFile) for unit tests") }
         self.contents = contents
-        
-        let project = ProjectType.Project(project: folder)
-        guard let parser = XcodeParser(project: project, targetName: nil)
-            else { fatalError("Could not create parser for \(folder)") }
-                
-        self.completer = Completer(project: project, parser: parser)
     }
     
     override func tearDown() {
@@ -108,7 +114,7 @@ class SourceKittenDaemonCompletionTests: XCTestCase {
     
     func temporaryFileForTestingWith(code: String) throws -> (path: String, offset: Int) {
         let newContent = self.contents + code
-        let offset = (newContent.characters.count - 1)
+        let offset = (newContent.characters.count - 2)
         let uid = NSProcessInfo.processInfo().globallyUniqueString
         let path = NSTemporaryDirectory()
         try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
@@ -119,7 +125,7 @@ class SourceKittenDaemonCompletionTests: XCTestCase {
     
     func testCompanyOne() {
         do {
-            let (path, offset) = try self.temporaryFileForTestingWith("company1.")
+            let (path, offset) = try self.temporaryFileForTestingWith("")
             let result = self.completer.complete(path, fileInProject: self.fileInProject, offset: offset)
             
             guard case .Success(let items) = result

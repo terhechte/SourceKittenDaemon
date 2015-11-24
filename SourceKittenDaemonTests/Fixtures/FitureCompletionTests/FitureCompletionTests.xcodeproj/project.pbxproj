@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D359B9C1BFA11DA005A8AB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D359B9B1BFA11DA005A8AB8 /* AppDelegate.swift */; };
-		4D359BA91BFA11F7005A8AB8 /* ExampleStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D359BA81BFA11F7005A8AB8 /* ExampleStructs.swift */; };
-		4D359BAB1BFA1202005A8AB8 /* ExampleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D359BAA1BFA1202005A8AB8 /* ExampleProtocols.swift */; };
 		4D359BAD1BFA121B005A8AB8 /* CompletionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D359BAC1BFA121A005A8AB8 /* CompletionTarget.swift */; };
+		4DC2A1BA1C0474DA00C5FA48 /* ExampleProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2A1B91C0474DA00C5FA48 /* ExampleProtocols.swift */; };
+		4DC2A1BD1C0474EA00C5FA48 /* ExampleStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2A1BC1C0474EA00C5FA48 /* ExampleStructs.swift */; };
+		4DC2A1BF1C0475C000C5FA48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2A1BE1C0475C000C5FA48 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D359B981BFA11DA005A8AB8 /* FitureCompletionTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitureCompletionTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D359B9B1BFA11DA005A8AB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D359BA21BFA11DA005A8AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D359BA81BFA11F7005A8AB8 /* ExampleStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleStructs.swift; sourceTree = "<group>"; };
-		4D359BAA1BFA1202005A8AB8 /* ExampleProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProtocols.swift; sourceTree = "<group>"; };
 		4D359BAC1BFA121A005A8AB8 /* CompletionTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionTarget.swift; sourceTree = "<group>"; };
+		4DC2A1B91C0474DA00C5FA48 /* ExampleProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleProtocols.swift; path = Classes/ExampleProtocols.swift; sourceTree = "<group>"; };
+		4DC2A1BC1C0474EA00C5FA48 /* ExampleStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleStructs.swift; path = Classes/ExampleStructs.swift; sourceTree = "<group>"; };
+		4DC2A1BE1C0475C000C5FA48 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +52,21 @@
 		4D359B9A1BFA11DA005A8AB8 /* FitureCompletionTests */ = {
 			isa = PBXGroup;
 			children = (
-				4D359B9B1BFA11DA005A8AB8 /* AppDelegate.swift */,
+				4DC2A1BB1C0474DE00C5FA48 /* Example */,
+				4DC2A1B91C0474DA00C5FA48 /* ExampleProtocols.swift */,
+				4DC2A1BE1C0475C000C5FA48 /* AppDelegate.swift */,
 				4D359BA21BFA11DA005A8AB8 /* Info.plist */,
-				4D359BA81BFA11F7005A8AB8 /* ExampleStructs.swift */,
-				4D359BAA1BFA1202005A8AB8 /* ExampleProtocols.swift */,
 				4D359BAC1BFA121A005A8AB8 /* CompletionTarget.swift */,
 			);
 			path = FitureCompletionTests;
+			sourceTree = "<group>";
+		};
+		4DC2A1BB1C0474DE00C5FA48 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				4DC2A1BC1C0474EA00C5FA48 /* ExampleStructs.swift */,
+			);
+			name = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,10 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D359BAB1BFA1202005A8AB8 /* ExampleProtocols.swift in Sources */,
-				4D359B9C1BFA11DA005A8AB8 /* AppDelegate.swift in Sources */,
+				4DC2A1BF1C0475C000C5FA48 /* AppDelegate.swift in Sources */,
+				4DC2A1BA1C0474DA00C5FA48 /* ExampleProtocols.swift in Sources */,
 				4D359BAD1BFA121B005A8AB8 /* CompletionTarget.swift in Sources */,
-				4D359BA91BFA11F7005A8AB8 /* ExampleStructs.swift in Sources */,
+				4DC2A1BD1C0474EA00C5FA48 /* ExampleStructs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +270,7 @@
 				4D359BA71BFA11DA005A8AB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

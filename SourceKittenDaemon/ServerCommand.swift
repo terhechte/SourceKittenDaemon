@@ -42,7 +42,7 @@ struct ServerStartCommand: CommandType {
             guard let parser = XcodeParser(project: project,
                 targetName: options.target.isEmpty ? nil : options.target)
                 else {
-                return .Failure(.CommandError(.InvalidArgument(description: "Could not create project parser for \(project.path())")))
+                return .Failure(.CommandError(.InvalidArgument(description: "Could not create project parser for \(project.projectFileURL()?.path)")))
             }
             
             let completer = Completer(parser: parser)

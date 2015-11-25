@@ -44,6 +44,11 @@
             value = "$(PROJECT_DIR)"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "project-file-path"
+            value = "$(PROJECT_FILE_PATH)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>

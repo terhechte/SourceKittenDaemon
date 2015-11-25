@@ -49,16 +49,16 @@ struct XcodeParser {
         
         let aProject: XCProjectFile
         do {
-            aProject = try XCProjectFile(xcodeprojURL: project.xcodeprojURL()!)
+            aProject = try XCProjectFile(xcodeprojURL: project.projectFileURL()!)
         } catch (let err as ProjectFileError) {
             print(err.description)
             return nil
         } catch (_ as NSError) {
-            print("Could not read xcode project: \(project.path())")
+            print("Could not read xcode project: \(project.projectFileURL()?.path)")
             return nil
         }
         
-        self.basePath = project.folderPath()
+        self.basePath = project.projectDir()
         self.proj = aProject
         self.frameworks = []
         self.projectFiles = []

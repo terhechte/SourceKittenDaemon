@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum ProjectSourceType: String {
+enum ProjectObjectSourceType: String {
     case Swift = "sourcecode.swift"
     case Plist = "text.plist.xml"
     case Framework = "wrapper.framework"
 }
+class Project {
 
 struct ProjectObject {
-    let type: ProjectSourceType
+    let type: ProjectObjectSourceType
     let fileName: String
     let pathInProject: Path
 }
 
-struct XcodeParser {
     
     let basePath: String
     
@@ -45,7 +45,7 @@ struct XcodeParser {
     
     let target: PBXNativeTarget
     
-    init?(project: ProjectType, targetName: String?) {
+    init?(project: Project, targetName: String?) {
         
         let aProject: XCProjectFile
         do {
@@ -127,10 +127,10 @@ struct XcodeParser {
             let ftype = fileRefCon.dict["explicitFileType"]
             
             if let type = type as? String,
-                stype = ProjectSourceType.init(rawValue: type) {
+                stype = ProjectObjectSourceType.init(rawValue: type) {
                     files.append(ProjectObject(type: stype, fileName: fileName, pathInProject: fullPath))
             } else if let _ = ftype as? String {
-                files.append(ProjectObject(type: ProjectSourceType.Framework, fileName: fileName, pathInProject: fullPath))
+                files.append(ProjectObject(type: ProjectObjectSourceType.Framework, fileName: fileName, pathInProject: fullPath))
             } else {
                 print("unknown filetype \(type) \(ftype)")
             }

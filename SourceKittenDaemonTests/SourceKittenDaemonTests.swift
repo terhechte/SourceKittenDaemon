@@ -10,7 +10,7 @@ import XCTest
 import SourceKittenFramework
 @testable import SourceKittenDaemon
 
-func setupEntities() -> (folder: String, project: ProjectType, parser: XcodeParser, completer: Completer, projectDir: String) {
+func setupEntities() -> (folder: String, project: Project, parser: XcodeParser, completer: Completer, projectDir: String) {
     
     let environment = NSProcessInfo.processInfo().environment
     guard let projectDir = environment["project-dir"]
@@ -18,7 +18,7 @@ func setupEntities() -> (folder: String, project: ProjectType, parser: XcodePars
     
     let folder = "\(projectDir)/SourceKittenDaemonTests/Fixtures/FitureCompletionTests/FitureCompletionTests.xcodeproj"
     
-    let project = ProjectType.Project(project: folder)
+    let project = Project.Project(project: folder)
     guard let parser = XcodeParser(project: project, targetName: nil)
         else { fatalError("Could not create parser for \(folder)") }
     let completer = Completer(parser: parser)

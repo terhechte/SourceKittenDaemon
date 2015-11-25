@@ -16,10 +16,10 @@ from the Completion Server to perform completions. */
 internal class Completer {
     
     // The project parser
-    private let parser: XcodeParser
+    private let project: Project
     
-    internal init(parser: XcodeParser) {
-        self.parser = parser
+    internal init(project: Project) {
+        self.project = project
     }
     
     internal func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {

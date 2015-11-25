@@ -3,13 +3,13 @@ import XCTest
 import SourceKittenFramework
 @testable import SourceKittenDaemon
 
-class ProjectTypeTests : XCTestCase {
+class ProjectTests : XCTestCase {
 
-    var project: ProjectType!
+    var project: Project!
 
     override func setUp() {
         super.setUp()
-        project = ProjectType.Project(project: xcodeprojFixturePath())
+        project = Project.Project(project: xcodeprojFixturePath())
     }
 
     func testProjectFileURLIsCorrect() {

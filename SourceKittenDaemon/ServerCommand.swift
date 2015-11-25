@@ -22,7 +22,7 @@ struct ServerStartCommand: CommandType {
     func run(mode: CommandMode) -> Result<(), CommandantError<SourceKittenDaemonError>> {
         return ServerStartCompleteOptions.evaluate(mode).flatMap { options in
             
-            let project: ProjectType
+            let project: Project
             
             switch (options.project.isEmpty,
                 options.workspace.isEmpty,
@@ -30,11 +30,11 @@ struct ServerStartCommand: CommandType {
             case (true, true, true):
                 return .Failure(.CommandError(.InvalidArgument(description: "Need either project, workspace, or folder")))
             case (false, true, true):
-                project = ProjectType.Project(project: options.project)
+                project = Project.Project(project: options.project)
             case (true, false, true):
-                project = ProjectType.Workspace(workspace: options.workspace)
+                project = Project.Workspace(workspace: options.workspace)
             case (false, false, true):
-                project = ProjectType.Folder(path: options.folder)
+                project = Project.Folder(path: options.folder)
             default:
                 return .Failure(.CommandError(.InvalidArgument(description: "Need either project, workspace, or folder")))
             }

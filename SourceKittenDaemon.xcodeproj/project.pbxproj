@@ -31,6 +31,7 @@
 		D8D624F31C05A3EF00EC3647 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E61C05A3EF00EC3647 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8D624F41C05A3EF00EC3647 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */; };
 		D8D624F51C05A3EF00EC3647 /* SourceKittenFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8D624F71C05AF1D00EC3647 /* SourceKittenFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D624F71C05AF1D00EC3647 /* SourceKittenFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +450,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -466,6 +469,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

@@ -15,14 +15,10 @@ This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
 internal class Completer {
     
-    // The Base path to the .xcodeproj / workspace
-    private let baseProject: ProjectType
-    
     // The project parser
     private let parser: XcodeParser
     
-    internal init(project: ProjectType, parser: XcodeParser) {
-        self.baseProject = project
+    internal init(parser: XcodeParser) {
         self.parser = parser
     }
     

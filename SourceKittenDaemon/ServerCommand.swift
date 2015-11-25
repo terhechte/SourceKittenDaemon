@@ -45,7 +45,7 @@ struct ServerStartCommand: CommandType {
                 return .Failure(.CommandError(.InvalidArgument(description: "Could not create project parser for \(project.path())")))
             }
             
-            let completer = Completer(project: project, parser: parser)
+            let completer = Completer(parser: parser)
             
             CompletionServer.serve(completer, port: options.port)
             

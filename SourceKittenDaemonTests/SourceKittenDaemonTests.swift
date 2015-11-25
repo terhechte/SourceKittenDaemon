@@ -21,7 +21,7 @@ func setupEntities() -> (folder: String, project: ProjectType, parser: XcodePars
     let project = ProjectType.Project(project: folder)
     guard let parser = XcodeParser(project: project, targetName: nil)
         else { fatalError("Could not create parser for \(folder)") }
-    let completer = Completer(project: project, parser: parser)
+    let completer = Completer(parser: parser)
     
     return (folder, project, parser, completer, projectDir)
 }

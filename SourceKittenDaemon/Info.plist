@@ -28,6 +28,11 @@
 	<string>Copyright © 2015 Benedikt Terhechte. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

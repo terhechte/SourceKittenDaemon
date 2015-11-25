@@ -96,16 +96,16 @@ internal class Completer {
         }
         
         // create compiler args, remove the current file
-        let compilerArgs = ["-sdk", sdkPath()] + parser.projectPaths {$0 == fileInProject}
-        
-        print(path)
-        print(offset)
-        print(compilerArgs.forEach({ print($0) }))
-        
-        let request = Request.CodeCompletionRequest(file: path, contents: contents,
-            offset: Int64(offset),
-            arguments: compilerArgs)
-        
+        let compilerArgs = ["-c", path] +
+                           ["-sdk", sdkPath()] +
+                           parser.projectPaths({ $0 == fileInProject })
+      
+        let request = Request.CodeCompletionRequest(
+                          file: path,
+                          contents: contents,
+                          offset: Int64(offset),
+                          arguments: compilerArgs)
+      
         let response = CodeCompletionItem.parseResponse(request.send())
         
         return .Success(result: response)

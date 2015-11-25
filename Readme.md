@@ -8,6 +8,13 @@ This currently doesn't work yet. It compiles, but it is not yet connecting the d
 
 This project, currently, also contains a lot of binaries (frameworks) and verbatim copied code from github.com/tomlokhorst/Xcode.swift. This is temporary.
 
+# Building
+1. Clone the repository
+2. Update the submodules 
+`git submodule update --init --recursive`
+3. Build the frameworks
+`carthage bootstrap --no-use-binaries --platform Mac`
+
 # Docs
 
 There's sparse documentation regarding the communication with Emacs in the Protocol.org file in the root dir

@@ -130,8 +130,8 @@ class SourceKittenDaemonCompletionTests: XCTestCase {
             
             guard case .Success(let items) = result
                 else { XCTAssertTrue(false, "Needs items in the success case") ; fatalError() }
-            
-            XCTAssertTrue(items.count == 4, "Needs 4 results")
+            print(items)
+            XCTAssertTrue(items.count == 7, "Needs 7 results")
             
         } catch let error {
             XCTAssertTrue(false, "Could not create a temporary file: \(error)")

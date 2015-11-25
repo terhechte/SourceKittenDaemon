@@ -1,0 +1,3 @@
+[submodule "vendor/Xcode.swift"]
+	path = vendor/Xcode.swift
+	url = https://github.com/tomlokhorst/Xcode.swift.git

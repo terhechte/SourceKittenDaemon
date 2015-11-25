@@ -8,13 +8,29 @@
 
 import Foundation
 
-public class Middleware {
+public class Middleware: Routable {
     
+    public let path: Path
+    public var handlers: [Routable] = []
+    
+    public required init(path p: String, handlers s: [Handler]){
+        for handler in s {
+            self.handlers.append(RouteHandler(handler: handler))
+        }
+        self.path = Path(path: p)
+    }
+    
+    // This can be removed once wildcard routes are implemented
+    public func matchesRequest(request: Request) -> Bool {
+        return true
+    }
+    
+    
+}
+
+extension Middleware {
     public class func bodyParser() -> Handler {
-        
-        return {
-            
-            request, response, callback in
+        return { request, response in
             
             if request.bodyString != nil && request.headers["Content-Type"] != nil {
                 
@@ -44,8 +60,8 @@ public class Middleware {
                     }
                 }
             }
-            callback(.Continue(request, response))
-            return
+            
+            return .Continue
         }
     }
     
@@ -56,12 +72,11 @@ public class Middleware {
     public class func staticDirectory(path: String, directory: String) -> Handler {
         let dirComponents = path.taylor_pathComponents
         
-        return { request, response, callback in
+        return { request, response in
             let requestComponents = request.path.taylor_pathComponents
             
             if request.method != .GET || !self.matchPaths(requestPath: requestComponents, inPath: dirComponents) {
-                callback(.Continue(request, response))
-                return
+                return .Continue
             }
             
             let fileComponents = requestComponents[dirComponents.count..<requestComponents.count] // matched comps after dirComponents
@@ -77,9 +92,9 @@ public class Middleware {
                 }
                 
                 response.setFile(NSURL(fileURLWithPath: filePath))
-                callback(.Send(request, response))
+                return .Send
             } else {
-                callback(.Continue(request, response))
+                return .Continue
             }
         }
     }
@@ -90,15 +105,14 @@ public class Middleware {
     
     
     public class func requestLogger(printer: ((String) -> ())) -> Handler {
-
-        return {
-            request, response, callback in
-
+        
+        return { request, response in
+            
             let time = String(format: "%.02f", NSDate().timeIntervalSinceDate(request.startTime) * 1000)
             let text = "\(response.statusCode) \(request.method.rawValue) \(request.path) \(time)ms"
             
             printer(text)
-            callback(.Continue(request, response))
+            return .Continue
         }
     }
 }

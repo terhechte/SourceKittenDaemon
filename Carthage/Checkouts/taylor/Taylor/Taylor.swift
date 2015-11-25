@@ -13,15 +13,14 @@ let CurrentSocket: Void -> SocketServer = {
 }
 
 public enum Callback {
-    case Continue(Request, Response)
-    case Send(Request, Response)
+    case Continue
+    case Send
 }
 
-public typealias Handler = (Request, Response, (Callback) -> ()) -> ()
-internal typealias PathComponent = (value: String, isParameter: Bool)
+public typealias Handler = (Request, Response) -> Callback
 
 public enum HTTPMethod: String {
-        
+    
     case GET = "GET"
     case POST = "POST"
     case PUT = "PUT"
@@ -29,26 +28,15 @@ public enum HTTPMethod: String {
     case UNDEFINED = "UNDEFINED" // it will never match
 }
 
-
 public class Server {
     
     private var socket: SocketServer = CurrentSocket()
+    public var router: Router = Router()
     
-    private var handlers: [Handler]
-    private var postRequestHandlers: [Handler]
-    
-    public var notFoundHandler: Handler = {
-        req, res, cb in
-        res.setError(404)
-        cb(.Send(req, res))
-    }
-    var router: Router
+    private var errorPages = [HTTPStatus:Handler]()
+    public var defaultErrorPage: Handler = { $1.bodyString = $1.statusLine; return .Send }
     
     public init(){
-        
-        router = Router()
-        self.handlers = []
-        self.postRequestHandlers = []
     }
     
     public func serveHTTP(port p: Int, forever: Bool) throws {
@@ -59,9 +47,7 @@ public class Server {
             return true
         }
         try socket.startOnPort(p)
-            
-            //Should find a better location for this
-        self.addHandler(self.router.handler())
+        
         if forever {
             
             // So the program doesn't end
@@ -76,54 +62,30 @@ public class Server {
         socket.disconnect()
     }
     
-    public func addHandler(handler: Handler){
-        
-        //Should check if middleare has already been added, but it's difficult since it is a clousure and not an object
-        self.handlers.append(handler)
-    }
-    
-    public func addPostRequestHandler(handler: Handler){
-        self.postRequestHandlers.append(handler)
-    }
-    
     internal func handleRequest(socket: Socket, request: Request, response: Response) {
         
-        var j = -1
-        var postRequest: ((Callback)->())!
-        postRequest = {
-            a in
-            switch a {
-            case .Continue(let req, let res):
-                j = j+1
-                if j < self.postRequestHandlers.count {
-                    self.postRequestHandlers[j](req, res, postRequest)
-                }
-            case .Send(_, _):
-                print("Attempting to send a response twice")
+        let result = router.handleRequest(request, response: response)
+        if result == .Continue {
+            response.setError(.NotFound)
+        }
+        
+        // there are other "non-error" codes...
+        if response.status != .OK {
+            if let errorPage = errorPages[response.status] {
+                errorPage(request, response)
+            } else {
+                defaultErrorPage(request, response)
             }
         }
         
-        var cb: ((Callback)->())!
-        var i = -1
-        cb = {
-            a in
-            switch a {
-            case .Continue(let req, let res):
-                i = i+1
-                if i < self.handlers.count {
-                    self.handlers[i](req, res, cb)
-                } else {
-                    self.notFoundHandler(req, res, cb)
-                }
-            case .Send(let req, let res):
-                let data = res.generateResponse(req.method)
-                
-                socket.sendData(data)
-                postRequest(.Continue(req, res))
-            }
-        }
+        let data = response.generateResponse(request.method)
+        socket.sendData(data)
         
-        cb(.Continue(request, response))
+        router.callAfterHooks(request, response: response)
+    }
+    
+    public func errorPage(s: HTTPStatus, _ c: Handler) {
+        self.errorPages[s] = c
     }
     
     //Convenience methods
@@ -140,6 +102,21 @@ public class Server {
     public func put(p: String, _ c: Handler...) {
         
         self.router.addRoute(Route(m: .PUT, path: p, handlers: c))
+    }
+    
+    public func use(p: String, _ c: Handler...) {
+        
+        self.router.addBeforeHook(Middleware(path: p, handlers: c))
+    }
+    
+    public func use(router: Routable) {
+        
+        self.router.addBeforeHook(router)
+    }
+    
+    public func useAfter(p: String, _ c: Handler...) {
+        
+        self.router.addAfterHook(Middleware(path: p, handlers: c))
     }
     
 }

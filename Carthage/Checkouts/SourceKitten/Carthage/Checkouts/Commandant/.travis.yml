@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode7.1
+xcode_workspace: Commandant.xcworkspace
+xcode_scheme: Commandant
+script: script/cibuild
+notifications:
+  email: false
+  slack:
+    secure: DBDJCDEfXVb4g1/vziIYpjwCE5dh75SwBGZAcqbk6wOl6KFS9lA+fk/PtAbuXAEkRNr5qv56aQ+NPRnjSdqmhKB9bwywxUI7LA1JlvxAk6HUya0XWLLH0dvkRJG1o6QWiOnZ79gjWvl/VuN/YH9X7SgwdTTA4xush8ogP+ku8YE=

@@ -35,7 +35,9 @@ internal class Completer {
         // create compiler args, remove the current file
         let compilerArgs = ["-c", path] +
                            ["-sdk", sdkPath()] +
-                           parser.projectPaths({ $0 == fileInProject })
+                           project.sourceObjects
+                             .map({ $0.relativePath.absoluteURL(forProject: project)?.path })
+                             .filter({ $0 != nil }).map({ $0! })
       
         let request = Request.CodeCompletionRequest(
                           file: path,

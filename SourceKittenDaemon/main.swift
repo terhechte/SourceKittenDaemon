@@ -10,24 +10,6 @@ import Cocoa
 import Commandant
 import Result
 
-internal enum SourceKittenDaemonError: CustomStringConvertible {
-    /// One or more argument was invalid.
-    case InvalidArgument(description: String)
-    
-    /// Failed to generate documentation.
-    case DocFailed
-    
-    /// An error message corresponding to this error.
-    var description: String {
-        switch self {
-        case let .InvalidArgument(description):
-            return description
-        case .DocFailed:
-            return "Failed to generate documentation"
-        }
-    }
-}
-
 @objc class TimerDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(notification: NSNotification) {
         

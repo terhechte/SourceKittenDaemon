@@ -16,6 +16,10 @@
 		D86619EF1C06198F0072DC2C /* CompletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619ED1C06198F0072DC2C /* CompletionResult.swift */; };
 		D86619F71C0627580072DC2C /* fixturePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619F61C0627580072DC2C /* fixturePaths.swift */; };
 		D86619FB1C062BA20072DC2C /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619FA1C062BA20072DC2C /* ProjectTests.swift */; };
+		D86619FD1C06B1420072DC2C /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619FC1C06B1420072DC2C /* ProjectType.swift */; };
+		D86619FF1C06B77B0072DC2C /* Path+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619FE1C06B77B0072DC2C /* Path+.swift */; };
+		D8661A011C06D83E0072DC2C /* SourceKittenDaemonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8661A001C06D83E0072DC2C /* SourceKittenDaemonError.swift */; };
+		D8661A031C06DA7E0072DC2C /* ProjectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8661A021C06DA7E0072DC2C /* ProjectError.swift */; };
 		D86B8F0F1C02AE0300985CA8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8EFE1C02AE0300985CA8 /* Extensions.swift */; };
 		D86B8F111C02AE0300985CA8 /* PBXObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8F001C02AE0300985CA8 /* PBXObject.swift */; };
 		D86B8F121C02AE0300985CA8 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86B8F011C02AE0300985CA8 /* Serialization.swift */; };
@@ -81,6 +85,10 @@
 		D86619ED1C06198F0072DC2C /* CompletionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionResult.swift; sourceTree = "<group>"; };
 		D86619F61C0627580072DC2C /* fixturePaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fixturePaths.swift; sourceTree = "<group>"; };
 		D86619FA1C062BA20072DC2C /* ProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
+		D86619FC1C06B1420072DC2C /* ProjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectType.swift; sourceTree = "<group>"; };
+		D86619FE1C06B77B0072DC2C /* Path+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+.swift"; sourceTree = "<group>"; };
+		D8661A001C06D83E0072DC2C /* SourceKittenDaemonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceKittenDaemonError.swift; sourceTree = "<group>"; };
+		D8661A021C06DA7E0072DC2C /* ProjectError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectError.swift; sourceTree = "<group>"; };
 		D86B8EFE1C02AE0300985CA8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D86B8F001C02AE0300985CA8 /* PBXObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBXObject.swift; sourceTree = "<group>"; };
 		D86B8F011C02AE0300985CA8 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
@@ -150,6 +158,11 @@
 		4D7716CF1BF4973B0093A406 /* SourceKittenDaemon */ = {
 			isa = PBXGroup;
 			children = (
+				D8661A021C06DA7E0072DC2C /* ProjectError.swift */,
+				D8661A001C06D83E0072DC2C /* SourceKittenDaemonError.swift */,
+				D86619FE1C06B77B0072DC2C /* Path+.swift */,
+				D86619FC1C06B1420072DC2C /* ProjectType.swift */,
+				D86619F81C062B9B0072DC2C /* Project.swift */,
 				D86619ED1C06198F0072DC2C /* CompletionResult.swift */,
 				4D7717041BF4AC6C0093A406 /* Completer.swift */,
 				4D7716F61BF49E520093A406 /* CompletionServer.swift */,
@@ -317,12 +330,17 @@
 			files = (
 				D86B8F111C02AE0300985CA8 /* PBXObject.swift in Sources */,
 				4D7716F71BF49E520093A406 /* CompletionServer.swift in Sources */,
+				D86619FF1C06B77B0072DC2C /* Path+.swift in Sources */,
+				D86619FD1C06B1420072DC2C /* ProjectType.swift in Sources */,
 				4D7717051BF4AC6C0093A406 /* Completer.swift in Sources */,
 				D86B8F0F1C02AE0300985CA8 /* Extensions.swift in Sources */,
 				4D7716F31BF49ABB0093A406 /* ServerCommand.swift in Sources */,
 				4D7716E11BF4998D0093A406 /* main.swift in Sources */,
 				D86619EF1C06198F0072DC2C /* CompletionResult.swift in Sources */,
+				D86619F91C062B9B0072DC2C /* Project.swift in Sources */,
+				D8661A011C06D83E0072DC2C /* SourceKittenDaemonError.swift in Sources */,
 				D86B8F121C02AE0300985CA8 /* Serialization.swift in Sources */,
+				D8661A031C06DA7E0072DC2C /* ProjectError.swift in Sources */,
 				D86B8F131C02AE0300985CA8 /* XCProjectFile.swift in Sources */,
 				4D7717071BF4C1A40093A406 /* Project.swift in Sources */,
 			);

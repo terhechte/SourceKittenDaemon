@@ -40,8 +40,13 @@
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "project-dir"
+            key = "FIXTURE_PROJECT_DIR"
             value = "$(PROJECT_DIR)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "FIXTURE_PROJECT_FILE_PATH"
+            value = "$(PROJECT_FILE_PATH)"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

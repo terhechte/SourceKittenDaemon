@@ -3,9 +3,9 @@ import Foundation
 let environment = NSProcessInfo.processInfo().environment
 
 public func projectDirFixturePath() -> String {
-    return environment["project-dir"]!
+    return environment["FIXTURE_PROJECT_DIR"]!
 }
 
 public func xcodeprojFixturePath() -> String {
-    return environment["project-file-path"]!
+    return environment["FIXTURE_PROJECT_FILE_PATH"]!
 }

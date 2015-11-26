@@ -11,8 +11,8 @@ enum ProjectType {
 
     var projectDir: NSURL? {
         switch self{
-        case .Folder(let s):  return NSURL(fileURLWithPath: s, isDirectory: true)
-        default: return url?.URLByDeletingLastPathComponent
+        case .Folder(let s):  return NSURL(fileURLWithPath: s)
+        default: return url?.URLByDeletingLastPathComponent?.URLByStandardizingPath
         }
     }
 
@@ -35,6 +35,6 @@ enum ProjectType {
     }
 
     var url: NSURL? {
-        return NSURL(fileURLWithPath: path, isDirectory: true)
+        return NSURL(fileURLWithPath: path)
     }
 }

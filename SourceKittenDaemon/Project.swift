@@ -15,8 +15,8 @@ class Project {
     let configurationName: String?
 
     init(type: ProjectType,
-         targetName: String?,
-         configurationName: String?) throws {
+         targetName: String? = nil,
+         configurationName: String? = nil) throws {
         
         self.type = type
         self.targetName = targetName
@@ -46,7 +46,7 @@ class Project {
                                     name = path.componentsSeparatedByString("/").last,
                                     relativePath = self.projectFile.project.allObjects.fullFilePaths[fileRef.id] {
                                      return ProjectObject(type: sourceType,
-                                                          fileName: name,
+                                                          name: name,
                                                           relativePath: relativePath,
                                                           buildPhase: phase)
                                  } else {
@@ -84,7 +84,7 @@ class Project {
 
 struct ProjectObject {
     let type: ProjectObjectSourceType
-    let fileName: String
+    let name: String
     let relativePath: Path
     let buildPhase: PBXBuildPhase
 }

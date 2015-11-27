@@ -5,16 +5,17 @@ import SourceKittenFramework
 
 class ProjectTests : XCTestCase {
 
+    var type: ProjectType!
     var project: Project!
 
     override func setUp() {
         super.setUp()
-        let type = ProjectType.Project(project: xcodeprojFixturePath())
+        type = ProjectType.Project(project: xcodeprojFixturePath())
         project = try! Project(type: type)
     }
 
     func testProjectDirIsCorrect() {
-        XCTAssertEqual(project.projectDir.path, projectDirFixturePath())
+        XCTAssertEqual(projectDirFixturePath(), project.projectDir.path)
     }
 
     func testReturnsTheCorrectSourceCodeObjects() {
@@ -29,27 +30,46 @@ class ProjectTests : XCTestCase {
                   "Each path starts with \(self.project.projectDir.path!)")
     }
 
-    func testGettingFrameworkObjects() {
-        let frameworks = project.frameworkObjects.map { $0.name }
-        XCTAssert(frameworks.contains { $0 =~ "SourceKittenFramework.*" })
-        XCTAssert(frameworks.contains { $0 =~ "Taylor.*" })
-        XCTAssert(frameworks.contains { $0 =~ "Commandant.*" })
+    func testItCanOverrideTheSchemesTarget() {
+        // Since we only have one target in our fixture,
+        // this just tests that it tries to use the new target
+        var thrown = false
+        do {
+            project = try Project(type: type, target: "Random")
+            XCTAssertEqual("Random", project.target)
+        } catch (_) {
+            thrown = true
+        }
+
+        XCTAssertTrue(thrown)
     }
 
-    func testCanPassInATarget() {
-    }
-
-    func testCanPassInAConfiguration() {
-    }
-
-    func testItDefaultsToTheDebugConfiguration() {
+    func testItCanOverrideTheSchemesConfiguration() {
+        XCTAssertEqual("Release", project.configuration)
+        project = try! Project(type: type, configuration: "Debug")
+        XCTAssertEqual("Debug", project.configuration)
     }
 
     func testReturnsTheCorrectModuleName() {
+        XCTAssertEqual("SourceKittenDaemon", project.moduleName)
     }
 
-    func testReturnsTheCorrectSDKPath() {
+    func testReturnsTheCorrectSDKRoot() {
+        XCTAssertTrue(project.sdkRoot =~ "^/Applications/Xcode.app/Contents/Developer/Platforms.*")
+    }
+
+    func testReturnsAListOfFrameworkSearchPaths() {
+        XCTAssertEqual(["\(self.project.projectDir.path!)/Carthage/Build/Mac"],
+                        project.frameworkSearchPaths)
+    }
+
+    func testReturnsCustomSwiftCompilerFlags() {
+        XCTAssertEqual(["-DFLAG_FIXTURE"], project.customSwiftCompilerFlags)
+    }
+
+    func testReturnsGccPreprocessorDefinitions() {
+        project = try! Project(type: type, configuration: "Debug")
+        XCTAssertEqual(["DEBUG=1"], project.gccPreprocessorDefinitions)
     }
 
 }
-    

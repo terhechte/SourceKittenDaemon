@@ -1,5 +1,5 @@
 //
-//  XcodeParser.swift
+//  Project.swift
 //  SourceKittenDaemon
 //
 //  Created by Benedikt Terhechte on 12/11/15.
@@ -11,16 +11,18 @@ import Foundation
 class Project {
 
     let type: ProjectType
-    let targetName: String?
-    let configurationName: String?
+    let chosenScheme: String?
+    let chosenTarget: String?
+    let chosenConfiguration: String?
 
     init(type: ProjectType,
-         targetName: String? = nil,
-         configurationName: String? = nil) throws {
-        
+         scheme: String? = nil,
+         target: String? = nil,
+         configuration: String? = nil) throws {
         self.type = type
-        self.targetName = targetName
-        self.configurationName = configurationName
+        self.chosenScheme = scheme
+        self.chosenTarget = target
+        self.chosenConfiguration = configuration
 
         guard type.projectDir != nil
             else { throw ProjectError.ProjectNotFound(type.path) }
@@ -30,13 +32,62 @@ class Project {
         
         guard projectFile.project.targets.count > 0
             else { throw ProjectError.NoValidTarget }
+
+        guard xcodebuildOutput != nil
+            else { throw ProjectError.CouldNotParseProject }
     }
 
     var projectDir: NSURL { return self.type.projectDir! }
     var srcRoot: NSURL { return projectDir }
 
-    lazy var objects: [ProjectObject] = {
-      return self.target.buildPhases.reduce([], combine: { (a, phase) -> [ProjectObject] in
+    var target: String {
+        return xcodebuildSettings["TARGET_NAME"]!
+    }
+
+    var configuration: String {
+        return xcodebuildSettings["CONFIGURATION"]!
+    }
+
+    var moduleName: String {
+        return xcodebuildSettings["PRODUCT_MODULE_NAME"]!
+    }
+
+    var sdkRoot: String {
+        return xcodebuildSettings["SDKROOT"]!
+    }
+
+    var frameworkSearchPaths: [String] {
+        guard let s = xcodebuildSettings["FRAMEWORK_SEARCH_PATHS"] else { return [] }
+        return s.componentsSeparatedByString(" ")
+    }
+
+    var customSwiftCompilerFlags: [String] {
+        guard let s = xcodebuildSettings["OTHER_SWIFT_FLAGS"] else { return [] }
+        return s.componentsSeparatedByString(" ")
+    }
+
+    var gccPreprocessorDefinitions: [String] {
+        guard let s = xcodebuildSettings["GCC_PREPROCESSOR_DEFINITIONS"] else { return [] }
+        return s.componentsSeparatedByString(" ")
+    }
+
+    var sourceObjects: [ProjectObject] {
+        guard let phase = pbxTarget.buildPhases.filter({ ($0 as? PBXSourcesBuildPhase) != nil }).first
+            else { return [] }
+        return objects.filter { $0.buildPhase.id == phase.id }
+    }
+
+    private lazy var projectFile: XCProjectFile = {
+        try! XCProjectFile(xcodeprojURL: self.type.projectFile!)
+    }()
+    
+    private lazy var pbxTarget: PBXNativeTarget = {
+        return self.projectFile.project.targets
+            .filter({$0.name == self.target }).first!
+    }()
+
+    private lazy var objects: [ProjectObject] = {
+      return self.pbxTarget.buildPhases.reduce([], combine: { (a, phase) -> [ProjectObject] in
             return a + phase.files
                         .map({ (file) -> ProjectObject? in
                                  if let fileRef = file.fileRef,
@@ -58,33 +109,27 @@ class Project {
         })
     }()
 
-    var sourceObjects: [ProjectObject] {
-        guard let phase = target.buildPhases.filter({ ($0 as? PBXSourcesBuildPhase) != nil }).first
-            else { return [] }
-        return objects.filter { $0.buildPhase.id == phase.id }
-    }
-
-    var frameworkObjects: [ProjectObject] {
-        guard let phase = target.buildPhases.filter({ ($0 as? PBXFrameworksBuildPhase) != nil }).first
-            else { return [] }
-        return objects.filter { $0.buildPhase.id == phase.id }
-    }
-
-    private lazy var projectFile: XCProjectFile = {
-        try! XCProjectFile(xcodeprojURL: self.type.projectFile!)
-    }()
-    
-    private lazy var target: PBXNativeTarget = {
-        return self.projectFile.project.targets.filter({
-            self.targetName == nil ? false : $0.name == self.targetName! }).first ??
-        self.projectFile.project.targets.first!
+    private lazy var xcodebuildSettings: [String: String] = {
+        return self.xcodebuildOutput!.componentsSeparatedByString("\n")
+        .reduce([String: String]()) { (var a, e) in
+            let splitString = e.componentsSeparatedByString(" = ")
+            if splitString.count != 2 { return a }
+            a.merge(
+               [splitString[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()):
+                splitString[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())])
+            return a
+        }
     }()
 
     private lazy var xcodebuildOutput: String? = {
         let task = NSTask()
         task.launchPath = "/usr/bin/xcodebuild"
-        task.arguments = ["-showBuildSettings"]
         task.currentDirectoryPath = self.projectDir.path!
+        task.arguments =
+            (self.chosenScheme == nil ? [] : ["-scheme", self.chosenScheme!] as [String]) +
+            (self.chosenTarget == nil ? [] : ["-target", self.chosenTarget!] as [String]) +
+            (self.chosenConfiguration == nil ? [] : ["-configuration", self.chosenConfiguration!] as [String]) +
+            ["-showBuildSettings"]
 
         let pipe = NSPipe()
         task.standardOutput = pipe

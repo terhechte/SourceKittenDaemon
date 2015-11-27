@@ -471,7 +471,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemon/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DFLAG_FIXTURE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -487,7 +489,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = SourceKittenDaemon/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DFLAG_FIXTURE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stylemac.SourceKittenDaemon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -31,8 +31,7 @@ struct ServerStartCommand: CommandType {
                 let type = ProjectType.Project(project: options.project)
                 let project = try Project(
                         type: type,
-                        targetName: options.target.isEmpty ? nil : options.target,
-                        configurationName: nil)
+                        scheme: options.scheme.isEmpty ? nil : options.scheme)
 
                 let completer = Completer(project: project)
                 CompletionServer.serve(completer, port: options.port)
@@ -50,11 +49,11 @@ struct ServerStartCommand: CommandType {
 struct ServerStartCompleteOptions: OptionsType {
 
     let project: String
-    let target: String
+    let scheme: String
     let port: Int
 
-    static func create(project: String)(target: String)(port: Int) -> ServerStartCompleteOptions {
-        return self.init(project: project, target: target, port: port)
+    static func create(project: String)(scheme: String)(port: Int) -> ServerStartCompleteOptions {
+        return self.init(project: project, scheme: scheme, port: port)
     }
 
     static func evaluate(m: CommandMode)
@@ -64,9 +63,9 @@ struct ServerStartCompleteOptions: OptionsType {
                         defaultValue: "",
                         usage: "Xcode project to run on")
 
-        <*> m <| Option(key: "target",
+        <*> m <| Option(key: "scheme",
                         defaultValue: "",
-                        usage: "The target in the project that should be compiled for")
+                        usage: "The scheme in the project that should be compiled for")
 
         <*> m <| Option(key: "port",
                         defaultValue: 8081,

@@ -80,6 +80,25 @@ class Project {
         self.projectFile.project.targets.first!
     }()
 
+    private lazy var xcodebuildOutput: String? = {
+        let task = NSTask()
+        task.launchPath = "/usr/bin/xcodebuild"
+        task.arguments = ["-showBuildSettings"]
+        task.currentDirectoryPath = self.projectDir.path!
+
+        let pipe = NSPipe()
+        task.standardOutput = pipe
+        task.launch() 
+        task.waitUntilExit()
+
+        if task.terminationStatus != 0 { return nil }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = NSString(bytes: data.bytes, length: data.length, encoding: NSUTF8StringEncoding)
+      
+        return output as? String
+    }()
+
 }
 
 struct ProjectObject {

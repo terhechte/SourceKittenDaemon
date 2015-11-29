@@ -13,32 +13,40 @@ import SwiftXPC
 /**
 This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
-internal class Completer {
+class Completer {
     
     // The project parser
     private let project: Project
     
-    internal init(project: Project) {
+    init(project: Project) {
         self.project = project
     }
     
-    internal func complete(filePath: String, fileInProject: String, offset: Int) -> CompletionResult {
+    func complete(url: NSURL, offset: Int) -> CompletionResult {
         
-        let path = filePath.absolutePathRepresentation()
-        let contents: String
-        if let file = File(path: path) {
-            contents = file.contents
-        } else {
-            return .Failure(message: "Could not read file")
-        }
-        
-        // create compiler args, remove the current file
-        let compilerArgs = ["-c", path] +
-                           ["-sdk", sdkPath()] +
-                           project.sourceObjects
-                             .map({ $0.relativePath.absoluteURL(forProject: project)?.path })
-                             .filter({ $0 != nil }).map({ $0! })
-      
+        guard let path = url.path
+            else { return .Failure(message: "Could not resolve file") }
+
+        guard let file = File(path: path) 
+            else { return .Failure(message: "Could not read file") }
+
+        let sourceFiles: [String] = project.sourceObjects
+          .map({ (o: ProjectObject) -> String? in o.relativePath.absoluteURL(forProject: project)?.path })
+          .filter({ $0 != nil }).map({ $0! })
+        let customSwiftCompilerFlags: [String] = project.customSwiftCompilerFlags
+        let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
+            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] }
+
+        var compilerArgs: [String] = []
+        compilerArgs = compilerArgs + ["-module-name", project.moduleName]
+        compilerArgs = compilerArgs + ["-sdk", project.sdkRoot]
+        compilerArgs = compilerArgs + ["-c", path]
+        compilerArgs = compilerArgs + ["-j4"]
+        compilerArgs = compilerArgs + customSwiftCompilerFlags
+        compilerArgs = compilerArgs + preprocessorFlags
+        compilerArgs = compilerArgs + sourceFiles
+
+        let contents = file.contents
         let request = Request.CodeCompletionRequest(
                           file: path,
                           contents: contents,

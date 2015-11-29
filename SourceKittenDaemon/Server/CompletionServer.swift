@@ -51,19 +51,14 @@ public class CompletionServer {
                     return .Send
             }
             
-            guard let path = req.headers["X-Path"]
+            guard let path = req.headers["X-Path"] 
                 else {
                     self.jsonError(req, res: res, message: "Need X-Path as path to the temporary buffer")
                     return .Send
-            }
-            
-            guard let file = req.headers["X-File"]
-                else {
-                    self.jsonError(req, res: res, message: "Need X-File as name of the file in the project")
-                    return .Send
-            }
-            
-            let result = self.completer.complete(path, fileInProject: file, offset: offset)
+                }
+
+            let url = NSURL(fileURLWithPath: path)
+            let result = self.completer.complete(url, offset: offset)
             switch result {
             case .Success(result: _):
                 res.bodyString = result.asJSONString()

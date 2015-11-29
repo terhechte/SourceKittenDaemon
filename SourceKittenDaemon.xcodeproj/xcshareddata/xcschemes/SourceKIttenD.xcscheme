@@ -75,7 +75,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "start --project &quot;$(PROJECT_DIR)/SourceKittenDaemonTests/Fixtures/AVCamManual/AVCamManual.xcodeproj&quot; --port 8081"
+            argument = "start --project &quot;$(PROJECT_DIR)/SourceKittenDaemon.xcodeproj&quot; --port 8081"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

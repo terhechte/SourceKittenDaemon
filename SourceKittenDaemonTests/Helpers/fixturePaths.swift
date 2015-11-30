@@ -9,3 +9,8 @@ public func projectDirFixturePath() -> String {
 public func xcodeprojFixturePath() -> String {
     return environment["FIXTURE_PROJECT_FILE_PATH"]!
 }
+
+public func completeEnumConstructorFixturePath() -> String {
+    return environment["FIXTURE_PROJECT_DIR"]! +
+            "/SourceKittenDaemonTests/Fixtures/CompleteEnumConstructorFixture.swift"
+}

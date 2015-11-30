@@ -30,16 +30,22 @@ class Completer {
         guard let file = File(path: path) 
             else { return .Failure(message: "Could not read file") }
 
-        let sourceFiles: [String] = project.sourceObjects
-          .map({ (o: ProjectObject) -> String? in o.relativePath.absoluteURL(forProject: project)?.path })
-          .filter({ $0 != nil }).map({ $0! })
+        let frameworkSearchPaths: [String] = project.frameworkSearchPaths.reduce([]) { $0 + ["-F", $1] }
         let customSwiftCompilerFlags: [String] = project.customSwiftCompilerFlags
-        let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
-            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] }
 
+        let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
+            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] } +
+        ["-F", "\(project.projectDir.path!)/Carthage/Build/Mac"]
+
+        let sourceFiles: [String] = project.sourceObjects
+            .map({ (o: ProjectObject) -> String? in o.relativePath.absoluteURL(forProject: project)?.path })
+                                    .filter({ $0 != nil }).map({ $0! })
+
+        // Ugly mutation because `[] + [..] + [..] + [..]` = 'Too complex to solve in reasonable time'
         var compilerArgs: [String] = []
         compilerArgs = compilerArgs + ["-module-name", project.moduleName]
         compilerArgs = compilerArgs + ["-sdk", project.sdkRoot]
+        compilerArgs = compilerArgs + frameworkSearchPaths
         compilerArgs = compilerArgs + ["-c", path]
         compilerArgs = compilerArgs + ["-j4"]
         compilerArgs = compilerArgs + customSwiftCompilerFlags

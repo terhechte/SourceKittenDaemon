@@ -14,3 +14,8 @@ public func completeEnumConstructorFixturePath() -> String {
     return environment["FIXTURE_PROJECT_DIR"]! +
             "/SourceKittenDaemonTests/Fixtures/CompleteEnumConstructorFixture.swift"
 }
+
+public func completeMethodFixturePath() -> String {
+    return environment["FIXTURE_PROJECT_DIR"]! +
+            "/SourceKittenDaemonTests/Fixtures/CompleteMethodFixture.swift"
+}

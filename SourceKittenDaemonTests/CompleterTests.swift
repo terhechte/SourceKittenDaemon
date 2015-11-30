@@ -8,6 +8,7 @@ class CompleterTests : XCTestCase {
     var project: Project!
     var completer: Completer!
 
+    let methodFixtureURL = NSURL(fileURLWithPath: completeMethodFixturePath())
     let enumConstructorFixtureURL = NSURL(fileURLWithPath: completeEnumConstructorFixturePath())
 
     override func setUp() {
@@ -30,6 +31,17 @@ class CompleterTests : XCTestCase {
     }
 
     func testCompletingAMethod() {
+        let result = completer.complete(methodFixtureURL, offset: 149)
+        if let d = result.asJSON(),
+           s = NSString(bytes: d.bytes,
+                        length: d.length,
+                        encoding: NSUTF8StringEncoding) as String? {
+            XCTAssertTrue(s =~ "sourcetext.*sdkRoot")
+            XCTAssertTrue(s =~ "sourcetext.*target")
+            XCTAssertTrue(s =~ "sourcetext.*moduleName")
+            XCTAssertTrue(s =~ "sourcetext.*sourceObjects")
+            XCTAssertTrue(s =~ "sourcetext.*frameworkSearchPaths")
+        }
     }
 
     func testCompletingAConstructor() {

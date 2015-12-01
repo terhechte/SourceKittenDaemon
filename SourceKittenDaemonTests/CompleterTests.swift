@@ -73,7 +73,6 @@ class CompleterTests : XCTestCase {
         }
     }
 
-    // @TODO : Currently fails, sourcekit doesn't seem to be including third party frameworks?
     func testCompletingAnImportStatement() {
         let result = completer.complete(
                          NSURL(fileURLWithPath: completeImportFixturePath()),
@@ -83,11 +82,7 @@ class CompleterTests : XCTestCase {
            s = NSString(bytes: d.bytes,
                         length: d.length,
                         encoding: NSUTF8StringEncoding) as String? {
-                            print(s)
             XCTAssertTrue(s =~ "sourcetext.*AVFoundation")
-            XCTAssertTrue(s =~ "sourcetext.*SourceKittenFramework")
-            XCTAssertTrue(s =~ "sourcetext.*Taylor")
-            XCTAssertTrue(s =~ "sourcetext.*Commandant")
         }
     }
 

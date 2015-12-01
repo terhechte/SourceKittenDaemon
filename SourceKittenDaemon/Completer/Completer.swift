@@ -16,14 +16,49 @@ from the Completion Server to perform completions. */
 class Completer {
     
     // The project parser
-    private let project: Project
+    var project: Project
+
+    // Need to monitor changes to the .pbxproject and re-fetch
+    // project settings.
+    let eventStream: FSEventStreamRef
     
     init(project: Project) {
         self.project = project
+      
+        self.eventStream = FSEventStreamCreate(
+                kCFAllocatorDefault,
+                { (_) in NSNotificationCenter.defaultCenter().postNotificationName("skdrefresh", object: nil) },
+                nil,
+                [project.projectFile.path!],
+                FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
+                2,
+                FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagNoDefer))
+      
+        let runLoop = NSRunLoop.mainRunLoop()
+        FSEventStreamScheduleWithRunLoop(eventStream,
+                                         runLoop.getCFRunLoop(),
+                                         NSDefaultRunLoopMode)
+        FSEventStreamStart(eventStream)
+
+        print("[INFO] Monitoring \(project.projectFile.path!) for changes")
+        NSNotificationCenter.defaultCenter().addObserverForName(
+          "skdrefresh", object: nil, queue: nil) { _ in
+            print("[INFO] Refreshing project due to change in: \(project.projectFile.path!)")
+            do { try self.refresh() }
+            catch (let e as CustomStringConvertible) { print("[ERR] Refresh failed: \(e.description)") }
+            catch (_) { print("[ERR] Refresh failed: unknown reason") }
+        }
+    }
+
+    deinit {
+        FSEventStreamInvalidate(eventStream)
+    }
+
+    func refresh() throws {
+        self.project = try project.reissue()
     }
     
     func complete(url: NSURL, offset: Int) -> CompletionResult {
-        
         guard let path = url.path
             else { return .Failure(message: "Could not resolve file") }
 

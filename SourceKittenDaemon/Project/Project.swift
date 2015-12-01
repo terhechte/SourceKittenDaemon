@@ -30,7 +30,7 @@ class Project {
         guard type.projectFile != nil
             else { throw ProjectError.ProjectNotFound(type.path) }
         
-        guard projectFile.project.targets.count > 0
+        guard xcProjectFile.project.targets.count > 0
             else { throw ProjectError.NoValidTarget }
 
         guard xcodebuildOutput != nil
@@ -39,6 +39,7 @@ class Project {
 
     var projectDir: NSURL { return self.type.projectDir! }
     var srcRoot: NSURL { return projectDir }
+    var projectFile: NSURL { return type.projectFile! }
 
     var target: String {
         return xcodebuildSettings["TARGET_NAME"]!
@@ -77,12 +78,22 @@ class Project {
         return objects.filter { $0.buildPhase.id == phase.id }
     }
 
-    private lazy var projectFile: XCProjectFile = {
+    /// Return a project with an identical configuration.
+    /// However this new object will re-fetch the project settings such as
+    /// source files.
+    func reissue() throws -> Project {
+        return try Project(type: type,
+                           scheme: chosenScheme,
+                           target: chosenTarget,
+                           configuration: chosenConfiguration)
+    }
+
+    private lazy var xcProjectFile: XCProjectFile = {
         try! XCProjectFile(xcodeprojURL: self.type.projectFile!)
     }()
     
     private lazy var pbxTarget: PBXNativeTarget = {
-        return self.projectFile.project.targets
+        return self.xcProjectFile.project.targets
             .filter({$0.name == self.target }).first!
     }()
 
@@ -95,7 +106,7 @@ class Project {
                                     sourceType = ProjectObjectSourceType(rawValue: type),
                                     path = fileRef.path,
                                     name = path.componentsSeparatedByString("/").last,
-                                    relativePath = self.projectFile.project.allObjects.fullFilePaths[fileRef.id] {
+                                    relativePath = self.xcProjectFile.project.allObjects.fullFilePaths[fileRef.id] {
                                      return ProjectObject(type: sourceType,
                                                           name: name,
                                                           relativePath: relativePath,

@@ -17,3 +17,4 @@ DerivedData
 Carthage/Build
 .build
 dist
+SourceKittenDaemon.pkg

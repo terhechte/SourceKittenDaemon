@@ -31,10 +31,12 @@ struct ServerStartCommand: CommandType {
                 let type = ProjectType.Project(project: options.project)
                 let project = try Project(
                         type: type,
-                        scheme: options.scheme.isEmpty ? nil : options.scheme)
+                        scheme: options.scheme.isEmpty ? nil : options.scheme,
+                        target: options.target.isEmpty ? nil : options.target,
+                        configuration: options.configuration)
 
-                let completer = Completer(project: project)
-                CompletionServer.serve(completer, port: options.port)
+                let server = CompletionServer(project: project, port: options.port)
+                server.start()
 
                 return .Success()
             } catch (let e as ProjectError) {
@@ -50,10 +52,21 @@ struct ServerStartCompleteOptions: OptionsType {
 
     let project: String
     let scheme: String
+    let target: String
+    let configuration: String
     let port: Int
 
-    static func create(project: String)(scheme: String)(port: Int) -> ServerStartCompleteOptions {
-        return self.init(project: project, scheme: scheme, port: port)
+    static func create
+    (project: String)
+    (scheme: String)
+    (target: String)
+    (configuration: String)
+    (port: Int) -> ServerStartCompleteOptions {
+        return self.init(project: project,
+                         scheme: scheme,
+                         target: target,
+                         configuration: configuration,
+                         port: port)
     }
 
     static func evaluate(m: CommandMode)
@@ -66,6 +79,14 @@ struct ServerStartCompleteOptions: OptionsType {
         <*> m <| Option(key: "scheme",
                         defaultValue: "",
                         usage: "The scheme in the project that should be compiled for")
+
+        <*> m <| Option(key: "target",
+                        defaultValue: "",
+                        usage: "The target to build")
+
+        <*> m <| Option(key: "configuration",
+                        defaultValue: "Debug",
+                        usage: "The configuration to use")
 
         <*> m <| Option(key: "port",
                         defaultValue: 8081,

@@ -15,3 +15,5 @@ profile
 DerivedData
 .idea/
 Carthage/Build
+.build
+dist

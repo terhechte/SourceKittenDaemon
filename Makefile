@@ -35,6 +35,7 @@ SourceKittenDaemon.pkg: $(DIST)
 		--identifier "$(IDENTIFIER)" \
 		--root "$(DIST)" \
 		--install-location "$(PREFIX)" \
+		--version "$(VERSION)" \
 		$@
 
 .PHONY: $(BUILD)

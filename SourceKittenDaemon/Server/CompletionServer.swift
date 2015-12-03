@@ -24,10 +24,20 @@ public class CompletionServer {
         self.port = port
         self.completer = Completer(project: project)
         self.server = Taylor.Server()
+        
+        self.server.get("/ping") { (req, res) -> Callback in
+            res.bodyString = "OK"
+            return .Send
+        }
 
         self.server.get("/stop") { (req, res) -> Callback in
           self.stop()
           return .Send
+        }
+        
+        self.server.get("/project") { (req, res) -> Callback in
+            res.bodyString = self.completer.project.projectFile.path
+            return .Send
         }
         
         self.server.get("/files") { (req, res) -> Callback in
@@ -73,10 +83,19 @@ public class CompletionServer {
     }
 
     func start() {
+        // make sure the server started properly
+        var started = true
         do {
-            print("[INFO] Staring server on port: \(port)")
+            print("[INFO] Listening on port: \(port)")
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+                sleep(1)
+                if started == true {
+                    print("[INFO] Started")
+                }
+            })
             try server.serveHTTP(port: port, forever: true)
         } catch {
+            started = false
             print("[ERR] Server start failed \(error)")
         }
     }

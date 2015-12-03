@@ -72,9 +72,7 @@ class Completer {
             .reduce([]) { $0 + ["-Xcc", "-D\($1)"] } +
         ["-F", "\(project.projectDir.path!)/Carthage/Build/Mac"]
 
-        let sourceFiles: [String] = project.sourceObjects
-            .map({ (o: ProjectObject) -> String? in o.relativePath.absoluteURL(forProject: project)?.path })
-                                    .filter({ $0 != nil }).map({ $0! })
+        let sourceFiles: [String] = self.sourceFiles()
 
         // Ugly mutation because `[] + [..] + [..] + [..]` = 'Too complex to solve in reasonable time'
         var compilerArgs: [String] = []
@@ -97,6 +95,12 @@ class Completer {
         let response = CodeCompletionItem.parseResponse(request.send())
         
         return .Success(result: response)
+    }
+    
+    func sourceFiles() -> [String] {
+        return project.sourceObjects
+            .map({ (o: ProjectObject) -> String? in o.relativePath.absoluteURL(forProject: project)?.path })
+                                    .filter({ $0 != nil }).map({ $0! })
     }
     
 }

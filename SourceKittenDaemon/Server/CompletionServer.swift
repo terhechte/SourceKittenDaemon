@@ -30,6 +30,17 @@ public class CompletionServer {
           return .Send
         }
         
+        self.server.get("/files") { (req, res) -> Callback in
+            let files = self.completer.sourceFiles()
+            guard let jsonFiles = try? NSJSONSerialization.dataWithJSONObject(files, options: NSJSONWritingOptions.PrettyPrinted)
+                else {
+                    self.jsonError(res, message: "Could not generate file list")
+                    return .Send
+            }
+            res.body = jsonFiles
+            return .Send
+        }
+        
         self.server.get("/complete") { req, res in
             
             guard let offset = req.headers["X-Offset"].flatMap({ Int($0)})

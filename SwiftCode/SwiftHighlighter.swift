@@ -30,6 +30,10 @@ class SyntaxHighligher: NSObject, NSTextStorageDelegate, NSLayoutManagerDelegate
         return []
     }
     
+    func completionChars() -> [Character] {
+        return []
+    }
+    
     var matchers: [String] = []
     var regex : NSRegularExpression?
     var textView : NSTextView?
@@ -129,6 +133,11 @@ class SyntaxHighligher: NSObject, NSTextStorageDelegate, NSLayoutManagerDelegate
 
 class SwiftSyntaxHighligher: SyntaxHighligher {
     
+    override func completionChars() -> [Character] {
+        // return the only char for which we offer completion right now
+        return [Character.init(".")]
+    }
+    
     override func reservedMatchers() -> [String] {
         return [ "COMMENT", "/\\*(?s:.)*?(?:\\*/|\\z)",
             "COMMENT", "//.*",
@@ -143,16 +152,3 @@ class SwiftSyntaxHighligher: SyntaxHighligher {
     }
 }
 
-class JSONSyntaxHighlighter: SyntaxHighligher {
-    override func reservedMatchers() -> [String] {
-        return [
-            "RESERVED_WORDS", "\".+\"\\s:\\s",
-            "DIGIT", "(?<=\\b)(?:0x)?[\\d\\.]+[efld]?\\s?[,\n]",
-            "SLASHY_QUOTES", "(?ms:\"{3}(?!\\\"{1,3}).*?(?:\"{3}|\\z))|(?:\"{1}(?!\\\").*?(?:\"|\\Z))",
-            "SINGLE_QUOTES", "(?ms:'{3}(?!'{1,3}).*?(?:'{3}|\\z))|(?:'[^'].*?(?:'|\\z))"
-        ]
-    }
-    override func reservedWords() -> [String] {
-        return []
-    }
-}

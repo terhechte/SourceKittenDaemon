@@ -9,10 +9,19 @@
 import Foundation
 import AppKit
 
+protocol AutoCompleteDelegate {
+    func calculateCompletions(file: NSURL, content: String, offset: Int, completion: (entries: [String]?) -> ())
+}
+
 class HighlightingTextView : NSTextView {
     
     var highlighter: SyntaxHighligher?
     var rulerView: RulerView?
+    
+    var editingFile: NSURL?
+    
+    var autoCompleteDelegate: AutoCompleteDelegate?
+    
     func setSyntaxHighlighter(highlighter: SyntaxHighligher.Type) {
         let scrollView = self.enclosingScrollView!
         rulerView = RulerView(scrollView:scrollView , orientation: NSRulerOrientation.VerticalRuler)
@@ -65,5 +74,62 @@ class HighlightingTextView : NSTextView {
         
         // insert the new indent
         self.insertText(String.init(count: indent.count, repeatedValue: Character.init(" ")), replacementRange: NSRange.init(location: currentLineRange.location, length: 0))
+    }
+    
+    var completions: [String]? = nil
+    override func insertText(insertString: AnyObject) {
+        /**
+        Only call completion if we have one char (i.e. no paste),
+        and that char is a completion char
+        */
+        let range = self.selectedRange()
+        guard let string = insertString as? String,
+             completionChars = self.highlighter?.completionChars(),
+             firstChar = string.characters.first,
+             content = self.string,
+             fileName = self.editingFile
+            where completionChars.contains(firstChar) && range.location != NSNotFound
+        else {
+            super.insertText(insertString)
+            return
+        }
+        
+        super.insertText(insertString)
+        
+        // Find all the completion info we need
+        let cursor = range.location
+        
+        self.autoCompleteDelegate?.calculateCompletions(fileName,
+            content: content,
+            offset: cursor, completion: { (entries) -> () in
+                // once we got the completions, we store them and force-complete
+                self.completions = entries
+                self.complete(self)
+        })
+    }
+    
+    override func insertCompletion(word: String,
+        forPartialWordRange charRange: NSRange,
+        movement: Int,
+        isFinal flag: Bool) {
+            Swift.print(word, charRange, flag)
+            if flag {
+                // once the user selected, insert it
+                super.insertCompletion(word, forPartialWordRange: NSRange.init(location: charRange.location + charRange.length, length: 0), movement: movement, isFinal: flag)
+            }
+    }
+    
+    override func completionsForPartialWordRange(charRange: NSRange,
+        indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
+            return self.completions
+//            guard let text = self.string,
+//                completionChars = self.highlighter?.completionChars()
+//                else { return nil }
+//            let relevantText = (text as NSString).substringWithRange(charRange)
+//            guard let lastChar = relevantText.characters.last else { return nil }
+//            if completionChars.contains(lastChar) {
+//                return ["abc", "klaus", "carl"]
+//            }
+//            return nil
     }
 }

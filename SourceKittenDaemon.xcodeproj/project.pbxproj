@@ -19,6 +19,7 @@
 		4DC1D03B1C105ABC00B5948A /* RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D0381C105ABC00B5948A /* RulerView.swift */; };
 		4DC1D03C1C105ABC00B5948A /* SwiftHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D0391C105ABC00B5948A /* SwiftHighlighter.swift */; };
 		4DC1D0401C105C8300B5948A /* EditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D03F1C105C8300B5948A /* EditorController.swift */; };
+		4DC1D0441C10908900B5948A /* SourceKittenDaemon.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D86619EF1C06198F0072DC2C /* CompletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619ED1C06198F0072DC2C /* CompletionResult.swift */; };
 		D86619F71C0627580072DC2C /* fixturePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619F61C0627580072DC2C /* fixturePaths.swift */; };
 		D86619FB1C062BA20072DC2C /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619FA1C062BA20072DC2C /* ProjectTests.swift */; };
@@ -59,9 +60,26 @@
 			remoteGlobalIDString = 4D7716CC1BF4973B0093A406;
 			remoteInfo = SourceKittenDaemon;
 		};
+		4DC1D0411C10905F00B5948A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D7716C51BF4973A0093A406 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7716CC1BF4973B0093A406;
+			remoteInfo = SourceKittenDaemon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4DC1D0431C10906B00B5948A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				4DC1D0441C10908900B5948A /* SourceKittenDaemon.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8D624F61C05A3EF00EC3647 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,10 +389,12 @@
 				4DC1D0261C1059FE00B5948A /* Sources */,
 				4DC1D0271C1059FE00B5948A /* Frameworks */,
 				4DC1D0281C1059FE00B5948A /* Resources */,
+				4DC1D0431C10906B00B5948A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4DC1D0421C10905F00B5948A /* PBXTargetDependency */,
 			);
 			name = SwiftCode;
 			productName = SwiftCode;
@@ -503,6 +523,11 @@
 			isa = PBXTargetDependency;
 			target = 4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */;
 			targetProxy = 4D94B1511BF807C3003B5C17 /* PBXContainerItemProxy */;
+		};
+		4DC1D0421C10905F00B5948A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D7716CC1BF4973B0093A406 /* SourceKittenDaemon */;
+			targetProxy = 4DC1D0411C10905F00B5948A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -676,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -690,7 +715,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftCode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

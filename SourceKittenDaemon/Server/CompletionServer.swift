@@ -25,9 +25,19 @@ public class CompletionServer {
         self.completer = Completer(project: project)
         self.server = Taylor.Server()
 
+        self.server.get("/ping") { (req, res) -> Callback in
+            res.bodyString = "OK"
+            return .Send
+        }
+
         self.server.get("/stop") { (req, res) -> Callback in
-          self.stop()
-          return .Send
+            self.stop()
+            return .Send
+        }
+
+        self.server.get("/project") { (req, res) -> Callback in
+            res.bodyString = self.completer.project.projectFile.path
+            return .Send
         }
         
         self.server.get("/complete") { req, res in
@@ -63,7 +73,7 @@ public class CompletionServer {
 
     func start() {
         do {
-            print("[INFO] Staring server on port: \(port)")
+            print("[INFO] Listening on port: \(port)")
             try server.serveHTTP(port: port, forever: true)
         } catch {
             print("[ERR] Server start failed \(error)")

@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet var controller: EditorController!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -19,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+        self.controller.terminate()
     }
 
 

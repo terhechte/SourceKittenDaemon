@@ -69,8 +69,7 @@ class Completer {
         let customSwiftCompilerFlags: [String] = project.customSwiftCompilerFlags
 
         let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
-            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] } +
-        ["-F", "\(project.projectDir.path!)/Carthage/Build/Mac"]
+            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] }
 
         let sourceFiles: [String] = self.sourceFiles()
 
@@ -78,11 +77,16 @@ class Completer {
         var compilerArgs: [String] = []
         compilerArgs = compilerArgs + ["-module-name", project.moduleName]
         compilerArgs = compilerArgs + ["-sdk", project.sdkRoot]
+
+        if let platformTarget = project.platformTarget
+            { compilerArgs = compilerArgs + ["-target", platformTarget] }
+
         compilerArgs = compilerArgs + frameworkSearchPaths
-        compilerArgs = compilerArgs + ["-c", path]
-        compilerArgs = compilerArgs + ["-j4"]
         compilerArgs = compilerArgs + customSwiftCompilerFlags
         compilerArgs = compilerArgs + preprocessorFlags
+        compilerArgs = compilerArgs + ["-c"]
+        compilerArgs = compilerArgs + [path]
+        compilerArgs = compilerArgs + ["-j4"]
         compilerArgs = compilerArgs + sourceFiles
 
         let contents = file.contents

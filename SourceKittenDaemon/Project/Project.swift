@@ -45,6 +45,15 @@ class Project {
         return xcodebuildSettings["TARGET_NAME"]!
     }
 
+    var platformTarget: String? {
+        if let arch = xcodebuildSettings["PLATFORM_PREFERRED_ARCH"],
+            targetPrefix = xcodebuildSettings["SWIFT_PLATFORM_TARGET_PREFIX"],
+            targetOS = xcodebuildSettings["IPHONEOS_DEPLOYMENT_TARGET"] {
+            return arch + "-apple-" + targetPrefix + targetOS
+        }
+        return nil
+    }
+
     var configuration: String {
         return xcodebuildSettings["CONFIGURATION"]!
     }

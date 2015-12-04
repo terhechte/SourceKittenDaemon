@@ -61,6 +61,7 @@ class Completer {
         self.task.standardOutput = outputPipe.fileHandleForWriting
 
         /// Wait until the server started up properly
+        var started = false
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
             var content: String = ""
             while true {
@@ -70,12 +71,14 @@ class Completer {
                 guard let dataString = String(data: data, encoding: NSUTF8StringEncoding)
                     else { continue }
                 content += dataString
+                print(content)
                 
-                if content.rangeOfString("\\[INFO\\] Started", options: .RegularExpressionSearch) != nil {
+                if content.rangeOfString("\\[INFO\\] Started", options: .RegularExpressionSearch) != nil &&
+                    !started {
+                        started = true
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         completion(result: Result.Started)
                     })
-                    return
                 }
                 
                 if content.rangeOfString("\\[ERR\\]", options: .RegularExpressionSearch) != nil {
@@ -111,7 +114,7 @@ class Completer {
         }
     }
     
-    func calculateCompletions(temporaryFile: NSURL, content: String, offset: Int, completion: Completion) {
+    func calculateCompletions(temporaryFile: NSURL, offset: Int, completion: Completion) {
         // Create the arguments
         guard let temporaryFilePath = temporaryFile.path
             else {
@@ -121,8 +124,16 @@ class Completer {
         let attributes = ["X-Path": temporaryFilePath, "X-Offset": "\(offset)"]
         self.dataFromDaemon("/complete", headers: attributes) { (data) -> () in
             do {
-                let completions = try data() as? [String]
-                completion(result: Result.Completions(completions!))
+                guard let completions = try data() as? [NSDictionary] else {
+                    completion(result: Result.Error(CompletionError.Error(message: "Wrong Completion Return Type")))
+                    return
+                }
+                var results = [String]()
+                for c in completions {
+                    guard let s = (c["name"] as? String) else { continue }
+                    results.append(s)
+                }
+                completion(result: Result.Completions(results))
             } catch let error {
                 completion(result: Result.Error(error))
             }
@@ -141,6 +152,8 @@ class Completer {
                 completion(data: { throw CompletionError.Error(message: "Could not create completer URL") })
                 return
         }
+        print(url)
+        print(headers)
         
         let session = NSURLSession.sharedSession()
         
@@ -215,6 +228,7 @@ class Completer {
             
             let creationAction = {
                 self.completer = Completer(project: url, completion: { (result: Result) -> () in
+                    print(result)
                     switch result {
                     case .Started:
                         // Read the project files
@@ -295,7 +309,11 @@ class Completer {
 
 extension EditorController: AutoCompleteDelegate {
     func calculateCompletions(file: NSURL, content: String, offset: Int, completion: (entries: [String]?) -> ()) {
-        self.completer?.calculateCompletions(file, content: content, offset: offset,
+        // write into temporaryfile
+        let temporaryFileName = NSTemporaryDirectory() + "/" + NSProcessInfo.processInfo().globallyUniqueString + ".swift"
+        print(temporaryFileName)
+        NSFileManager.defaultManager().createFileAtPath(temporaryFileName, contents: content.dataUsingEncoding(NSUTF8StringEncoding) , attributes: [:])
+        self.completer?.calculateCompletions(NSURL(fileURLWithPath: temporaryFileName), offset: offset + 1,
             completion: { (result) -> () in
             switch result {
             case Result.Error(let error):

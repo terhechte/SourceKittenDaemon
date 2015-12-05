@@ -20,6 +20,7 @@
 		4DC1D03C1C105ABC00B5948A /* SwiftHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D0391C105ABC00B5948A /* SwiftHighlighter.swift */; };
 		4DC1D0401C105C8300B5948A /* EditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D03F1C105C8300B5948A /* EditorController.swift */; };
 		4DC1D0441C10908900B5948A /* SourceKittenDaemon.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D7716CD1BF4973B0093A406 /* SourceKittenDaemon.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4DC1D0821C12F74600B5948A /* Completer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1D0811C12F74600B5948A /* Completer.swift */; };
 		D86619EF1C06198F0072DC2C /* CompletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619ED1C06198F0072DC2C /* CompletionResult.swift */; };
 		D86619F71C0627580072DC2C /* fixturePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619F61C0627580072DC2C /* fixturePaths.swift */; };
 		D86619FB1C062BA20072DC2C /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86619FA1C062BA20072DC2C /* ProjectTests.swift */; };
@@ -118,6 +119,7 @@
 		4DC1D0381C105ABC00B5948A /* RulerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerView.swift; sourceTree = "<group>"; };
 		4DC1D0391C105ABC00B5948A /* SwiftHighlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHighlighter.swift; sourceTree = "<group>"; };
 		4DC1D03F1C105C8300B5948A /* EditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorController.swift; sourceTree = "<group>"; };
+		4DC1D0811C12F74600B5948A /* Completer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Completer.swift; sourceTree = "<group>"; };
 		D86619ED1C06198F0072DC2C /* CompletionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionResult.swift; sourceTree = "<group>"; };
 		D86619F61C0627580072DC2C /* fixturePaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fixturePaths.swift; sourceTree = "<group>"; };
 		D86619FA1C062BA20072DC2C /* ProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				4DC1D0301C1059FE00B5948A /* MainMenu.xib */,
 				4DC1D0331C1059FE00B5948A /* Info.plist */,
 				4DC1D03F1C105C8300B5948A /* EditorController.swift */,
+				4DC1D0811C12F74600B5948A /* Completer.swift */,
 			);
 			path = SwiftCode;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				4DC1D0401C105C8300B5948A /* EditorController.swift in Sources */,
 				4DC1D03B1C105ABC00B5948A /* RulerView.swift in Sources */,
 				4DC1D03A1C105ABC00B5948A /* HighlightingTextView.swift in Sources */,
+				4DC1D0821C12F74600B5948A /* Completer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +766,7 @@
 				4DC1D0351C1059FE00B5948A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

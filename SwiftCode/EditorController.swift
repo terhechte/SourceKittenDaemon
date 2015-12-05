@@ -126,6 +126,12 @@ import AppKit
 }
 
 extension EditorController: CompleterDebugDelegate {
+    func startedCompleter(command: String) {
+        if let currentString = self.logView.string {
+            self.logView.string = "Started: \(command)\n--------\n\(currentString)"
+        }
+    }
+    
     func calledURL(url: NSURL, withHeaders headers: [String: String]) {
         if let currentString = self.logView.string {
             self.logView.string = "Get: \(url)\nHeaders: \(headers)\n--------\n\(currentString)"

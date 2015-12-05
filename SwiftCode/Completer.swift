@@ -24,6 +24,7 @@ typealias Completion = (result: Result) -> ()
 
 protocol CompleterDebugDelegate {
     func calledURL(url: NSURL, withHeaders headers: [String: String])
+    func startedCompleter(command: String)
 }
 
 /**
@@ -89,6 +90,7 @@ class Completer {
                     !started {
                         started = true
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.debugDelegate?.startedCompleter(([daemonBinary] + self.task.arguments!).joinWithSeparator(" "))
                             completion(result: Result.Started)
                         })
                 }

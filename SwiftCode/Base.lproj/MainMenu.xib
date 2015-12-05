@@ -77,7 +77,7 @@
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
+                                    <action selector="saveCurrentFile:" target="xLM-nA-tDC" id="Nb9-FI-87j"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -626,7 +626,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" indentationPerLevel="16" outlineTableColumn="yVa-hi-xkb" id="yco-K9-w8f">
-                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="601"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
@@ -699,10 +699,10 @@
                                                                     <animations/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <size key="minSize" width="648" height="491"/>
-                                                                    <size key="maxSize" width="648" height="10000000"/>
+                                                                    <size key="maxSize" width="650" height="10000000"/>
                                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <size key="minSize" width="648" height="491"/>
-                                                                    <size key="maxSize" width="648" height="10000000"/>
+                                                                    <size key="maxSize" width="650" height="10000000"/>
                                                                 </textView>
                                                             </subviews>
                                                             <animations/>
@@ -745,10 +745,10 @@
                                                                     <animations/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <size key="minSize" width="648" height="98"/>
-                                                                    <size key="maxSize" width="648" height="10000000"/>
+                                                                    <size key="maxSize" width="650" height="10000000"/>
                                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <size key="minSize" width="648" height="98"/>
-                                                                    <size key="maxSize" width="648" height="10000000"/>
+                                                                    <size key="maxSize" width="650" height="10000000"/>
                                                                 </textView>
                                                             </subviews>
                                                             <animations/>

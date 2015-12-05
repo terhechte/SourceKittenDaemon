@@ -29,6 +29,17 @@ import AppKit
         self.openXcodeProject(self)
     }
     
+    @IBAction func saveCurrentFile(sender: AnyObject?) {
+        guard let file = self.textView.editingFile,
+                  contents = self.textView.string
+            else {
+                NSBeep()
+                print("No editable file, or empty file")
+                return
+        }
+        contents.dataUsingEncoding(NSUTF8StringEncoding)?.writeToURL(file, atomically: true)
+    }
+    
     @IBAction func openXcodeProject(sender: AnyObject?) {
         let openDialog = NSOpenPanel()
         openDialog.canChooseFiles = true

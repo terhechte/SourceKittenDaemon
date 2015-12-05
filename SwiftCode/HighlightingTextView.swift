@@ -31,6 +31,10 @@ class HighlightingTextView : NSTextView {
         scrollView.rulersVisible = true
         
         self.highlighter = highlighter.init(textStorage: self.textStorage!, textView: self, scrollView: scrollView)
+        
+        // when a syntax highlighter is applied, we also set a default fixed size font
+        let font = NSFont.userFixedPitchFontOfSize(12.0) ?? NSFont(name: "Menlo", size: 12.0) ?? NSFont(name: "Monaco", size: 12.0) ?? NSFont(name: "Helvetica", size: 12.0)!
+        self.font = font
     }
     
     override func insertNewline(sender: AnyObject?) {
@@ -122,14 +126,5 @@ class HighlightingTextView : NSTextView {
     override func completionsForPartialWordRange(charRange: NSRange,
         indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
             return self.completions
-//            guard let text = self.string,
-//                completionChars = self.highlighter?.completionChars()
-//                else { return nil }
-//            let relevantText = (text as NSString).substringWithRange(charRange)
-//            guard let lastChar = relevantText.characters.last else { return nil }
-//            if completionChars.contains(lastChar) {
-//                return ["abc", "klaus", "carl"]
-//            }
-//            return nil
     }
 }

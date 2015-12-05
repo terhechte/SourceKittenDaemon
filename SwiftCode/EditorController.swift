@@ -29,6 +29,9 @@ This class takes care of all the completer / sourcekittendaemon handling. It:
 - Does the network requests against the sourcekittendaemon
 - Converts the results to the proper types
 - And offers rudimentary error handling via the `Result` type
+ 
+ This can be considered the main component for connecting to the SourceKittenDaemon
+ completion engine.
 */
 class Completer {
     
@@ -45,6 +48,7 @@ class Completer {
     init(project: NSURL, completion: Completion) {
         self.projectURL = project
         
+        /// Find the SourceKittenDaemon Binary in our bundle
         let bundle = NSBundle.mainBundle()
         guard let supportPath = bundle.sharedSupportPath
             else { fatalError("Could not find Support Path") }
@@ -53,14 +57,17 @@ class Completer {
         guard NSFileManager.defaultManager().fileExistsAtPath(daemonBinary)
             else { fatalError("Could not find SourceKittenDaemon") }
         
+        /// Start up the SourceKittenDaemon
         self.task = NSTask()
         self.task.launchPath = daemonBinary
         self.task.arguments = ["start", "--port", self.port, "--project", project.path!]
         
+        /// Create an output pipe to read the sourcekittendaemon output
         let outputPipe = NSPipe()
         self.task.standardOutput = outputPipe.fileHandleForWriting
 
         /// Wait until the server started up properly
+        /// Read the server output to figure out if startup succeeded.
         var started = false
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
             var content: String = ""
@@ -71,7 +78,6 @@ class Completer {
                 guard let dataString = String(data: data, encoding: NSUTF8StringEncoding)
                     else { continue }
                 content += dataString
-                print(content)
                 
                 if content.rangeOfString("\\[INFO\\] Started", options: .RegularExpressionSearch) != nil &&
                     !started {
@@ -103,6 +109,9 @@ class Completer {
         }
     }
     
+    /**
+    Return all project files in the Xcode project
+    */
     func projectFiles(completion: Completion) {
         self.dataFromDaemon("/files", headers: [:]) { (data) -> () in
             do {
@@ -114,6 +123,11 @@ class Completer {
         }
     }
     
+    /**
+    Get the completions for the given file at the given offset
+    - parameter temporaryFile: A temporary file containing the content to be completed upon
+    - parameter offset: The cursor / byte position in the file for which we need completions
+    */
     func calculateCompletions(temporaryFile: NSURL, offset: Int, completion: Completion) {
         // Create the arguments
         guard let temporaryFilePath = temporaryFile.path

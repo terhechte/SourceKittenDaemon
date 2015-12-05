@@ -106,9 +106,11 @@ class HighlightingTextView : NSTextView {
         self.autoCompleteDelegate?.calculateCompletions(fileName,
             content: content,
             offset: cursor, completion: { (entries) -> () in
-                // once we got the completions, we store them and force-complete
-                self.completions = entries
-                self.complete(self)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // once we got the completions, we store them and force-complete
+                    self.completions = entries
+                    self.complete(self)
+                })
         })
     }
     
@@ -116,7 +118,6 @@ class HighlightingTextView : NSTextView {
         forPartialWordRange charRange: NSRange,
         movement: Int,
         isFinal flag: Bool) {
-            Swift.print(word, charRange, flag)
             if flag {
                 // once the user selected, insert it
                 super.insertCompletion(word, forPartialWordRange: NSRange.init(location: charRange.location + charRange.length, length: 0), movement: movement, isFinal: flag)

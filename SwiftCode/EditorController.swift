@@ -137,8 +137,9 @@ extension EditorController: AutoCompleteDelegate {
     func calculateCompletions(file: NSURL, content: String, offset: Int, completion: (entries: [String]?) -> ()) {
         // write into temporaryfile
         let temporaryFileName = NSTemporaryDirectory() + "/" + NSProcessInfo.processInfo().globallyUniqueString + ".swift"
-        print(temporaryFileName)
+        
         NSFileManager.defaultManager().createFileAtPath(temporaryFileName, contents: content.dataUsingEncoding(NSUTF8StringEncoding) , attributes: [:])
+        
         self.completer?.calculateCompletions(NSURL(fileURLWithPath: temporaryFileName), offset: offset + 1,
             completion: { (result) -> () in
             switch result {

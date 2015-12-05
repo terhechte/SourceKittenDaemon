@@ -88,9 +88,9 @@ class Completer {
                 if content.rangeOfString("\\[INFO\\] Started", options: .RegularExpressionSearch) != nil &&
                     !started {
                         started = true
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(result: Result.Started)
-                    })
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(result: Result.Started)
+                        })
                 }
                 
                 if content.rangeOfString("\\[ERR\\]", options: .RegularExpressionSearch) != nil {
@@ -184,14 +184,18 @@ class Completer {
         
         let task = session.dataTaskWithRequest(mutableRequest, completionHandler: { (data, response, error) -> Void in
             if let error = error {
-                completion(data: { throw CompletionError.Error(message: "error: \(error.localizedDescription): \(error.userInfo)") })
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(data: { throw CompletionError.Error(message: "error: \(error.localizedDescription): \(error.userInfo)") })
+                })
                 return
             }
             
             guard let data = data,
                 parsedData = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
                 else {
-                    completion(data: { throw CompletionError.Error(message: "Invalid Json") })
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(data: { throw CompletionError.Error(message: "Invalid Json") })
+                    })
                     return
             }
             
@@ -199,11 +203,15 @@ class Completer {
             if let parsedDict = parsedData as? [String: AnyObject],
                 jsonError = parsedDict["error"]
             where parsedDict.count == 1 {
-                completion(data: { throw CompletionError.Error(message: "Error: \(jsonError)") })
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(data: { throw CompletionError.Error(message: "Error: \(jsonError)") })
+                })
                 return
             }
             
-            completion(data: {return parsedData})
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(data: {return parsedData})
+            })
         })
        
         task.resume()

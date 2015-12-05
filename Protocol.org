@@ -18,3 +18,15 @@ Request a completion. In order to successfuly complete the request, the server n
 ** /stop
 
 Stops the server. This can be used to restart the server for a different target afterwards.
+
+** /ping
+
+Returns "OK"
+
+** /project
+
+Returns the currently loaded project file path
+
+** /files
+
+Returns a list of all Swift files in the current project

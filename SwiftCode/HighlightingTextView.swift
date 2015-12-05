@@ -82,6 +82,8 @@ class HighlightingTextView : NSTextView {
     
     var completions: [String]? = nil
     override func insertText(insertString: AnyObject) {
+        super.insertText(insertString)
+        
         /**
         Only call completion if we have one char (i.e. no paste),
         and that char is a completion char
@@ -89,29 +91,13 @@ class HighlightingTextView : NSTextView {
         let range = self.selectedRange()
         guard let string = insertString as? String,
              completionChars = self.highlighter?.completionChars(),
-             firstChar = string.characters.first,
-             content = self.string,
-             fileName = self.editingFile
+             firstChar = string.characters.first
             where completionChars.contains(firstChar) && range.location != NSNotFound
         else {
-            super.insertText(insertString)
             return
         }
         
-        super.insertText(insertString)
-        
-        // Find all the completion info we need
-        let cursor = range.location
-        
-        self.autoCompleteDelegate?.calculateCompletions(fileName,
-            content: content,
-            offset: cursor, completion: { (entries) -> () in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    // once we got the completions, we store them and force-complete
-                    self.completions = entries
-                    self.complete(self)
-                })
-        })
+        self.performCompletion(range.location)
     }
     
     override func insertCompletion(word: String,
@@ -119,13 +105,38 @@ class HighlightingTextView : NSTextView {
         movement: Int,
         isFinal flag: Bool) {
             if flag {
-                // once the user selected, insert it
+                // once the user selected, insert it and clear the completions
                 super.insertCompletion(word, forPartialWordRange: NSRange.init(location: charRange.location + charRange.length, length: 0), movement: movement, isFinal: flag)
+                self.completions = nil
             }
+    }
+    
+    override func cancelOperation(sender: AnyObject?) {
+        // the user force-required completions
+        let range = self.selectedRange()
+        if range.location != NSNotFound {
+            performCompletion(range.location)
+        }
     }
     
     override func completionsForPartialWordRange(charRange: NSRange,
         indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
-            return self.completions
+            return completions
+    }
+    
+    private func performCompletion(offset: Int) {
+        guard let content = self.string,
+             fileName = self.editingFile
+            else { return }
+        
+        self.autoCompleteDelegate?.calculateCompletions(fileName,
+            content: content,
+            offset: offset, completion: { (entries) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // once we got the completions, we store them and force-complete
+                    self.completions = entries
+                    self.complete(self)
+                })
+        })
     }
 }

@@ -14,7 +14,7 @@ After that, the daemon can be queried using the REST api outlined below
 
 * Communication Protocol Definition
 
-This is the Protocol definition for the protocol between Emacs and the SourceKittenDaemon
+This is the Protocol definition for the protocol between an editor and the SourceKittenDaemon
 
 The protocol uses simple HTTP GET calls for communication. The following endpoints are supported.
 

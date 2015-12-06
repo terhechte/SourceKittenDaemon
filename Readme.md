@@ -22,6 +22,9 @@ Here's a video showing the example editor in action:
 
 This app uses the fantastic [SourceKitten](https://github.com/jpsim/SourceKitten) framework without which none of this would be possible. SourceKittenDaemon is really just a small wrapper that keeps an Xcode Project indexer running and offers a nice way to query Xcode Project properties and completions via a comfortable interface.
 
+## Using It
+Have a look at the [Protocol.org](https://github.com/terhechte/SourceKittenDaemon/blob/master/Protocol.org) file, which explains how to start and use the daemon.
+
 ## Building / Installation
 
 ### PKG

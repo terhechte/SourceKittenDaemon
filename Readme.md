@@ -51,7 +51,7 @@ protocol is outlined in the Protocol.org file in this repository.
 
 ### Emacs
 SourceKittenDaemon is used in the [company-sourcekit Emacs Swift plugin](https://github.com/nathankot/company-sourcekit):
-<img src="https://raw.githubusercontent.com/nathankot/company-sourcekit/master/screen.gif" width="384" height="296" />
+<img src="https://raw.githubusercontent.com/nathankot/company-sourcekit/master/cap.gif" width="384" height="296" />
 
 ### SwiftCode
 This is a very simple, featureless reference implementation to see how to embed SourceKittenDaemon into an editor. It offers:

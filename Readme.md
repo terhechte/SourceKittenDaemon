@@ -56,6 +56,10 @@ protocol is outlined in the Protocol.org file in this repository.
 SourceKittenDaemon is used in the [company-sourcekit Emacs Swift plugin](https://github.com/nathankot/company-sourcekit):
 <img src="https://raw.githubusercontent.com/nathankot/company-sourcekit/master/cap.gif" width="384" height="296" />
 
+### TextMate
+There's a [half-ready implementation for TextMate](https://github.com/terhechte/TextMateSwiftCompletion) which currently doesn't run due to missing symbols from the C++ 
+document.dylib that is part of TextMate. If you're interested in using Swift from TextMate, have a look and see if you can help here.
+
 ### SwiftCode
 This is a very simple, featureless reference implementation to see how to embed SourceKittenDaemon into an editor. It offers:
 

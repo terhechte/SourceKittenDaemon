@@ -1,3 +1,16 @@
+* Starting
+
+The SourceKittenDaemon binary has to be started with the following parameters:
+
+=action verb=: either =start= or =help=
+=--port=: the port number on which the web server should open
+=--project==: the absolute path to the =.xcodeproj= file you wish to load
+
+An example would look like this:
+
+=SourceKittenDaemon start --port 44876 --project /private/tmp/abcde/abcde.xcodeproj=
+
+After that, the daemon can be queried using the REST api outlined below
 
 * Communication Protocol Definition
 

@@ -59,7 +59,9 @@ SourceKittenDaemon is used in the [company-sourcekit Emacs Swift plugin](https:/
 ### TextMate
 There's a [working implementation for TextMate](https://github.com/terhechte/TextMateSwiftCompletion) here.
 
-<img src="https://www.youtube.com/watch?v=jIMvrCkNn1I&feature=youtu.be"  />
+[![TextMate Example](https://j.gifs.com/OXnG0Z.gif)](https://www.youtube.com/watch?v=jIMvrCkNn1I&feature=youtu.be)
+
+[YouTube Video](https://www.youtube.com/watch?v=jIMvrCkNn1I&feature=youtu.be)
 
 ### SwiftCode
 This is a very simple, featureless reference implementation to see how to embed SourceKittenDaemon into an editor. It offers:

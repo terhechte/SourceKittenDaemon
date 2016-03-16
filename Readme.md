@@ -31,6 +31,10 @@ Have a look at the [Protocol.org](https://github.com/terhechte/SourceKittenDaemo
 
 You'll find an [installable package under the releases tab](https://github.com/terhechte/SourceKittenDaemon/releases/tag/0.1.2)
 
+### Homebrew
+
+(Coming Soon)
+
 ### Source
 
 1. Clone the repository
@@ -56,6 +60,9 @@ protocol is outlined in the Protocol.org file in this repository.
 SourceKittenDaemon is used in the [company-sourcekit Emacs Swift plugin](https://github.com/nathankot/company-sourcekit):
 <img src="https://raw.githubusercontent.com/nathankot/company-sourcekit/master/cap.gif" width="384" height="296" />
 
+### Atom
+[autocomplete-swift](https://atom.io/packages/autocomplete-swift) is a working Atom plugin offering Swift auto completion support via SourceKittenDaemon.
+
 ### TextMate
 There's a [working implementation for TextMate](https://github.com/terhechte/TextMateSwiftCompletion) here.
 
@@ -77,4 +84,5 @@ SourceKittenDaemon is not Linux-Ready yet, but I'll investigate this in the next
 
 
 ## Thanks
-A *lot* of thanks go to [Nathan Kot](https://github.com/nathankot) who wrote most parts of this.
+- A *lot* of thanks go to [Nathan Kot](https://github.com/nathankot) who wrote most parts of this.
+- [Tomoya Kose](https://github.com/mitsuse) for updating the project so it works with Homebrew again

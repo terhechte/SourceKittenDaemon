@@ -1,3 +1,24 @@
 [submodule "vendor/Xcode.swift"]
 	path = vendor/Xcode.swift
 	url = https://github.com/tomlokhorst/Xcode.swift.git
+[submodule "Carthage/Checkouts/Result"]
+	path = Carthage/Checkouts/Result
+	url = https://github.com/antitypical/Result.git
+[submodule "Carthage/Checkouts/Commandant"]
+	path = Carthage/Checkouts/Commandant
+	url = https://github.com/Carthage/Commandant.git
+[submodule "Carthage/Checkouts/SwiftSockets"]
+	path = Carthage/Checkouts/SwiftSockets
+	url = https://github.com/alwaysrightinstitute/SwiftSockets.git
+[submodule "Carthage/Checkouts/SwiftXPC"]
+	path = Carthage/Checkouts/SwiftXPC
+	url = https://github.com/jpsim/SwiftXPC.git
+[submodule "Carthage/Checkouts/SWXMLHash"]
+	path = Carthage/Checkouts/SWXMLHash
+	url = https://github.com/drmohundro/SWXMLHash.git
+[submodule "Carthage/Checkouts/SourceKitten"]
+	path = Carthage/Checkouts/SourceKitten
+	url = https://github.com/jpsim/SourceKitten.git
+[submodule "Carthage/Checkouts/taylor"]
+	path = Carthage/Checkouts/taylor
+	url = https://github.com/izqui/taylor.git

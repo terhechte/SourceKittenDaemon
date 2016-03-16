@@ -37,7 +37,7 @@ You'll find an [installable package under the releases tab](https://github.com/t
 2. Update the submodules 
 `git submodule update --init --recursive`
 3. Build the frameworks
-`carthage bootstrap --no-use-binaries --platform Mac`
+`carthage build --platform Mac`
 4. Install via `make install`
 
 ### SwiftCode Example Editor

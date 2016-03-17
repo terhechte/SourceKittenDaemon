@@ -33,7 +33,7 @@ You'll find an [installable package under the releases tab](https://github.com/t
 
 ### Homebrew
 
-(Coming Soon)
+Run `brew install sourcekittendaemon`
 
 ### Source
 

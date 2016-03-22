@@ -1,3 +1,3 @@
 github "izqui/taylor" "master"
-github "Carthage/Commandant" "master"
-github "jpsim/SourceKitten"
+github "Carthage/Commandant" == 0.7.0
+github "jpsim/SourceKitten" == 0.11.0

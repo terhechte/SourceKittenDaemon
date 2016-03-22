@@ -29,6 +29,7 @@ $(DIST): $(BUILD)
 	cp "$(BUILD)$(APPLICATION_FOLDER)/Contents/MacOS/SourceKittenDaemon" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
 	cp -r "$(BUILD)$(APPLICATION_FOLDER)/Contents/Frameworks/" "$(DIST)$(FRAMEWORKS_FOLDER)/"
 	install_name_tool -add_rpath "@executable_path/..$(FRAMEWORKS_FOLDER)" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
+	install_name_tool -delete_rpath "@executable_path/../Frameworks" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
 
 SourceKittenDaemon.pkg: $(DIST)
 	pkgbuild \

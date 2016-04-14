@@ -1,0 +1,14 @@
+language: objective-c
+osx_image: xcode7.3
+xcode_project: SourceKittenDaemon.xcodeproj
+xcode_scheme:
+  - SourceKittenDaemon
+xcode_sdk:
+  - macosx10.11
+git:
+  submodules: false
+before_install:
+  - git submodule update --init --recursive
+  - carthage build --platform Mac
+notifications:
+  email: false

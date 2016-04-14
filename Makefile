@@ -42,7 +42,7 @@ SourceKittenDaemon.pkg: $(DIST)
 .PHONY: $(BUILD)
 $(BUILD):
 	mkdir -p $@
-	git submodule update --init
+	git submodule update --init --recursive
 	carthage build --platform Mac
 	xcodebuild -project SourceKittenDaemon.xcodeproj \
 						 -scheme SourceKittenDaemon \

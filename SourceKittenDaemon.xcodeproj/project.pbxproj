@@ -38,8 +38,6 @@
 		D8D624E91C05A3EF00EC3647 /* Taylor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E11C05A3EF00EC3647 /* Taylor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8D624EA1C05A3EF00EC3647 /* Commandant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E21C05A3EF00EC3647 /* Commandant.framework */; };
 		D8D624EB1C05A3EF00EC3647 /* Commandant.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E21C05A3EF00EC3647 /* Commandant.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D8D624EC1C05A3EF00EC3647 /* SwiftXPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */; };
-		D8D624ED1C05A3EF00EC3647 /* SwiftXPC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8D624EE1C05A3EF00EC3647 /* SwiftSockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */; };
 		D8D624EF1C05A3EF00EC3647 /* SwiftSockets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8D624F01C05A3EF00EC3647 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */; };
@@ -87,7 +85,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D8D624ED1C05A3EF00EC3647 /* SwiftXPC.framework in Embed Frameworks */,
 				D8D624EB1C05A3EF00EC3647 /* Commandant.framework in Embed Frameworks */,
 				D8D624E91C05A3EF00EC3647 /* Taylor.framework in Embed Frameworks */,
 				D8D624F51C05A3EF00EC3647 /* SourceKittenFramework.framework in Embed Frameworks */,
@@ -136,7 +133,6 @@
 		D8725ED61C09854D005345BB /* CompleterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleterTests.swift; sourceTree = "<group>"; };
 		D8D624E11C05A3EF00EC3647 /* Taylor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Taylor.framework; path = Carthage/Build/Mac/Taylor.framework; sourceTree = "<group>"; };
 		D8D624E21C05A3EF00EC3647 /* Commandant.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Commandant.framework; path = Carthage/Build/Mac/Commandant.framework; sourceTree = "<group>"; };
-		D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftXPC.framework; path = Carthage/Build/Mac/SwiftXPC.framework; sourceTree = "<group>"; };
 		D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSockets.framework; path = Carthage/Build/Mac/SwiftSockets.framework; sourceTree = "<group>"; };
 		D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/Mac/SWXMLHash.framework; sourceTree = "<group>"; };
 		D8D624E61C05A3EF00EC3647 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
@@ -150,7 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8D624EC1C05A3EF00EC3647 /* SwiftXPC.framework in Frameworks */,
 				D8D624EA1C05A3EF00EC3647 /* Commandant.framework in Frameworks */,
 				D8D624E81C05A3EF00EC3647 /* Taylor.framework in Frameworks */,
 				D8D624F41C05A3EF00EC3647 /* SourceKittenFramework.framework in Frameworks */,
@@ -191,7 +186,6 @@
 				D8D624E51C05A3EF00EC3647 /* SWXMLHash.framework */,
 				D8D624E71C05A3EF00EC3647 /* SourceKittenFramework.framework */,
 				D8D624E41C05A3EF00EC3647 /* SwiftSockets.framework */,
-				D8D624E31C05A3EF00EC3647 /* SwiftXPC.framework */,
 				D8D624E11C05A3EF00EC3647 /* Taylor.framework */,
 			);
 			sourceTree = "<group>";

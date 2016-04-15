@@ -10,7 +10,6 @@ import Commandant
 import Foundation
 import Result
 import SourceKittenFramework
-import SwiftXPC
 
 /**
 This parses the commandline args and starts the server

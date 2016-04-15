@@ -8,7 +8,6 @@
 
 import Foundation
 import SourceKittenFramework
-import SwiftXPC
 
 /**
 This keeps the connection to the XPC via SourceKitten and is being called

@@ -1,6 +1,5 @@
 import Foundation
 import SourceKittenFramework
-import SwiftXPC
 
 internal enum CompletionResult {
     case Success(result: [CodeCompletionItem])

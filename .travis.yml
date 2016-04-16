@@ -8,7 +8,6 @@ xcode_sdk:
 git:
   submodules: false
 before_install:
-  - git submodule update --init --recursive
-  - carthage build --platform Mac
+  - make
 notifications:
   email: false

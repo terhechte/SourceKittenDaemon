@@ -1,6 +1,8 @@
 # SourceKittenDaemon
 ## Swift Auto Completion Helper
 
+[![Travis][badge-travis]][travis]
+
 This is a simple daemon that can read Xcode Swift projects and offers auto completion for Swift files and more over a built-in webserver.
 Effectively, this allows any kind of editor like Vim, Emacs, Sublime, or Atom to support Swift, Auto Completion, and Xcode projects.
 
@@ -86,3 +88,6 @@ SourceKittenDaemon is not Linux-Ready yet, but I'll investigate this in the next
 ## Thanks
 - A *lot* of thanks go to [Nathan Kot](https://github.com/nathankot) who wrote most parts of this.
 - [Tomoya Kose](https://github.com/mitsuse) for updating the project so it works with Homebrew again
+
+[badge-travis]: https://img.shields.io/travis/terhechte/SourceKittenDaemon.svg?style=flat-square
+[travis]: https://travis-ci.org/terhechte/SourceKittenDaemon/builds

@@ -31,6 +31,12 @@ $(DIST): $(BUILD)
 	install_name_tool -add_rpath "@executable_path/..$(FRAMEWORKS_FOLDER)" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
 	install_name_tool -delete_rpath "@executable_path/../Frameworks" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
 
+.PHONY: test
+test:
+	xcodebuild -project SourceKittenDaemon.xcodeproj \
+						 -scheme SourceKittenDaemon \
+						 test
+
 SourceKittenDaemon.pkg: $(DIST)
 	pkgbuild \
 		--identifier "$(IDENTIFIER)" \
@@ -42,7 +48,7 @@ SourceKittenDaemon.pkg: $(DIST)
 .PHONY: $(BUILD)
 $(BUILD):
 	mkdir -p $@
-	git submodule update --init --recursive
+	git submodule update --init
 	carthage build --platform Mac
 	xcodebuild -project SourceKittenDaemon.xcodeproj \
 						 -scheme SourceKittenDaemon \

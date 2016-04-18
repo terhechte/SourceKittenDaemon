@@ -7,7 +7,8 @@ xcode_sdk:
   - macosx10.11
 git:
   submodules: false
-install:
-  - make
+script:
+  - make dist
+  - make test
 notifications:
   email: false

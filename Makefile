@@ -48,8 +48,8 @@ SourceKittenDaemon.pkg: $(DIST)
 .PHONY: $(BUILD)
 $(BUILD):
 	mkdir -p $@
-	git submodule update --init
-	carthage build --platform Mac
+	git submodule update --init ./vendor/Xcode.swift
+	carthage bootstrap --platform Mac
 	xcodebuild -project SourceKittenDaemon.xcodeproj \
 						 -scheme SourceKittenDaemon \
 						 install \

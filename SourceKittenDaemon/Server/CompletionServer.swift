@@ -30,11 +30,6 @@ public class CompletionServer {
             return .Send
         }
 
-        self.server.get("/stop") { (req, res) -> Callback in
-          self.stop()
-          return .Send
-        }
-        
         self.server.get("/project") { (req, res) -> Callback in
             res.bodyString = self.completer.project.projectFile.path
             return .Send
@@ -98,13 +93,6 @@ public class CompletionServer {
             started = false
             print("[ERR] Server start failed \(error)")
         }
-    }
-    
-    /**
-    Stop and end the server
-    */
-    func stop() {
-        self.server.stopListening()
     }
     
     private func jsonError(res: Taylor.Response,

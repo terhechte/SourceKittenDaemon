@@ -63,13 +63,13 @@ class CompleterTests : XCTestCase {
     func testCompletingAMethodFromFramework() {
         let result = completer.complete(
                          NSURL(fileURLWithPath: completeMethodFromFrameworkFixturePath()),
-                         offset: 82)
+                         offset: 69)
 
         if let d = result.asJSON(),
            s = NSString(bytes: d.bytes,
                         length: d.length,
                         encoding: NSUTF8StringEncoding) as String? {
-            XCTAssertTrue(s =~ "sourcetext.*parseResponse")
+            XCTAssertTrue(s =~ "sourcetext.*devicesWithMediaType")
         }
     }
 

@@ -1,4 +1,4 @@
 import Foundation
-import SourceKittenFramework
+import AVFoundation
 
-let response = CodeCompletionItem.
+let devices = AVCaptureDevice.

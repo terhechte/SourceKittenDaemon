@@ -1,4 +1,5 @@
 # SourceKittenDaemon
+
 ## Swift Auto Completion Helper
 
 [![Travis][badge-travis]][travis]
@@ -55,7 +56,6 @@ You'll find a [zip file under the releases tab](https://github.com/terhechte/Sou
 Have a look at the [SwiftCode example project](https://github.com/terhechte/SourceKittenDaemon/tree/0.1.2/SwiftCode), or at the existing editor integrations (below). Alternatively, the communication
 protocol is outlined in the Protocol.org file in this repository.
 
-
 ## Editor Integrations
 
 ### Emacs
@@ -84,6 +84,14 @@ This is a *very* simple editor and no sane person should try to write code with 
 ## Linux
 SourceKittenDaemon is not Linux-Ready yet, but I'll investigate this in the next days. Also, since it is very dependent upon the SourceKitten and Taylor frameworks, it won't work under Linux until those have been ported, too. The background daemon, SourceKitD, is available as Open Source via Apple's Swift repository.
 
+## Troubleshooting
+
+### Byte offset vs character offset
+
+The `X-Offset` header takes a **byte offset** as opposed to a character
+offset. For most characters this will make no difference. However special
+characters such as `©` are counted as two bytes is
+UTF8. [See this issue for more details](https://github.com/terhechte/SourceKittenDaemon/issues/42).
 
 ## Thanks
 - A *lot* of thanks go to [Nathan Kot](https://github.com/nathankot) who wrote most parts of this.

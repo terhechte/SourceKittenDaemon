@@ -22,10 +22,8 @@ The protocol uses simple HTTP GET calls for communication. The following endpoin
 
 Request a completion. In order to successfuly complete the request, the server needs the following parameters as request headers:
 
-=X-Offset=: An integer number of the current cursor position for which a completion is requested
-
+=X-Offset=: An integer number of the current [[https://github.com/terhechte/SourceKittenDaemon/issues/42][byte offset]] for which a completion is requested
 =X-Path=: The path to the temporarily written buffer that contains the current state of the editing of the file
-
 =X-File=: The name of the currently edited file as it is known in the project. I.e. ~AppDelegate.swift~
 
 ** /stop

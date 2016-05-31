@@ -95,9 +95,10 @@ class Completer {
                         })
                 }
                 
-                if content.rangeOfString("\\[ERR\\]", options: .RegularExpressionSearch) != nil {
+                if let range = content.rangeOfString("\\[ERR\\].*\n", options: .RegularExpressionSearch) {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(result: Result.Error(CompletionError.Error(message: "Failed to start the Daemon")))
+                        let message = "Failed to start the Daemon:\n\(content.substringWithRange(range))"
+                        completion(result: Result.Error(CompletionError.Error(message: message)))
                     })
                     return
                 }

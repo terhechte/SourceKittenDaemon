@@ -66,6 +66,8 @@ import AppKit
                         self.unlockUI()
                         
                     case .Error(let error):
+                        self.unlockUI()
+
                         // display the error
                         self.displayError(error)
                     default:()

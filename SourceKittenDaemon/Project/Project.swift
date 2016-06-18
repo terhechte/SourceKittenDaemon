@@ -68,17 +68,17 @@ class Project {
 
     var frameworkSearchPaths: [String] {
         guard let s = xcodebuildSettings["FRAMEWORK_SEARCH_PATHS"] else { return [] }
-        return s.componentsSeparatedByString(" ")
+        return s.componentsSeparatedByString(" ").filter{return !$0.isEmpty}
     }
 
     var customSwiftCompilerFlags: [String] {
         guard let s = xcodebuildSettings["OTHER_SWIFT_FLAGS"] else { return [] }
-        return s.componentsSeparatedByString(" ")
+        return s.componentsSeparatedByString(" ").filter{return !$0.isEmpty}
     }
 
     var gccPreprocessorDefinitions: [String] {
         guard let s = xcodebuildSettings["GCC_PREPROCESSOR_DEFINITIONS"] else { return [] }
-        return s.componentsSeparatedByString(" ")
+        return s.componentsSeparatedByString(" ").filter{return !$0.isEmpty}
     }
 
     var sourceObjects: [ProjectObject] {

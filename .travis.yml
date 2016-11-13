@@ -5,5 +5,7 @@ language: generic
 sudo: required
 dist: trusty
 osx_image: xcode8
+env:
+  - FIXTURE_PROJECT_DIR="`pwd`" FIXTURE_PROJECT_FILE_PATH="`pwd`/SourceKittenDaemon.xcodeproj"
 script:
   - eval "$(curl -sL https://swift.vapor.sh/ci)"

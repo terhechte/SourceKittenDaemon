@@ -9,3 +9,6 @@ env:
   - FIXTURE_PROJECT_DIR="`pwd`" FIXTURE_PROJECT_FILE_PATH="`pwd`/SourceKittenDaemon.xcodeproj"
 script:
   - eval "$(curl -sL https://swift.vapor.sh/ci)"
+matrix:
+  allow_failures:
+    - os: linux

@@ -1,6 +1,6 @@
 import Foundation
 
-let type = ProjectType.Project(project: "/dev/null/NonExistent/NonExistent.xcodeproj")
+let type = ProjectType.project(project: "/dev/null/NonExistent/NonExistent.xcodeproj")
 let project = Project(type: type)
 
 project.

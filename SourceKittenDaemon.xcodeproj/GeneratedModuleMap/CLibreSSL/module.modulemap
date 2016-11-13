@@ -1,5 +1,5 @@
-framework module CLibreSSL {
+module CLibreSSL {
     umbrella header "/Users/nan/src/SourceKittenDaemon/Packages/CLibreSSL-1.0.0/Sources/CLibreSSL/include/CLibreSSL.h"
-    link framework "CLibreSSL"
+    link "CLibreSSL"
     export *
 }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Result"
+               BlueprintIdentifier = "OBJ_1482"
                BuildableName = "Result.framework"
                BlueprintName = "Result"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Commandant"
+               BlueprintIdentifier = "OBJ_1490"
                BuildableName = "Commandant.framework"
                BlueprintName = "Commandant"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SWXMLHash"
+               BlueprintIdentifier = "OBJ_1507"
                BuildableName = "SWXMLHash.framework"
                BlueprintName = "SWXMLHash"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Yaml"
+               BlueprintIdentifier = "OBJ_1515"
                BuildableName = "Yaml.framework"
                BlueprintName = "Yaml"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_sourcekitten"
+               BlueprintIdentifier = "OBJ_1527"
                BuildableName = "sourcekitten"
                BlueprintName = "sourcekitten"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -84,7 +84,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SourceKittenFramework"
+               BlueprintIdentifier = "OBJ_1552"
                BuildableName = "SourceKittenFramework.framework"
                BlueprintName = "SourceKittenFramework"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -98,7 +98,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Core"
+               BlueprintIdentifier = "OBJ_1599"
                BuildableName = "Core.framework"
                BlueprintName = "Core"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -112,7 +112,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_libc"
+               BlueprintIdentifier = "OBJ_1635"
                BuildableName = "libc.framework"
                BlueprintName = "libc"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -126,7 +126,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_CLibreSSL"
+               BlueprintIdentifier = "OBJ_1642"
                BuildableName = "CLibreSSL.framework"
                BlueprintName = "CLibreSSL"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -140,7 +140,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_BCrypt"
+               BlueprintIdentifier = "OBJ_2265"
                BuildableName = "BCrypt.framework"
                BlueprintName = "BCrypt"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -154,7 +154,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Cipher"
+               BlueprintIdentifier = "OBJ_2284"
                BuildableName = "Cipher.framework"
                BlueprintName = "Cipher"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -168,7 +168,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Essentials"
+               BlueprintIdentifier = "OBJ_2281"
                BuildableName = "Essentials.framework"
                BlueprintName = "Essentials"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -182,7 +182,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Hash"
+               BlueprintIdentifier = "OBJ_2313"
                BuildableName = "Hash.framework"
                BlueprintName = "Hash"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -196,7 +196,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_HMAC"
+               BlueprintIdentifier = "OBJ_2332"
                BuildableName = "HMAC.framework"
                BlueprintName = "HMAC"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -210,7 +210,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Random"
+               BlueprintIdentifier = "OBJ_2283"
                BuildableName = "Random.framework"
                BlueprintName = "Random"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -224,7 +224,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_PathIndexable"
+               BlueprintIdentifier = "OBJ_2366"
                BuildableName = "PathIndexable.framework"
                BlueprintName = "PathIndexable"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -238,7 +238,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Polymorphic"
+               BlueprintIdentifier = "OBJ_2374"
                BuildableName = "Polymorphic.framework"
                BlueprintName = "Polymorphic"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -252,7 +252,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Node"
+               BlueprintIdentifier = "OBJ_2382"
                BuildableName = "Node.framework"
                BlueprintName = "Node"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -266,7 +266,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Fluent"
+               BlueprintIdentifier = "OBJ_2414"
                BuildableName = "Fluent.framework"
                BlueprintName = "Fluent"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -280,7 +280,21 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Socks"
+               BlueprintIdentifier = "OBJ_2461"
+               BuildableName = "FluentTester.framework"
+               BlueprintName = "FluentTester"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_2481"
                BuildableName = "Socks.framework"
                BlueprintName = "Socks"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -294,7 +308,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SocksCore"
+               BlueprintIdentifier = "OBJ_2494"
                BuildableName = "SocksCore.framework"
                BlueprintName = "SocksCore"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -308,7 +322,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_TLS"
+               BlueprintIdentifier = "OBJ_2515"
                BuildableName = "TLS.framework"
                BlueprintName = "TLS"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -322,7 +336,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_HTTP"
+               BlueprintIdentifier = "OBJ_2538"
                BuildableName = "HTTP.framework"
                BlueprintName = "HTTP"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -336,7 +350,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SMTP"
+               BlueprintIdentifier = "OBJ_2611"
                BuildableName = "SMTP.framework"
                BlueprintName = "SMTP"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -350,7 +364,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Transport"
+               BlueprintIdentifier = "OBJ_2610"
                BuildableName = "Transport.framework"
                BlueprintName = "Transport"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -364,7 +378,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_URI"
+               BlueprintIdentifier = "OBJ_2608"
                BuildableName = "URI.framework"
                BlueprintName = "URI"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -378,7 +392,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_WebSockets"
+               BlueprintIdentifier = "OBJ_2740"
                BuildableName = "WebSockets.framework"
                BlueprintName = "WebSockets"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -392,7 +406,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Console"
+               BlueprintIdentifier = "OBJ_2790"
                BuildableName = "Console.framework"
                BlueprintName = "Console"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -406,7 +420,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Jay"
+               BlueprintIdentifier = "OBJ_2836"
                BuildableName = "Jay.framework"
                BlueprintName = "Jay"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -420,7 +434,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_JSON"
+               BlueprintIdentifier = "OBJ_2863"
                BuildableName = "JSON.framework"
                BlueprintName = "JSON"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -434,7 +448,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Turnstile"
+               BlueprintIdentifier = "OBJ_2889"
                BuildableName = "Turnstile.framework"
                BlueprintName = "Turnstile"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -448,7 +462,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_TurnstileCrypto"
+               BlueprintIdentifier = "OBJ_2910"
                BuildableName = "TurnstileCrypto.framework"
                BlueprintName = "TurnstileCrypto"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -462,7 +476,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_TurnstileWeb"
+               BlueprintIdentifier = "OBJ_2919"
                BuildableName = "TurnstileWeb.framework"
                BlueprintName = "TurnstileWeb"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -476,7 +490,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Leaf"
+               BlueprintIdentifier = "OBJ_2937"
                BuildableName = "Leaf.framework"
                BlueprintName = "Leaf"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -490,49 +504,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Auth"
-               BuildableName = "Auth.framework"
-               BlueprintName = "Auth"
-               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Cache"
-               BuildableName = "Cache.framework"
-               BlueprintName = "Cache"
-               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Cookies"
-               BuildableName = "Cookies.framework"
-               BlueprintName = "Cookies"
-               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_HTTPRouting"
+               BlueprintIdentifier = "OBJ_2987"
                BuildableName = "HTTPRouting.framework"
                BlueprintName = "HTTPRouting"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -546,7 +518,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Routing"
+               BlueprintIdentifier = "OBJ_3040"
                BuildableName = "Routing.framework"
                BlueprintName = "Routing"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -560,35 +532,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Sessions"
-               BuildableName = "Sessions.framework"
-               BlueprintName = "Sessions"
-               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Settings"
-               BuildableName = "Settings.framework"
-               BlueprintName = "Settings"
-               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_TypeSafeRouting"
+               BlueprintIdentifier = "OBJ_3095"
                BuildableName = "TypeSafeRouting.framework"
                BlueprintName = "TypeSafeRouting"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -602,7 +546,77 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Vapor"
+               BlueprintIdentifier = "OBJ_3148"
+               BuildableName = "Auth.framework"
+               BlueprintName = "Auth"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3237"
+               BuildableName = "Cache.framework"
+               BlueprintName = "Cache"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3235"
+               BuildableName = "Cookies.framework"
+               BlueprintName = "Cookies"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3390"
+               BuildableName = "Sessions.framework"
+               BlueprintName = "Sessions"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3468"
+               BuildableName = "Settings.framework"
+               BlueprintName = "Settings"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3548"
                BuildableName = "Vapor.framework"
                BlueprintName = "Vapor"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -616,7 +630,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Xcode"
+               BlueprintIdentifier = "OBJ_3714"
                BuildableName = "Xcode.framework"
                BlueprintName = "Xcode"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -630,7 +644,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_sourcekittend"
+               BlueprintIdentifier = "OBJ_3724"
                BuildableName = "sourcekittend"
                BlueprintName = "sourcekittend"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -644,7 +658,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SourceKittenDaemon"
+               BlueprintIdentifier = "OBJ_3822"
                BuildableName = "SourceKittenDaemon.framework"
                BlueprintName = "SourceKittenDaemon"
                ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
@@ -656,9 +670,40 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_3924"
+               BuildableName = "SourceKittenDaemonTests.xctest"
+               BlueprintName = "SourceKittenDaemonTests"
+               ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "OBJ_3822"
+            BuildableName = "SourceKittenDaemon.framework"
+            BlueprintName = "SourceKittenDaemon"
+            ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "FIXTURE_PROJECT_FILE_PATH"
+            value = "$(PROJECT_FILE_PATH)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "FIXTURE_PROJECT_DIR"
+            value = "$(PROJECT_DIR)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -675,9 +720,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_Result"
-            BuildableName = "Result.framework"
-            BlueprintName = "Result"
+            BlueprintIdentifier = "OBJ_3822"
+            BuildableName = "SourceKittenDaemon.framework"
+            BlueprintName = "SourceKittenDaemon"
             ReferencedContainer = "container:SourceKittenDaemon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

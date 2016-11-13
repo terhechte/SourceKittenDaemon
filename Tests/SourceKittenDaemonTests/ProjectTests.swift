@@ -18,13 +18,11 @@ class ProjectTests : XCTestCase {
     }
 
     func testReturnsTheCorrectSourceCodeObjects() {
-        print(project.sourceObjects)
         let sources = project.sourceObjects
                       .map { $0.relativePath.absoluteURL(forProject: self.project) }
                       .filter { $0 != nil }
                       .map { $0!.path }
 
-        print(sources)
         XCTAssert(sources.count > 0)
         XCTAssert(sources.contains { $0 =~ "Project.swift$" })
         XCTAssert(sources.every({ $0 =~ "^\(self.project.projectDir.path)" }),
@@ -50,7 +48,6 @@ class ProjectTests : XCTestCase {
     }
 
     func testReturnsTheCorrectModuleName() {
-        print(project.moduleName)
         XCTAssertEqual("SourceKittenDaemon", project.moduleName)
     }
 

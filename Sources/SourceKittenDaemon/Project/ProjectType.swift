@@ -12,7 +12,7 @@ public enum ProjectType {
     public var projectDir: URL? {
         switch self{
         case .folder(let s):  return URL(fileURLWithPath: s)
-        default: return (url as NSURL?)?.deletingLastPathComponent?.standardizedFileURL
+        default: return url?.deletingLastPathComponent().standardizedFileURL
         }
     }
 

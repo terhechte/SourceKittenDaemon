@@ -8,7 +8,7 @@ extension Path {
         case .absolute(let path):
             return URL(fileURLWithPath: path).standardizedFileURL
         case .relativeTo(.sourceRoot, let path):
-            return (project.srcRoot as NSURL).appendingPathComponent(path)?.standardizedFileURL
+            return  project.srcRoot.appendingPathComponent(path).standardizedFileURL
         case .relativeTo(_, let path):
             return URL(fileURLWithPath: path).standardizedFileURL
         }

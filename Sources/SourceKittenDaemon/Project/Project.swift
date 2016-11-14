@@ -38,9 +38,9 @@ public class Project {
             else { throw ProjectError.couldNotParseProject }
     }
 
-    var projectDir: URL { return self.type.projectDir! as URL }
+    var projectDir: URL { return self.type.projectDir! }
     var srcRoot: URL { return projectDir }
-    var projectFile: URL { return type.projectFile! as URL }
+    var projectFile: URL { return type.projectFile! }
 
     var target: String {
         return xcodebuildSettings["TARGET_NAME"]!
@@ -148,9 +148,9 @@ public class Project {
         task.launchPath = "/usr/bin/xcodebuild"
         task.currentDirectoryPath = self.projectDir.path
         task.arguments =
-            (self.chosenScheme == nil ? [] : ["-scheme", self.chosenScheme!] as [String]) +
-            (self.chosenTarget == nil ? [] : ["-target", self.chosenTarget!] as [String]) +
-            (self.chosenConfiguration == nil ? [] : ["-configuration", self.chosenConfiguration!] as [String]) +
+            (self.chosenScheme == nil ? [String]() : ["-scheme", self.chosenScheme!]) +
+            (self.chosenTarget == nil ? [String]() : ["-target", self.chosenTarget!]) +
+            (self.chosenConfiguration == nil ? [String]() : ["-configuration", self.chosenConfiguration!]) +
             ["-showBuildSettings"]
 
         let pipe = Pipe()
@@ -161,9 +161,8 @@ public class Project {
         if task.terminationStatus != 0 { return nil }
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = NSString(bytes: (data as NSData).bytes, length: data.count, encoding: String.Encoding.utf8.rawValue)
-      
-        return output as? String
+
+        return String(data: data, encoding: .utf8)
     }()
 
 }

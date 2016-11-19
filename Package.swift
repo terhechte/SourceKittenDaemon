@@ -16,6 +16,6 @@ let package = Package(
   ],
 
   exclude: [
-    "Tests/SourceKittenDaemonTests/Fixtures"
+    "Tests/SourceKittenDaemonTests/Fixtures/Sources"
   ]
 )

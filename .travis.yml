@@ -6,7 +6,7 @@ sudo: required
 dist: trusty
 osx_image: xcode8
 env:
-  - FIXTURE_PROJECT_DIR="`pwd`" FIXTURE_PROJECT_FILE_PATH="`pwd`/SourceKittenDaemon.xcodeproj"
+  - FIXTURE_PATH="`pwd`/Tests/SourceKittenDaemonTests/Fixtures" FIXTURE_PROJECT_DIR="`pwd`/Tests/SourceKittenDaemonTests/Fixtures/Project" FIXTURE_PROJECT_FILE_PATH="`pwd`/Tests/SourceKittenDaemonTests/Fixtures/Project/Fixture.xcodeproj"
 script:
   - eval "$(curl -sL https://swift.vapor.sh/ci)"
 matrix:

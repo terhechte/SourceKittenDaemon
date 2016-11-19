@@ -101,7 +101,7 @@ public class Project {
     fileprivate lazy var xcProjectFile: XCProjectFile = {
         try! XCProjectFile(xcodeprojURL: self.type.projectFile!)
     }()
-    
+
     fileprivate lazy var pbxTarget: PBXNativeTarget = {
         return self.xcProjectFile.project.targets
             .filter({$0.name == self.target }).first!

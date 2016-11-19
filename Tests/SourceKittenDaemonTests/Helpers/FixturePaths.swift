@@ -11,26 +11,26 @@ public func xcodeprojFixturePath() -> String {
 }
 
 public func completeConstructorFixturePath() -> String {
-    return environment["FIXTURE_PROJECT_DIR"]! +
-            "/Tests/SourceKittenDaemonTests/Fixtures/CompleteConstructorFixture.swift"
+    return environment["FIXTURE_PATH"]! +
+            "/Sources/CompleteConstructorFixture.swift"
 }
 
 public func completeEnumConstructorFixturePath() -> String {
-    return environment["FIXTURE_PROJECT_DIR"]! +
-            "/Tests/SourceKittenDaemonTests/Fixtures/CompleteEnumConstructorFixture.swift"
+    return environment["FIXTURE_PATH"]! +
+            "/Sources/CompleteEnumConstructorFixture.swift"
 }
 
 public func completeMethodFixturePath() -> String {
-    return environment["FIXTURE_PROJECT_DIR"]! +
-            "/Tests/SourceKittenDaemonTests/Fixtures/CompleteMethodFixture.swift"
+    return environment["FIXTURE_PATH"]! +
+            "/Sources/CompleteMethodFixture.swift"
 }
 
 public func completeMethodFromFrameworkFixturePath() -> String {
-    return environment["FIXTURE_PROJECT_DIR"]! +
-            "/Tests/SourceKittenDaemonTests/Fixtures/CompleteMethodFromFrameworkFixture.swift"
+    return environment["FIXTURE_PATH"]! +
+            "/Sources/CompleteMethodFromFrameworkFixture.swift"
 }
 
 public func completeImportFixturePath() -> String {
-    return environment["FIXTURE_PROJECT_DIR"]! +
-            "/Tests/SourceKittenDaemonTests/Fixtures/CompleteImportFixture.swift"
+    return environment["FIXTURE_PATH"]! +
+            "/Sources/CompleteImportFixture.swift"
 }

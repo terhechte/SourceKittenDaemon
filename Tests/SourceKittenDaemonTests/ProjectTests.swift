@@ -24,7 +24,7 @@ class ProjectTests : XCTestCase {
                       .map { $0!.path }
 
         XCTAssert(sources.count > 0)
-        XCTAssert(sources.contains { $0 =~ "Project.swift$" })
+        XCTAssert(sources.contains { $0 =~ "Enum.swift$" })
         XCTAssert(sources.every({ $0 =~ "^\(self.project.projectDir.path)" }),
                   "Each path starts with \(self.project.projectDir.path)")
     }
@@ -48,7 +48,7 @@ class ProjectTests : XCTestCase {
     }
 
     func testReturnsTheCorrectModuleName() {
-        XCTAssertEqual("SourceKittenDaemon", project.moduleName)
+        XCTAssertEqual("Fixture", project.moduleName)
     }
 
     func testReturnsTheCorrectSDKRoot() {

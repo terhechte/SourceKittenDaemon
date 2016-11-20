@@ -1,13 +1,10 @@
+ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 VERSION := $(shell agvtool what-marketing-version -terse1)
 BUILD := .build
 DIST := dist
 PREFIX := /usr/local
-
 IDENTIFIER := com.stylemac.SourceKittenDaemon
-
-APPLICATION_FOLDER := /Applications/SourceKittenDaemon.app
 BINARIES_FOLDER := /bin
-FRAMEWORKS_FOLDER := /lib/SourceKittenDaemon.Frameworks
 
 default: $(DIST)
 
@@ -18,24 +15,19 @@ clean:
 .PHONY: install
 install: $(DIST)
 	mkdir -p "$(PREFIX)$(BINARIES_FOLDER)"
-	mkdir -p "$(PREFIX)$(FRAMEWORKS_FOLDER)"
 	cp -f "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon" "$(PREFIX)$(BINARIES_FOLDER)/"
-	cp -Rf "$(DIST)$(FRAMEWORKS_FOLDER)/" "$(PREFIX)$(FRAMEWORKS_FOLDER)/"
 
 .PHONY: $(DIST)
 $(DIST): $(BUILD)
 	mkdir -p "$(DIST)$(BINARIES_FOLDER)"
-	mkdir -p "$(DIST)$(FRAMEWORKS_FOLDER)"
-	cp "$(BUILD)$(APPLICATION_FOLDER)/Contents/MacOS/SourceKittenDaemon" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
-	cp -r "$(BUILD)$(APPLICATION_FOLDER)/Contents/Frameworks/" "$(DIST)$(FRAMEWORKS_FOLDER)/"
-	install_name_tool -add_rpath "@executable_path/..$(FRAMEWORKS_FOLDER)" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
-	install_name_tool -delete_rpath "@executable_path/../Frameworks" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
+	cp "$(BUILD)/release/sourcekittend" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
 
 .PHONY: test
 test:
-	xcodebuild -project SourceKittenDaemon.xcodeproj \
-						 -scheme SourceKittenDaemon \
-						 test
+	FIXTURE_PATH="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures" \
+	FIXTURE_PROJECT_DIR="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures/Project" \
+	FIXTURE_PROJECT_FILE_PATH="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures/Project/Fixture.xcodeproj" \
+	swift test
 
 SourceKittenDaemon.pkg: $(DIST)
 	pkgbuild \
@@ -48,10 +40,4 @@ SourceKittenDaemon.pkg: $(DIST)
 .PHONY: $(BUILD)
 $(BUILD):
 	mkdir -p $@
-	git submodule update --init ./vendor/Xcode.swift
-	carthage bootstrap --platform Mac
-	xcodebuild -project SourceKittenDaemon.xcodeproj \
-						 -scheme SourceKittenDaemon \
-						 install \
-						 DSTROOT=$@
-
+	swift build -c release --build-path $(BUILD)

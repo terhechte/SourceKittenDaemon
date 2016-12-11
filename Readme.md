@@ -32,7 +32,7 @@ Have a look at the [Protocol.org](https://github.com/terhechte/SourceKittenDaemo
 
 ### PKG
 
-You'll find an [installable package under the releases tab](https://github.com/terhechte/SourceKittenDaemon/releases/tag/0.1.2)
+You'll find an [installable package under the releases tab](https://github.com/terhechte/SourceKittenDaemon/releases/)
 
 ### Homebrew
 

@@ -1,6 +1,6 @@
 import PackageDescription
 
-let package = Package(
+var package = Package(
   name: "SourceKittenDaemon",
 
   targets: [
@@ -14,9 +14,15 @@ let package = Package(
     .Package(url: "https://github.com/envoy/Embassy.git",
                  majorVersion: 3),
     .Package(url: "https://github.com/nanzhong/Xcode.swift.git", Version(0, 4, 1))
+    //.Package(url: "https://github.com/tomlokhorst/XcodeEdit.git", majorVersion: 1)
   ],
 
   exclude: [
     "Tests/SourceKittenDaemonTests/Fixtures/Sources"
   ]
 )
+
+#if os(Linux)
+package.dependencies.append(.Package(url: "https://github.com/felix91gr/FileSystemWatcher.git",
+        majorVersion: 1))
+#endif

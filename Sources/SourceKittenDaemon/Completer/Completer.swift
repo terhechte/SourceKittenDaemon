@@ -9,6 +9,72 @@
 import Foundation
 import SourceKittenFramework
 
+#if os(Linux)
+import FileSystemWatcher
+#endif
+
+class FileSystemEventsWrapper {
+
+    func pingSKD() { 
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "skdrefresh"), object: nil) 
+    }
+
+    #if os(Linux)
+
+        func pingAux(event: FileSystemEvent) {
+            pingSKD()
+        }
+
+        let myWatcher : FileSystemWatcher
+
+        public init(delay: Int, paths toWatch: [String]) {
+
+            myWatcher = FileSystemWatcher(deferringDelay: Double(delay))
+
+            myWatcher.watch(
+                paths: toWatch, 
+                for: [FileSystemEventType.inAllEvents],
+                thenInvoke: pingAux)
+
+            myWatcher.start()
+        }
+
+        deinit {
+            myWatcher.stop()
+        }
+            
+    #else
+
+        let eventStream: FSEventStreamRef
+
+        public init(delay: Int, paths toWatch: [String]) {
+
+            self.eventStream = FSEventStreamCreate(
+                    kCFAllocatorDefault,
+                    pingSKD,
+                    nil,
+                    toWatch as CFArray,
+                    FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
+                    delay,
+                    FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagNoDefer))!
+          
+            let runLoop = RunLoop.main
+
+            FSEventStreamScheduleWithRunLoop(eventStream,
+                                             runLoop.getCFRunLoop(),
+                                             RunLoopMode.defaultRunLoopMode as CFString)
+            
+            FSEventStreamStart(eventStream)
+        }
+
+        deinit {
+            FSEventStreamInvalidate(eventStream)
+        }
+
+    #endif 
+
+}
+
 /**
 This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
@@ -19,25 +85,12 @@ class Completer {
 
     // Need to monitor changes to the .pbxproject and re-fetch
     // project settings.
-    let eventStream: FSEventStreamRef
+    let fsEventWrapper : FileSystemEventsWrapper
     
     init(project: Project) {
         self.project = project
       
-        self.eventStream = FSEventStreamCreate(
-                kCFAllocatorDefault,
-                { (_) in NotificationCenter.default.post(name: Notification.Name(rawValue: "skdrefresh"), object: nil) },
-                nil,
-                [project.projectFile.path] as CFArray,
-                FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
-                2,
-                FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagNoDefer))!
-      
-        let runLoop = RunLoop.main
-        FSEventStreamScheduleWithRunLoop(eventStream,
-                                         runLoop.getCFRunLoop(),
-                                         RunLoopMode.defaultRunLoopMode as CFString)
-        FSEventStreamStart(eventStream)
+        self.fsEventWrapper = FileSystemEventsWrapper(delay: 2, paths: [project.projectFile.path])
 
         print("[INFO] Monitoring \(project.projectFile.path) for changes")
         NotificationCenter.default.addObserver(
@@ -50,7 +103,7 @@ class Completer {
     }
 
     deinit {
-        FSEventStreamInvalidate(eventStream)
+        
     }
 
     func refresh() throws {

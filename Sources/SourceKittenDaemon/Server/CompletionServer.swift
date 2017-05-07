@@ -25,7 +25,7 @@ public class CompletionServer {
     var server: DefaultHTTPServer?
 
     public init(project: Project, port: Int) throws {
-        let selector = try KqueueSelector()
+        let selector = try SelectSelector()
         self.loop = try SelectorEventLoop(selector: selector)
         self.completer = Completer(project: project)
         self.server = DefaultHTTPServer(eventLoop: loop, port: port, app: requestHandler)

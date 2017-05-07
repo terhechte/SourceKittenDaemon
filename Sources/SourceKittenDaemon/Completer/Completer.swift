@@ -13,11 +13,12 @@ import SourceKittenFramework
 import FileSystemWatcher
 #endif
 
+private func pingSKD() {
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "skdrefresh"), object: nil)
+}
+
 class FileSystemEventsWrapper {
 
-    func pingSKD() { 
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "skdrefresh"), object: nil) 
-    }
 
     #if os(Linux)
 
@@ -50,13 +51,14 @@ class FileSystemEventsWrapper {
         public init(delay: Int, paths toWatch: [String]) {
 
             self.eventStream = FSEventStreamCreate(
-                    kCFAllocatorDefault,
-                    pingSKD,
-                    nil,
-                    toWatch as CFArray,
-                    FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
-                    delay,
-                    FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagNoDefer))!
+                kCFAllocatorDefault, { (_, _, _, _, _, _)  in
+                    pingSKD()
+                },
+                nil,
+                toWatch as CFArray,
+                FSEventStreamEventId(kFSEventStreamEventIdSinceNow),
+                CFTimeInterval(delay),
+                FSEventStreamCreateFlags(kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagNoDefer))!
           
             let runLoop = RunLoop.main
 

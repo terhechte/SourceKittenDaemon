@@ -8,9 +8,42 @@ class CompleterTests : XCTestCase {
     var project: Project!
     var completer: Completer!
 
+#if os(Linux) 
+    let doDebug = true
+#else 
+    let doDebug = false
+#endif
+
+    func debugMsg(_ msg : String) {
+        if(doDebug) {
+            print (msg)
+        }
+    }
+
     override func setUp() {
+        // debugMsg("Started SetUp")
         super.setUp()
+
+        // debugMsg("Printing ProcessInfo.processInfo.environment")
+        // for (zeKey, zeValue) in ProcessInfo.processInfo.environment {
+        //     debugMsg(zeKey + " : " + zeValue)
+        // }
+ 
+        // debugMsg("Calling xcodeprojFixturePath")
+        var asd = xcodeprojFixturePath()
+
         type = ProjectType.project(project: xcodeprojFixturePath())
+
+        debugMsg("------- Meta-test: Poking type var -------")
+        print(type)
+        debugMsg("------- Success! -------\n")
+
+        debugMsg("Poking project var...")
+        debugMsg("The error seems to be in the following line.")
+        debugMsg("It will fail on the 'public convenience init(propertyListData data: Data)' method,")
+        debugMsg("On XCProjectFile.swift")
+
+
         project = try! Project(type: type, configuration: "Debug")
         completer = Completer(project: project)
     }

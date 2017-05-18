@@ -69,3 +69,19 @@ class CompleterTests : XCTestCase {
     }
 
 }
+
+#if os(Linux)
+
+extension CompleterTests {
+    static var allTests: [(String, (CompleterTests) -> () throws -> Void)] {
+        return [
+            ("testCompletingAConstructor", testCompletingAConstructor),
+            ("testCompletingEnumConstructor", testCompletingEnumConstructor),
+            ("testCompletingAMethod", testCompletingAMethod),
+            ("testCompletingAMethodFromFramework", testCompletingAMethodFromFramework),
+            ("testCompletingAnImportStatement", testCompletingAnImportStatement),         
+                 ]
+    }
+}
+
+#endif

@@ -15,6 +15,8 @@ for a file.
 */
 public class CompletionServer {
 
+    var cache = Cache()
+    
     let port: Int
     let completer: Completer
 
@@ -49,7 +51,9 @@ public class CompletionServer {
 
         droplet.get("/complete") { request in
             guard let offsetString = request.headers["X-Offset"],
-                  let offset = Int(offsetString) else {
+                  let offset = Int(offsetString),
+                  offset != 0 else {
+
                 throw Abort.custom(
                   status: .badRequest,
                   message: "{\"error\": \"Need X-Offset as completion offset for completion\"}"
@@ -62,15 +66,25 @@ public class CompletionServer {
                   message: "{\"error\": \"Need X-Path as path to the temporary buffer\"}"
                 )
             }
+            let cacheKey = request.headers["X-Cachekey"] ?? ""
 
-            print("[HTTP] GET /complete X-Offset:\(offset) X-Path:\(path)")
+            print("[HTTP] GET /complete X-Offset:\(offset) X-Path:\(path) X-Cachekey:\(cacheKey)")
+
+            /*target cache*/
+            let realKey = self.cache.getKey(offset: offsetString, path: path, cacheKey: cacheKey)
+            if let cachedResult = self.cache.getCache(with: realKey) {
+                print("target the cache results")
+                return CompletionResult.success(result: cachedResult).asJSONString()!
+            }
 
             let url = URL(fileURLWithPath: path)
             let result = self.completer.complete(url, offset: offset)
 
             switch result {
-            case .success(result: _):
-                return result.asJSONString()!
+            case .success(result: let completions):
+                let classified = Cache.classify(completions)
+                self.cache.setCache(classified, for: realKey)
+                return CompletionResult.success(result: classified).asJSONString()!
             case .failure(message: let msg):
                 throw Abort.custom(
                   status: .badRequest,
@@ -79,6 +93,7 @@ public class CompletionServer {
             }
         }
     }
+
 
     public func start() {
         droplet.run(servers: ["default": (host: "0.0.0.0", port: port, securityLayer: .none)])

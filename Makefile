@@ -5,8 +5,10 @@ DIST := dist
 PREFIX := /usr/local
 IDENTIFIER := com.stylemac.SourceKittenDaemon
 BINARIES_FOLDER := /bin
+LIB_FOLDER := /lib
+PWD := $(shell pwd)
 
-default: $(DIST)
+default: SourceKittenDaemon.pkg
 
 .PHONY: clean
 clean:
@@ -17,10 +19,17 @@ install: $(DIST)
 	mkdir -p "$(PREFIX)$(BINARIES_FOLDER)"
 	cp -f "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon" "$(PREFIX)$(BINARIES_FOLDER)/"
 
-.PHONY: $(DIST)
-$(DIST): $(BUILD)
-	mkdir -p "$(DIST)$(BINARIES_FOLDER)"
-	cp "$(BUILD)/release/sourcekittend" "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon"
+$(DIST): $(DIST)$(BINARIES_FOLDER)/sourcekittendaemon $(DIST)$(LIB_FOLDER)/libCYaml.dylib $(DIST)$(LIB_FOLDER)/libCLibreSSL.dylib
+
+$(DIST)$(LIB_FOLDER)/%.dylib: $(BUILD)/release/%.dylib
+	mkdir -p $(@D)
+	cp $< $@
+
+$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon: $(BUILD)/release/sourcekittend
+	mkdir -p $(@D)
+	cp $< $@
+	install_name_tool -change $(PWD)/.build/release/libCYaml.dylib  $(PREFIX)$(LIB_FOLDER)/libCYaml.dylib $@
+	install_name_tool -change $(PWD)/.build/release/libCLibreSSL.dylib  $(PREFIX)$(LIB_FOLDER)/libCLibreSSL.dylib $@
 
 .PHONY: test
 test:

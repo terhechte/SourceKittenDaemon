@@ -1,6 +1,5 @@
 import Foundation
-//import XcodeEdit
-import Xcode
+import XcodeEdit
 
 extension Path {
 

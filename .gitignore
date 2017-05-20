@@ -19,3 +19,4 @@ Carthage/Build
 dist
 SourceKittenDaemon.pkg
 Packages
+Package.pins

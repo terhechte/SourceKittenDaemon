@@ -10,11 +10,10 @@ var package = Package(
 
   dependencies: [
     .Package(url: "https://github.com/Carthage/Commandant.git", versions: Version(0, 12, 0)..<Version(0, 12, .max)),
-    .Package(url: "https://github.com/jpsim/SourceKitten.git", Version(0, 17, 2)),
+    .Package(url: "https://github.com/jpsim/SourceKitten.git", versions: Version(0, 17, 0)..<Version(0, 17, .max)),
     .Package(url: "https://github.com/envoy/Embassy.git",
                  majorVersion: 3),
-    .Package(url: "https://github.com/nanzhong/Xcode.swift.git", Version(0, 4, 1))
-    //.Package(url: "https://github.com/tomlokhorst/XcodeEdit.git", majorVersion: 1)
+    .Package(url: "https://github.com/felix91gr/XcodeEdit.git", majorVersion: 1),
   ],
 
   exclude: [

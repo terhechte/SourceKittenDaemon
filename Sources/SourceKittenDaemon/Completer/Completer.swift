@@ -13,7 +13,7 @@ import SourceKittenFramework
 This keeps the connection to the XPC via SourceKitten and is being called
 from the Completion Server to perform completions. */
 class Completer {
-    
+
     // The project parser
     var project: Project
 
@@ -60,14 +60,15 @@ class Completer {
     func complete(_ url: URL, offset: Int) -> CompletionResult {
         let path = url.path
 
-        guard let file = File(path: path) 
+        guard let file = File(path: path)
             else { return .failure(message: "Could not read file") }
+
 
         let frameworkSearchPaths: [String] = project.frameworkSearchPaths.reduce([]) { $0 + ["-F", $1] }
         let customSwiftCompilerFlags: [String] = project.customSwiftCompilerFlags
 
-        let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
-            .reduce([]) { $0 + ["-Xcc", "-D\($1)"] }
+        //let preprocessorFlags: [String] = project.gccPreprocessorDefinitions
+        //    .reduce([]) { $0 + ["-Xcc", "-D\($1)"] }
 
         let sourceFiles: [String] = self.sourceFiles()
 
@@ -81,7 +82,7 @@ class Completer {
 
         compilerArgs = compilerArgs + frameworkSearchPaths
         compilerArgs = compilerArgs + customSwiftCompilerFlags
-        compilerArgs = compilerArgs + preprocessorFlags
+        /*compilerArgs = compilerArgs + preprocessorFlags*/
         compilerArgs = compilerArgs + ["-c"]
         compilerArgs = compilerArgs + [path]
         compilerArgs = compilerArgs + ["-j4"]
@@ -95,8 +96,13 @@ class Completer {
                           arguments: compilerArgs)
       
         let response = CodeCompletionItem.parse(response: request.send())
-        
-        return .success(result: response)
+        if response.count > 1000 {
+            let message = "too much completions: \(response.count)"
+            print("----> error: \(message)")
+            return .failure(message: message)
+        } else {
+            return .success(result: response)
+        }
     }
     
     func sourceFiles() -> [String] {

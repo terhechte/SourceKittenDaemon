@@ -13,6 +13,7 @@ default: SourceKittenDaemon.pkg
 .PHONY: clean
 clean:
 	rm -rf "$(DIST)"
+	rm -rf "$(BUILD)"
 
 .PHONY: install
 install: $(DIST)
@@ -25,9 +26,9 @@ $(DIST)$(LIB_FOLDER)/%.dylib: $(BUILD)/release/%.dylib
 	mkdir -p $(@D)
 	cp $< $@
 
-$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon: $(BUILD)/release/sourcekittend
+$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon: $(BUILD)
 	mkdir -p $(@D)
-	cp $< $@
+	cp $(BUILD)/release/sourcekittend $@
 	install_name_tool -change $(PWD)/.build/release/libCYaml.dylib  $(PREFIX)$(LIB_FOLDER)/libCYaml.dylib $@
 	install_name_tool -change $(PWD)/.build/release/libCLibreSSL.dylib  $(PREFIX)$(LIB_FOLDER)/libCLibreSSL.dylib $@
 
@@ -48,5 +49,5 @@ SourceKittenDaemon.pkg: $(DIST)
 
 .PHONY: $(BUILD)
 $(BUILD):
-	mkdir -p $@
+	mkdir -p $(@D)
 	swift build -c release --build-path $(BUILD)

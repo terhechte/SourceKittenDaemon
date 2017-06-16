@@ -18,7 +18,7 @@ clean:
 	rm -rf "$(BUILD)"
 
 .PHONY: install
-install: $(DIST)
+install: $(DIST)$(BINARIES_FOLDER)/sourcekittendaemon
 	mkdir -p "$(PREFIX)$(BINARIES_FOLDER)"
 	cp -f "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon" "$(PREFIX)$(BINARIES_FOLDER)/"
 

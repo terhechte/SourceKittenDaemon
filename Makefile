@@ -18,9 +18,12 @@ clean:
 	rm -rf "$(BUILD)"
 
 .PHONY: install
-install: $(DIST)$(BINARIES_FOLDER)/sourcekittendaemon
+install: $(DIST)$(BINARIES_FOLDER)/sourcekittendaemon $(DIST)$(LIB_FOLDER)/libCYaml.dylib $(DIST)$(LIB_FOLDER)/libCLibreSSL.dylib
 	mkdir -p "$(PREFIX)$(BINARIES_FOLDER)"
+	mkdir -p "$(PREFIX)$(LIB_FOLDER)"
 	cp -f "$(DIST)$(BINARIES_FOLDER)/sourcekittendaemon" "$(PREFIX)$(BINARIES_FOLDER)/"
+	cp -f "$(DIST)$(LIB_FOLDER)/libCYaml.dylib" "$(PREFIX)$(LIB_FOLDER)/"
+	cp -f "$(DIST)$(LIB_FOLDER)/libCLibreSSL.dylib" "$(PREFIX)$(LIB_FOLDER)/"
 
 .PHONY: test
 test:

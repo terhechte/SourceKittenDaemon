@@ -16,29 +16,34 @@ class CompleterTests : XCTestCase {
 
     func debugMsg(_ msg : String) {
         if(doDebug) {
-            print (msg)
+            print ("[DEBUG] " + msg)
         }
     }
 
     override func setUp() {
-        // debugMsg("Started SetUp")
+        debugMsg("Checking setUp func in CompleterTests")
+        
+        debugMsg("Starting super.setUp...")
+
         super.setUp()
 
+        debugMsg("Finished!. Creating a test var of type xcodeprojFixturePath...")
         // debugMsg("Printing ProcessInfo.processInfo.environment")
         // for (zeKey, zeValue) in ProcessInfo.processInfo.environment {
         //     debugMsg(zeKey + " : " + zeValue)
         // }
- 
-        // debugMsg("Calling xcodeprojFixturePath")
-        var asd = xcodeprojFixturePath()
+
+        var _ = xcodeprojFixturePath()
+        
+        debugMsg("Worked!. Creating ProjectType from xcodeprojFixturePath...")
 
         type = ProjectType.project(project: xcodeprojFixturePath())
 
-        debugMsg("------- Meta-test: Poking type var -------")
+        debugMsg("[EXTRA] Printing ProjectType")
         print(type)
-        debugMsg("------- Success! -------\n")
+        debugMsg("[EXTRA] Success!")
 
-        debugMsg("Poking project var...")
+        debugMsg("ProjectType is in order. Poking project var...")
         debugMsg("The error seems to be in the following line.")
         debugMsg("It will fail on the 'public convenience init(propertyListData data: Data)' method,")
         debugMsg("On XCProjectFile.swift")

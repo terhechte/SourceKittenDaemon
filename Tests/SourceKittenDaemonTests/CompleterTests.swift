@@ -92,7 +92,7 @@ class CompleterTests : XCTestCase {
             offset: 69)
 
         if let s = result.asJSONString() {
-            XCTAssertTrue(s =~ "sourcetext.*devices.withMediaType:")
+            XCTAssertTrue(s =~ "sourcetext.*devices")
         }
     }
 

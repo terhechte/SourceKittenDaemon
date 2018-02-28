@@ -8,9 +8,47 @@ class CompleterTests : XCTestCase {
     var project: Project!
     var completer: Completer!
 
+#if os(Linux) 
+    let doDebug = true
+#else 
+    let doDebug = false
+#endif
+
+    func debugMsg(_ msg : String) {
+        if(doDebug) {
+            print ("[DEBUG] " + msg)
+        }
+    }
+
     override func setUp() {
+        debugMsg("Checking setUp func in CompleterTests")
+        
+        debugMsg("Starting super.setUp...")
+
         super.setUp()
+
+        debugMsg("Finished!. Creating a test var of type xcodeprojFixturePath...")
+        // debugMsg("Printing ProcessInfo.processInfo.environment")
+        // for (zeKey, zeValue) in ProcessInfo.processInfo.environment {
+        //     debugMsg(zeKey + " : " + zeValue)
+        // }
+
+        var _ = xcodeprojFixturePath()
+        
+        debugMsg("Worked!. Creating ProjectType from xcodeprojFixturePath...")
+
         type = ProjectType.project(project: xcodeprojFixturePath())
+
+        debugMsg("[EXTRA] Printing ProjectType")
+        print(type)
+        debugMsg("[EXTRA] Success!")
+
+        debugMsg("ProjectType is in order. Poking project var...")
+        debugMsg("The error seems to be in the following line.")
+        debugMsg("It will fail on the 'public convenience init(propertyListData data: Data)' method,")
+        debugMsg("On XCProjectFile.swift")
+
+
         project = try! Project(type: type, configuration: "Debug")
         completer = Completer(project: project)
     }
@@ -54,7 +92,7 @@ class CompleterTests : XCTestCase {
             offset: 69)
 
         if let s = result.asJSONString() {
-            XCTAssertTrue(s =~ "sourcetext.*devices.withMediaType:")
+            XCTAssertTrue(s =~ "sourcetext.*devices")
         }
     }
 
@@ -69,3 +107,19 @@ class CompleterTests : XCTestCase {
     }
 
 }
+
+#if os(Linux)
+
+extension CompleterTests {
+    static var allTests: [(String, (CompleterTests) -> () throws -> Void)] {
+        return [
+            ("testCompletingAConstructor", testCompletingAConstructor),
+            ("testCompletingEnumConstructor", testCompletingEnumConstructor),
+            ("testCompletingAMethod", testCompletingAMethod),
+            ("testCompletingAMethodFromFramework", testCompletingAMethodFromFramework),
+            ("testCompletingAnImportStatement", testCompletingAnImportStatement),         
+                 ]
+    }
+}
+
+#endif

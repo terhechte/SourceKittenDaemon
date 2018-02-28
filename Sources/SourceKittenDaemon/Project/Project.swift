@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Xcode
+import XcodeEdit
 
 public class Project {
 
@@ -116,7 +116,7 @@ public class Project {
                                     let sourceType = ProjectObjectSourceType(rawValue: type),
                                     let path = fileRef.path,
                                     let name = path.components(separatedBy: "/").last,
-                                    let relativePath = self.xcProjectFile.project.allObjects.fullFilePaths[fileRef.id] {
+                                    let relativePath = self.xcProjectFile.project.allObjects.FullFilePaths[fileRef.id] {
                                      return ProjectObject(type: sourceType,
                                                           name: name,
                                                           relativePath: relativePath,

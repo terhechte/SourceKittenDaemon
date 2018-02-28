@@ -69,3 +69,23 @@ class ProjectTests : XCTestCase {
     }
 
 }
+
+#if os(Linux)
+
+extension ProjectTests {
+    static var allTests: [(String, (ProjectTests) -> () throws -> Void)] {
+        return [
+            ("testProjectDirIsCorrect", testProjectDirIsCorrect),
+            ("testReturnsTheCorrectSourceCodeObjects", testReturnsTheCorrectSourceCodeObjects),
+            ("testItCanOverrideTheSchemesTarget", testItCanOverrideTheSchemesTarget),
+            ("testItCanOverrideTheSchemesConfiguration", testItCanOverrideTheSchemesConfiguration),
+            ("testReturnsTheCorrectModuleName", testReturnsTheCorrectModuleName),         
+            ("testReturnsTheCorrectSDKRoot", testReturnsTheCorrectSDKRoot),         
+            ("testReturnsAListOfFrameworkSearchPaths", testReturnsAListOfFrameworkSearchPaths),         
+            ("testReturnsCustomSwiftCompilerFlags", testReturnsCustomSwiftCompilerFlags),         
+            ("testReturnsGccPreprocessorDefinitions", testReturnsGccPreprocessorDefinitions),         
+                 ]
+    }
+}
+
+#endif

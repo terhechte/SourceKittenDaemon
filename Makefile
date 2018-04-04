@@ -4,6 +4,7 @@ BUILD := .build
 DIST := dist
 PREFIX := /usr/local
 IDENTIFIER := com.stylemac.SourceKittenDaemon
+UNAME := $(shell uname)
 BINARIES_FOLDER := /bin
 LIB_FOLDER := /lib
 PWD := $(shell pwd)
@@ -28,7 +29,15 @@ test:
 	FIXTURE_PATH="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures" \
 	FIXTURE_PROJECT_DIR="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures/Project" \
 	FIXTURE_PROJECT_FILE_PATH="$(ROOT_DIR)/Tests/SourceKittenDaemonTests/Fixtures/Project/Fixture.xcodeproj" \
-	swift test
+	swift test --build-path "./.build/$(UNAME)"
+
+.PHONY: linuxtest
+linuxtest:
+	docker run --rm \
+	    --volume "$(PWD):/package" \
+	    --workdir "/package" \
+	    ibmcom/swift-ubuntu \
+	    /bin/bash -c "make test"
 
 SourceKittenDaemon.pkg: $(DIST)$(BINARIES_FOLDER)/sourcekittendaemon 
 	pkgbuild \

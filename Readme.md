@@ -78,7 +78,11 @@ This is a very simple, featureless reference implementation to see how to embed 
 This is a *very* simple editor and no sane person should try to write code with it. It is only meant to show how to embed the daemon.
 
 ## Linux
-SourceKittenDaemon is not Linux-Ready yet, but I'll investigate this in the next days. Also, since it is very dependent upon the SourceKitten and Taylor frameworks, it won't work under Linux until those have been ported, too. The background daemon, SourceKitD, is available as Open Source via Apple's Swift repository.
+
+Linux support is currently in development. If you're interested in helping out, here're the steps to run it on Linux:
+1. Install [docker](https://docker.io)
+2. Install [the Swift Dockerfile](https://hub.docker.com/r/ibmcom/swift-ubuntu/tags/) (i.e. `docker pull ibmcom/swift-ubuntu`)
+3. Run `make linuxtest`
 
 ## Troubleshooting
 

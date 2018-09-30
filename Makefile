@@ -1,5 +1,5 @@
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-VERSION := $(shell agvtool what-marketing-version -terse1)
+VERSION := $(shell git rev-parse HEAD)
 BUILD := .build
 DIST := dist
 PREFIX := /usr/local

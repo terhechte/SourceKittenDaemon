@@ -148,10 +148,13 @@ class Completer {
                           contents: contents,
                           offset: Int64(offset),
                           arguments: compilerArgs)
-      
-        let response = CodeCompletionItem.parse(response: request.send())
-        
-        return .success(result: response)
+     
+        do {
+          let response = try CodeCompletionItem.parse(response: request.send())
+          return .success(result: response)
+        } catch let e {
+          return .failure(message: e.localizedDescription)
+        }
     }
     
     func sourceFiles() -> [String] {

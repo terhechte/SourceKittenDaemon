@@ -9,8 +9,8 @@ var package = Package(
   ],
 
   dependencies: [
-    .Package(url: "https://github.com/Carthage/Commandant.git", versions: Version(0, 12, 0)..<Version(0, 12, .max)),
-    .Package(url: "https://github.com/jpsim/SourceKitten.git", majorVersion: 0, minor: 18),
+    .Package(url: "https://github.com/Carthage/Commandant.git", versions: Version(0, 12, 0)..<Version(0, 15, .max)),
+    .Package(url: "https://github.com/jpsim/SourceKitten.git", majorVersion: 0, minor: 21),
     .Package(url: "https://github.com/envoy/Embassy.git", majorVersion: 4),
     .Package(url: "https://github.com/felix91gr/XcodeEdit.git", majorVersion: 1),
   ],

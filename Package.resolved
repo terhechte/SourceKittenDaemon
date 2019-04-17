@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "Result",
+        "repositoryURL": "https://github.com/antitypical/Result.git",
+        "state": {
+          "branch": "master",
+          "revision": "908184a92205a252f409bd0341ab645ae83a8bc3",
+          "version": null
+        }
+      },
+      {
         "package": "SourceKitten",
         "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
         "state": {

@@ -64,7 +64,7 @@ class FileSystemEventsWrapper {
 
             FSEventStreamScheduleWithRunLoop(eventStream,
                                              runLoop.getCFRunLoop(),
-                                             RunLoopMode.defaultRunLoopMode as CFString)
+                                             RunLoop.Mode.default as CFString)
             
             FSEventStreamStart(eventStream)
         }

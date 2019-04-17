@@ -1,22 +1,25 @@
+// swift-tools-version:4.2
+
 import PackageDescription
 
 var package = Package(
   name: "SourceKittenDaemon",
 
-  targets: [
-    Target(name: "SourceKittenDaemon"),
-    Target(name: "sourcekittend", dependencies: [.Target(name: "SourceKittenDaemon")])
-  ],
-
   dependencies: [
-    .Package(url: "https://github.com/Carthage/Commandant.git", versions: Version(0, 12, 0)..<Version(0, 15, .max)),
-    .Package(url: "https://github.com/jpsim/SourceKitten.git", majorVersion: 0, minor: 21),
-    .Package(url: "https://github.com/envoy/Embassy.git", majorVersion: 4),
-    .Package(url: "https://github.com/felix91gr/XcodeEdit.git", majorVersion: 1),
+    .package(url: "https://github.com/Carthage/Commandant.git", .branch("master")),
+    .package(url: "https://github.com/jpsim/SourceKitten.git", .branch("master")),
+    .package(url: "https://github.com/michaelnew/Embassy.git", .branch("master")),
+    .package(url: "https://github.com/tomlokhorst/XcodeEdit", .branch("develop"))
   ],
 
-  exclude: [
-    "Tests/SourceKittenDaemonTests/Fixtures/Sources"
+  targets: [
+    .target(
+	name: "SourceKittenDaemon",
+	dependencies: ["Commandant", "SourceKittenFramework", "XcodeEdit", "Embassy" ]
+    ),
+    .target(
+	name: "sourcekittend", 
+	dependencies: ["SourceKittenDaemon"])
   ]
 )
 

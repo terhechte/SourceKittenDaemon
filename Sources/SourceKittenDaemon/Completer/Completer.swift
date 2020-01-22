@@ -146,7 +146,7 @@ class Completer {
         let request = Request.codeCompletionRequest(
                           file: path,
                           contents: contents,
-                          offset: Int64(offset),
+                          offset: ByteCount(offset),
                           arguments: compilerArgs)
      
         do {

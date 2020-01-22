@@ -11,11 +11,29 @@
         }
       },
       {
+        "package": "CwlCatchException",
+        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
+        "state": {
+          "branch": null,
+          "revision": "7cd2f8cacc4d22f21bc0b2309c3b18acf7957b66",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "CwlPreconditionTesting",
+        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+        "state": {
+          "branch": null,
+          "revision": "c228db5d2ad1b01ebc84435e823e6cca4e3db98b",
+          "version": "1.2.0"
+        }
+      },
+      {
         "package": "Embassy",
-        "repositoryURL": "https://github.com/michaelnew/Embassy.git",
+        "repositoryURL": "https://github.com/envoy/Embassy.git",
         "state": {
           "branch": "master",
-          "revision": "410ca9bc0312397941bb513d65f4ca5f82451a2e",
+          "revision": "189436100c00efbf5fb2653fe7972a9371db0a91",
           "version": null
         }
       },
@@ -24,8 +42,8 @@
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
           "branch": null,
-          "revision": "43304bf2b1579fd555f2fdd51742771c1e4f2b98",
-          "version": "8.0.1"
+          "revision": "b02b00b30b6353632aa4a5fb6124f8147f7140c0",
+          "version": "8.0.5"
         }
       },
       {
@@ -33,8 +51,8 @@
         "repositoryURL": "https://github.com/Quick/Quick.git",
         "state": {
           "branch": null,
-          "revision": "0b4ed6c706dd0cce923b5019a605a9bcc6b1b600",
-          "version": "2.0.0"
+          "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
+          "version": "2.2.0"
         }
       },
       {
@@ -42,7 +60,7 @@
         "repositoryURL": "https://github.com/antitypical/Result.git",
         "state": {
           "branch": "master",
-          "revision": "908184a92205a252f409bd0341ab645ae83a8bc3",
+          "revision": "c30700bfcab7f555bf1d386fdd609407a94f369c",
           "version": null
         }
       },
@@ -51,7 +69,7 @@
         "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
         "state": {
           "branch": "master",
-          "revision": "47574a0b13576d909ad827365a09f96dca14a0f3",
+          "revision": "1c54dce13d05c6f3b442b904e14d9df9393e80ec",
           "version": null
         }
       },
@@ -60,8 +78,8 @@
         "repositoryURL": "https://github.com/drmohundro/SWXMLHash.git",
         "state": {
           "branch": null,
-          "revision": "0d6bb315528888edde0dafe93564f074669c44e9",
-          "version": "4.8.0"
+          "revision": "a4931e5c3bafbedeb1601d3bb76bbe835c6d475a",
+          "version": "5.0.1"
         }
       },
       {
@@ -69,7 +87,7 @@
         "repositoryURL": "https://github.com/tomlokhorst/XcodeEdit",
         "state": {
           "branch": "develop",
-          "revision": "6cf2916aac748b9a687c2bfd1ef27d2adb70453b",
+          "revision": "70e4f0e3ad5f5de5360ed865e7b7e32a7a042f83",
           "version": null
         }
       },

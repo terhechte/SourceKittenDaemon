@@ -83,7 +83,7 @@ public class Project {
     }
 
     var sourceObjects: [ProjectObject] {
-        guard let phase = pbxTarget.buildPhases.filter({ ($0 as? PBXSourcesBuildPhase) != nil }).first
+        guard let phase = pbxTarget.buildPhases.filter({ ($0.value as? PBXSourcesBuildPhase) != nil }).first
             else { return [] }
         return objects.filter { $0.buildPhase.id == phase.id }
     }
@@ -104,23 +104,23 @@ public class Project {
 
     fileprivate lazy var pbxTarget: PBXNativeTarget = {
         return self.xcProjectFile.project.targets
-            .filter({$0.name == self.target }).first!
+            .filter({$0.value?.name == self.target }).first!.value! as! PBXNativeTarget
     }()
 
     fileprivate lazy var objects: [ProjectObject] = {
       return self.pbxTarget.buildPhases.reduce([], { (a, phase) -> [ProjectObject] in
-            return a + phase.files
+            return a + phase.value!.files
                         .map({ (file) -> ProjectObject? in
-                                 if let fileRef = file.fileRef,
-                                    let type = fileRef.string("lastKnownFileType"),
+                                 if let fileRef = file.value?.fileRef?.value as? PBXFileReference,
+                                    let type = fileRef.lastKnownFileType,
                                     let sourceType = ProjectObjectSourceType(rawValue: type),
                                     let path = fileRef.path,
                                     let name = path.components(separatedBy: "/").last,
-                                    let relativePath = self.xcProjectFile.project.allObjects.FullFilePaths[fileRef.id] {
+                                    let relativePath = fileRef.fullPath {
                                      return ProjectObject(type: sourceType,
                                                           name: name,
                                                           relativePath: relativePath,
-                                                          buildPhase: phase)
+                                                          buildPhase: phase.value!)
                                  } else {
                                      return nil
                                  }

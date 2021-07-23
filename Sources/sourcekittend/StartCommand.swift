@@ -37,7 +37,7 @@ struct StartCommand: CommandProtocol {
             do {
                 let server = try CompletionServer(project: project, port: options.port)
                 try server.start()
-                return .success()
+                return .success(())
             } catch let error {
                 return Result.failure(CommandError.other(error))
             }

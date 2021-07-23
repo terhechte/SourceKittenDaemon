@@ -64,7 +64,7 @@ class FileSystemEventsWrapper {
 
             FSEventStreamScheduleWithRunLoop(eventStream,
                                              runLoop.getCFRunLoop(),
-                                             RunLoopMode.defaultRunLoopMode as CFString)
+                                             RunLoop.Mode.default as CFString)
             
             FSEventStreamStart(eventStream)
         }
@@ -146,7 +146,7 @@ class Completer {
         let request = Request.codeCompletionRequest(
                           file: path,
                           contents: contents,
-                          offset: Int64(offset),
+                          offset: ByteCount(offset),
                           arguments: compilerArgs)
      
         do {
